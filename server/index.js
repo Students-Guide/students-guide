@@ -4,6 +4,7 @@ var app = express();
 var cors = require("cors");
 app.use(cors({ credentials: true, sameSite: true }));
 const { port, database, keys } = require("./config/settings");
+console.log("AAAAAAAA", database);
 const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 
@@ -50,7 +51,7 @@ app.use(passport.session()); // important too if we want to make the passport.de
 app.use("/auth", auth);
 app.use("/courses", courses);
 app.use("/teachers", teachers);
-app.use("/students",students);
+app.use("/students", students);
 /**** Middleware that Catch the "Wrong Endpoint" ****/
 
 // Catch 404 errors and forward them to error handler
