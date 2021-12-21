@@ -22,7 +22,7 @@ mongoose
   .connect(database.mongodb.uri)
   .then((result) =>
     app.listen(port, () =>
-      console.log(`listening on port http://localhost:${port} !`)
+      console.log(`listening on port http://localhost:${port} hi hi hi`)
     )
   )
   .catch((err) => console.log(err));
