@@ -12,28 +12,32 @@ router.get("/teacherData/:id", (req, res) => {
 });
 
 router.put("/editProfil/:id", async (req, res) => {
-  const data = ({
-    firstName,
-    lastName,
-    username,
-    password,
-    email,
-    profileDescription,
-    phoneNumber,
-  } = req.body);
-
-  for (let k in data) {
-    if (data[k] === "") {
-      delete data[k];
+  try {
+    const data = {
+      firstName,
+      lastName,
+      username,
+      password,
+      email,
+      profileDescription,
+      phoneNumber,
+    } = req.body;
+  
+    for (let k in data) {
+      if (data[k] === "") {
+        delete data[k];
+      }
     }
+  
+    var user = await Teacher.findOneAndUpdate({ _id: req.params.id }, req.body, {
+      new: true,
+    }).select("-password");
+    console.log(user);
+  
+    res.send(user);
+  } catch (error) {
+    console.log(error)
   }
-
-  var user = await Teacher.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    new: true,
-  }).select("-password");
-  console.log(user);
-
-  res.send(user);
 });
 
 router.put("/changePassword/:id", async (req, res) => {
