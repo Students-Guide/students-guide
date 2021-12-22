@@ -1,29 +1,26 @@
 <template>
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
-      <li class="menu__group">
+      <li class="menu__group"><router-link to="/home">
         <a
-          routerLink="/home"
-          routerLinkActive="active"
+         
           class="menu__link r-link text-underlined"
           >home</a
-        >
+        ></router-link>
       </li>
       <li class="menu__group">
-        <a
-          routerLink="/postCourse"
-          routerLinkActive="active"
+        <router-link to="/post"><a
+          
           class="menu__link r-link text-underlined"
           >Post</a
-        >
+        ></router-link>
       </li>
       <li class="menu__group">
-        <a
-          routerLink="/profil"
-          routerLinkActive="active"
+       <router-link to="/profil"> <a
+          
           class="menu__link r-link text-underlined"
           >Profil</a
-        >
+        ></router-link>
       </li>
       <li id="logout" class="menu__group">
         <a

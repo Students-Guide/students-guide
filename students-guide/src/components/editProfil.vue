@@ -20,7 +20,7 @@
                   <input
                    
                     type="button"
-                    class="changePwdBtn"
+                    class="changePwdBtn profile-edit-btn"
                     name="btnAddMore"
                     value="Change Password"
                   /></router-link>
@@ -231,7 +231,7 @@ export default {
 .changePwdBtn {
   padding: 2%;
   border-radius: 5px;
-  background-color: #85c6ff;
+  
   margin: 10px;
 }
 </style>
