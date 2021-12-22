@@ -30,7 +30,7 @@ mongoose
 /******************** Middleware ********************/
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // setting up the age of the cookie & the key to encrypt the cookie before sending it to the browser
 app.use(

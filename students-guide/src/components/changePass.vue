@@ -7,15 +7,15 @@
         <div class="col-md-6">
             <div class="card px-5 py-5" id="form1">
                 <div class="form-data" v-if="!submitted">
-                    <div class="forms-inputs mb-4"> <span>old Password</span> <input  type="password" v-model="newPassword" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(newPassword) && passwordBlured}" v-on:blur="passwordBlured = true">
+                    <div class="forms-inputs mb-4"> <span>old Password</span> <input placeholder="Current Password" type="password" v-model="oldPassword" v-bind:class="{'form-control':true && passwordBlured}" v-on:blur="passwordBlured = true">
                     </div>
                     <div class="forms-inputs mb-4"> <span> New Password</span> <input  type="password" v-model="newPassword" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(newPassword) && passwordBlured}" v-on:blur="passwordBlured = true">
                     </div>
-                    <div class="mb-3"> <button v-on:click.stop.prevent="submit" class="btn btn-dark w-30" style="margin-left:85%">save</button>
+                    <div class="mb-3"> <button v-on:click="changePassword()" class="btn btn-dark w-30" style="margin-left:85%">save</button>
                     </div>
                 </div>
                 <div class="success-data" v-else>
-                    <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">Your password has been saved successfully <br></span> 
+                    <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">Password Saved <br></span> 
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ export default{
     data: function () {
 return {
 newPassword:"",
-oldPassword: '',
+oldPassword:"",
 passwordBlured:false,
 valid : false,
 submitted : false,
@@ -66,11 +66,13 @@ return true;
 },
 changePassword : function () {
     var data = { oldPassword: this.oldPassword, newPassword: this.newPassword };
+    console.log(data);
     //let y = localStorage.getItem('session') as string;
     //var id = JSON.parse(y)._id;
-    //var id="61be1e0012a5295d1c86c141"
+    var id="61bda588380c32c27834ad12"
     axios.put(`http://localhost:5000/teachers/changePassword/${id}`, data)
-       .then((response)=> { console.log(response) 
+       .then(({response})=> { 
+           console.log(response) 
            this.validate();
             if(this.valid){
             this.submitted = true;
