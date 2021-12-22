@@ -93,7 +93,7 @@ html {
     	width: 100vh;
      }
 .editProfile {
-  width: 90%;
+  width: 100%;
   background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
   border-radius: 20px;
   padding: 5%;
