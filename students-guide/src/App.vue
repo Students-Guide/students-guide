@@ -1,19 +1,18 @@
 <template>
   <div id="app">
     
-    <edit />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
-import edit from './components//editProfil.vue';
+import edit from "./components/editProfil.vue";
+import Profile from "./components/profile.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    edit
-  }  
-}
+    edit,
+    Profile
+  }
+};
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
