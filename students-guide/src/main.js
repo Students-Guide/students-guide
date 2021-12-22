@@ -1,9 +1,11 @@
-import Vue from "vue";
-import App from "./App.vue";
-//import "bootstrap/dist/css/bootstrap.min.css";
+import Vue from 'vue'
+import App from './App.vue'
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Router from "vue-router";
 import editP from "./components/editProfil.vue";
 import profile from "./components/profile.vue";
+// import 'bootstrap/dist/css/bootstrap.css'
+import TeacherPost from './components/Teacher-Post.vue'
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
@@ -22,7 +24,6 @@ var router= new Router({
     },
     {
       path: "/",
-      
       name: "profil",
       component: profile
     },
@@ -40,8 +41,18 @@ var router= new Router({
     path: '/signin',
     name :'signin' ,
     component:signin
-  }
+  },
 
+      {path: '/post', 
+      name:'post',
+      
+      component: TeacherPost
+    },
+    {
+      path: '/teacherChangePass', 
+      name:'teacherChangePassword',
+      component: teacherChangePassword
+    }
   ]
 });
 
