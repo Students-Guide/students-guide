@@ -18,7 +18,6 @@ var router= new Router({
     },
     {
       path: "/",
-      
       name: "profil",
       component: profile
     }
