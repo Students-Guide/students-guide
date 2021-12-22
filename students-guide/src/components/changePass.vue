@@ -1,6 +1,11 @@
 <template>
+<div>
+            <teacher-navbar />
+
 <html>
+
 <body>
+    <div>
     <div class="editProfile">
  <router-link to="/edit" class="profile-edit-btn"></router-link>
     <span><i class="fas fa-arrow-circle-left"></i></span>
@@ -33,15 +38,19 @@
      
 </div>
 </div>
+</div>
 </body>
 </html>
+</div>
 </template>
 
 
 <script>
 import axios from "axios"
+import TeacherNavbar from "./teacherNavbar.vue"
 export default{
     name:"teacherChangePassword",
+    components: { TeacherNavbar },
     data: function () {
 return {
 newPassword:"",
@@ -93,7 +102,7 @@ html {
     	width: 100vh;
      }
 .editProfile {
-  width: 90%;
+  width: 100%;
   background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
   border-radius: 20px;
   padding: 5%;
