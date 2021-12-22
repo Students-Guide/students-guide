@@ -11,20 +11,21 @@
         >
       </li>
       <li class="menu__group">
+        <routerLink to="/post">
         <a
-          routerLink="/postCourse"
-          routerLinkActive="active"
+                  
           class="menu__link r-link text-underlined"
           >Post</a
         >
+        </routerLink>
       </li>
       <li class="menu__group">
+        <routerLink to="/profil">
         <a
-          routerLink="/profil"
-          routerLinkActive="active"
           class="menu__link r-link text-underlined"
           >Profil</a
         >
+          </routerLink>
       </li>
       <li id="logout" class="menu__group">
         <a

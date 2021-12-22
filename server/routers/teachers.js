@@ -41,8 +41,8 @@ router.put("/editProfil/:id", async (req, res) => {
 });
 
 router.put("/changePassword/:id", async (req, res) => {
-  console.log(req.body);
-  console.log(req.params);
+  console.log('hhhhhhhhh',req.body);
+  console.log('kkkkkkkkk',req.params);
   const auth = ({ oldPassword, newPassword } = req.body);
   var result = await Teacher.findById({ _id: req.params.id });
   const success = await bcrypt.compare(auth.oldPassword, result.password);
