@@ -4,7 +4,6 @@ var app = express();
 var cors = require("cors");
 app.use(cors({ credentials: true, sameSite: true }));
 const { port, database, keys } = require("./config/settings");
-console.log("AAAAAAAA", database);
 const passport = require("passport");
 const passportSetup = require("./config/passport-setup");
 
@@ -31,7 +30,7 @@ mongoose
 /******************** Middleware ********************/
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // setting up the age of the cookie & the key to encrypt the cookie before sending it to the browser
 app.use(

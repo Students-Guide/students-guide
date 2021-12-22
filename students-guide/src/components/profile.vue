@@ -1,85 +1,90 @@
 <template>
-  <div class="profContainer">
-    <div class="profil">
-      <div class="container emp-profile">
-        <form method="post">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="profile-img">
-                <img id="teacherPic" src="profilePicture " alt="" />
-                <div id="changepic" class="file btn btn-lg btn-primary">
-                  Change Photo
-                  <input type="file" />
-                </div>
-
-                <h5 id="teacherName">
-                  {{ this.firstName }} {{ this.lastName }}
-                </h5>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="profile-head">
-                <div class="parent">
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">First Name :</h3>
-                    <h3 class="res">{{ this.firstName }}</h3>
+  <div>
+    <teacher-navbar />
+    <div class="profContainer">
+      <div class="profil">
+        <div class="container emp-profile">
+          <form method="post">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="profile-img">
+                  <img id="teacherPic" :src="profilePicture" alt="" />
+                  <div id="changepic" class="file btn btn-lg btn-primary">
+                    Change Photo
+                    <input type="file" />
                   </div>
 
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">Last Name :</h3>
-                    <h3 class="res">{{ this.lastName }}</h3>
-                  </div>
-
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">Courses :</h3>
-                    <h3 class="res">{{ this.numCourses }}</h3>
-                  </div>
-
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">Balance :</h3>
-                    <h3 class="res">170$</h3>
-                  </div>
-
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">Email :</h3>
-                    <h3 class="res">{{ this.email }}</h3>
-                  </div>
-
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">Phone :</h3>
-                    <h3 class="res">{{ this.phoneNumber }}</h3>
-                  </div>
-
-                  <div class="teacherInfoProfile">
-                    <h3 class="attr">Description :</h3>
-
-                    <h3 class="res">
-                      {{ this.profileDescription }}
-                    </h3>
-                  </div>
+                  <h5 id="teacherName">
+                    {{ this.firstName }} {{ this.lastName }}
+                  </h5>
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="profile-head">
+                  <div class="parent">
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">First Name :</h3>
+                      <h3 class="res">{{ this.firstName }}</h3>
+                    </div>
+
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">Last Name :</h3>
+                      <h3 class="res">{{ this.lastName }}</h3>
+                    </div>
+
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">Courses :</h3>
+                      <h3 class="res">{{ this.numCourses }}</h3>
+                    </div>
+
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">Balance :</h3>
+                      <h3 class="res">170$</h3>
+                    </div>
+
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">Email :</h3>
+                      <h3 class="res">{{ this.email }}</h3>
+                    </div>
+
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">Phone :</h3>
+                      <h3 class="res">{{ this.phoneNumber }}</h3>
+                    </div>
+
+                    <div class="teacherInfoProfile">
+                      <h3 class="attr">Description :</h3>
+
+                      <h3 class="res">
+                        {{ this.profileDescription }}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input
+                  @click="goToEdit()"
+                  type="button"
+                  id="goToEdit"
+                  class="profile-edit-btn"
+                  name="btnAddMore"
+                  value="Edit Profile"
+                />
+              </div>
             </div>
-            <div class="col-md-2">
-              <input
-                routerLink="/editProfile"
-                routerLinkActive="active"
-                type="submit"
-                id="goToEdit"
-                class="profile-edit-btn"
-                name="btnAddMore"
-                value="Edit Profile"
-              />
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import axios from "axios";
+import editProfil from "./editProfil.vue";
+import TeacherNavbar from "./teacherNavbar.vue";
 export default {
+  components: { editProfil, TeacherNavbar },
   name: "profil",
   data() {
     return {
@@ -94,8 +99,13 @@ export default {
       numCourses: 0
     };
   },
+  methods: {
+    goToEdit() {
+      console.log("gggg");
+      this.$router.push({ name: "edit" });
+    }
+  },
   beforeMount: function() {
-    console.log("--------Component is mounted--------");
     var id = "61bd17be144a7ce6a9d909a8";
     axios
       .get(`http://localhost:5000/teachers/teacherData/${id}`)
@@ -109,15 +119,11 @@ export default {
         this.profileDescription = data.profileDescription;
         this.courses = data.courses;
         this.numCourses = data.courses.length;
-        console.log(this.lastName);
       })
       .catch(err => {
         console.log(err);
       });
   }
-  //   getTeacherData: function() {
-
-  //   }
 };
 </script>
 <style scoped>
