@@ -50,7 +50,7 @@ app.use(passport.session()); // important too if we want to make the passport.de
 app.use("/auth", auth);
 app.use("/courses", courses);
 app.use("/teachers", teachers);
-app.use("/students",students);
+app.use("/students", students);
 /**** Middleware that Catch the "Wrong Endpoint" ****/
 
 // Catch 404 errors and forward them to error handler
