@@ -7,15 +7,14 @@ import profile from "./components/profile.vue";
 import teacherChangePassword from "./components/changePass.vue";
 
 Vue.use(Router);
-var router= new Router({
+var router = new Router({
   mode: "history",
 
   routes: [
     {
+      path: "/edit",
+      name: "edit",
 
-      path: '/edit', 
-      name:'edit',
-      
       component: editP
     },
     {
@@ -24,11 +23,10 @@ var router= new Router({
       component: profile
     },
     {
-    path: '/teacherChangePass', 
-    name:'teacherChangePassword',
-    component: teacherChangePassword
-  }
-
+      path: "/teacherChangePass",
+      name: "teacherChangePassword",
+      component: teacherChangePassword
+    }
   ]
 });
 
