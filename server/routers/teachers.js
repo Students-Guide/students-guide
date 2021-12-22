@@ -3,12 +3,12 @@ const Teacher = require("../models/teacher");
 const Course = require("../models/Course");
 const bcrypt = require("bcrypt");
 
-router.get("/teacherData/:id", (req, res) => {
-  Teacher.find({ _id: req.params.id }, (err, teacher) => {
-    if (err) {
-      console.log(err);
-    } else res.send(teacher[0]);
-  });
+router.get("/teacherData/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  let foundTeacher = await Teacher.findById({ _id });
+  console.log(foundTeacher);
+  res.send(foundTeacher);
 });
 
 router.put("/editProfil/:id", async (req, res) => {

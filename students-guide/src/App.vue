@@ -1,21 +1,18 @@
 <template>
   <div id="app">
-    
-    <changePass />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
-import edit from './components//editProfil.vue';
-import changePass from "./components/changePass.vue"
-
+import edit from "./components/editProfil.vue";
+import Profile from "./components/profile.vue";
+import changePass from "./components/changePass.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    edit, changePass
-  }  
-}
+    edit,
+    Profile, changePass
+  }
+};
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
