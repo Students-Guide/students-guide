@@ -64,7 +64,7 @@
               </div>
               <div class="col-md-2">
                 <input
-                  @click="goToEdit()"
+                  v-on:click="goToEdit"
                   type="button"
                   id="goToEdit"
                   class="profile-edit-btn"
@@ -102,7 +102,7 @@ export default {
   methods: {
     goToEdit() {
       console.log("gggg");
-      this.$router.push({ name: "edit" });
+      this.$router.push("/edit");
     }
   },
   beforeMount: function() {
