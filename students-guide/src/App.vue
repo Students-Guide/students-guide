@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <TeacherPost />
-    <router-view/>
+    
+    <router-view />
   </div>
 </template>
 <script>
