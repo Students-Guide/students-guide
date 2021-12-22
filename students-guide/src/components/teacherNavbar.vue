@@ -1,4 +1,5 @@
 <template>
+<div>
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group"><router-link to="/home">
@@ -32,10 +33,12 @@
       </li>
     </ul>
   </nav>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+};
 </script>
 
 <style scoped>
