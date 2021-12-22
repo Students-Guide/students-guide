@@ -1,4 +1,6 @@
 <template>
+<div>
+  <teacher-navbar />
 <div id="up" class="container card-0 justify-content-center">
   <div class="card-body px-sm-4 px-0">
     <div class="row justify-content-center mb-5">
@@ -66,7 +68,7 @@
                   enctype="multipart/form-data"
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
-                  <input type="file" v-on:click="uploadthumbail" />
+                  <input type="file" v-on:click="uploadingthumbail" />
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>
@@ -111,10 +113,13 @@
     </div>
   </div>
 </div>
+</div>
 </template>
 <script>
 import axios from 'axios'
+import teacherNavbar from './teacherNavbar.vue'
 export default{
+  components: { teacherNavbar },
     data(){
      return{
          selectedfile:null,
@@ -164,12 +169,17 @@ export default{
         })
         }
     },
-     uploadthumbail(event){
-     console.log(event)
-     this.selectedfile=event.target.files[0]
-     },
      uploadingthumbail(){
-     axios.post('gs://students-guide-820ae.appspot.com')
+       const fd = new FormData();
+       fd.append('image',this.selectedfile,this.selectedfile[0].name)
+       console.log(fd)
+     axios.post('gs://students-guide-820ae.appspot.com',fd,{
+       onUploadProgress:uploadEvent =>{
+         console.log('onUpload'+uploadEvent)
+       }
+     }).then(res=>{
+    console.log(res)
+     })
      },
     name : "TeacherPost"
 }

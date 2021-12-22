@@ -1,13 +1,21 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import editP from '../components/editProfil.vue'
-Vue.use(Router)
+import Vue from "vue";
+import Router from "vue-router";
+import editP from "../components/editProfil.vue";
+import profile from "../components/profile.vue";
+Vue.use(Router);
 export default new Router({
+  mode: "history",
+
   routes: [
     {
-      path: '/',
-      name: 'edit',
+      path: "/edit",
+      name: "edit",
       component: editP
+    },
+    {
+      path: "/profil",
+      name: "profil",
+      component: profile
     }
   ]
-})
+});

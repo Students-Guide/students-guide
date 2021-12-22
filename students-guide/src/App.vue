@@ -1,22 +1,22 @@
 <template>
   <div id="app">
     <TeacherPost />
-    <edit />
     <router-view/>
   </div>
 </template>
 <script>
 import edit from './components//editProfil.vue';
 import TeacherPost from './components/teacher-post.vue'
+import Profile from './components/profile.vue'
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     edit,
-     TeacherPost
+     TeacherPost , 
+     Profile
+
   }  
 }
 </script>
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
