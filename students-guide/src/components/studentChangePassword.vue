@@ -3,7 +3,7 @@
 <body>
     <div class="editProfile">
  <router-link to="/edit" class="profile-edit-btn"></router-link>
-    <span><i class="fas fa-arrow-circle-left"></i></span>
+    
 <div class="container mt-5" style="margin-left:20%; ">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
