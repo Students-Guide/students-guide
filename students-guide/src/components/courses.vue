@@ -1,4 +1,6 @@
 <template>
+<div>   
+ <teacher-navbar />
 <div class="listContainer">
   <section id="courses" class="courses">
     <div class="container" data-aos="fade-up">
@@ -85,13 +87,14 @@
     </div>
   </section>
 </div>
-
+</div>
 </template>
 
 
 
 <script>
-import Courses from './dummy_data';
+import TeacherNavbar from "./teacherNavbar.vue";
+
 import axios from 'axios'
 export default {
         name: 'courses' , 
@@ -110,7 +113,8 @@ export default {
       console.log(res.data);
       this.Courses = res.data;
     });
-   }
+   },
+   components:{TeacherNavbar}
 }
 </script>
 

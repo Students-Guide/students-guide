@@ -30,7 +30,7 @@ mongoose
 /******************** Middleware ********************/
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // setting up the age of the cookie & the key to encrypt the cookie before sending it to the browser
 app.use(
@@ -50,7 +50,7 @@ app.use(passport.session()); // important too if we want to make the passport.de
 app.use("/auth", auth);
 app.use("/courses", courses);
 app.use("/teachers", teachers);
-app.use("/students",students);
+app.use("/students", students);
 /**** Middleware that Catch the "Wrong Endpoint" ****/
 
 // Catch 404 errors and forward them to error handler

@@ -175,7 +175,9 @@ export default {
   updatedDescription:'',
   updatedPrice:'',
   }},
-  
+  components:{
+    
+  },
   created:()=>{
 //  const routeParams = this.route.snapshot.paramMap;
     // const courseIdFromRoute = String(routeParams.get('courseId'));
