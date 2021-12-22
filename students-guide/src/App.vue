@@ -4,15 +4,18 @@
   </div>
 </template>
 <script>
-import edit from "./components/editProfil.vue";
-import Profile from "./components/profile.vue";
+import edit from './components//editProfil.vue';
+import TeacherPost from './components/teacher-post.vue'
+import Profile from './components/profile.vue'
 import changePass from "./components/changePass.vue";
 export default {
   name: "app",
   components: {
     edit,
-    Profile, changePass
-  }
-};
+     TeacherPost , 
+     Profile,changePass
+
+  }  
+}
 </script>
 <style lang="scss"></style>
