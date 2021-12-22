@@ -20,7 +20,7 @@
         </routerLink>
       </li>
       <li class="menu__group">
-        <routerLink to="/profil">
+        <routerLink to="/">
         <a
           class="menu__link r-link text-underlined"
           >Profil</a
