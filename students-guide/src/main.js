@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import Router from "vue-router";
+import courses from "./components/courses.vue"
 import editP from "./components/editProfil.vue";
 import profile from "./components/profile.vue";
 // import 'bootstrap/dist/css/bootstrap.css'
@@ -22,11 +23,15 @@ var router = new Router({
       component: editP
     },
     {
-      path: "/",
+      path: "/profile",
       name: "profil",
       component: profile
     },
     {
+      path: "/",
+      name: "courses",
+      component: courses},
+      { 
     path: '/teacherChangePass', 
     name:'teacherChangePassword',
     component: teacherChangePassword
