@@ -9,6 +9,7 @@ import TeacherPost from "./components/Teacher-Post.vue";
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
+import studentProfil from "./components/studentProfil.vue";
 
 Vue.use(Router);
 var router = new Router({
@@ -27,32 +28,31 @@ var router = new Router({
       component: profile
     },
     {
-    path: '/teacherChangePass', 
-    name:'teacherChangePassword',
-    component: teacherChangePassword
-  },
-  {
-    path: '/studentChangePass', 
-    name:'studentChangePassword',
-    component: studentChangePassword
-  },
-  { 
-    path: '/signin',
-    name :'signin' ,
-    component:signin
-  },
-
-      {path: '/post', 
-      name:'post',
-      
-      component: TeacherPost
-    },
-    {
       path: "/teacherChangePass",
-      // path: "/",
-
       name: "teacherChangePassword",
       component: teacherChangePassword
+    },
+    {
+      path: "/studentChangePass",
+      name: "studentChangePassword",
+      component: studentChangePassword
+    },
+    {
+      path: "/signin",
+      name: "signin",
+      component: signin
+    },
+
+    { path: "/post", name: "post", component: TeacherPost },
+    {
+      path: "/teacherChangePass",
+      name: "teacherChangePassword",
+      component: teacherChangePassword
+    },
+    {
+      path: "/studentProfil",
+      name: "studentProfil",
+      component: studentProfil
     }
   ]
 });

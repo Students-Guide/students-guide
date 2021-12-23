@@ -1,7 +1,6 @@
 <template>
   <div>
-    <teacher-navbar />
-    <!-- <student-navbar /> -->
+    <student-navbar />
     <div class="profContainer">
       <div class="profil">
         <div class="container emp-profile">
@@ -9,14 +8,15 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="profile-img">
-                  <img id="teacherPic" :src="profilePicture" alt="" />
+                  <img id="teacherPic" src="profilePicture" alt="" />
                   <div id="changepic" class="file btn btn-lg btn-primary">
                     Change Photo
                     <input type="file" />
+                    <!-- (change)="uploadProfilePicture($event)" -->
                   </div>
 
                   <h5 id="teacherName">
-                    {{ this.firstName }} {{ this.lastName }}
+                    {{ this.lastName }} {{ this.firstName }}
                   </h5>
                 </div>
               </div>
@@ -34,16 +34,6 @@
                     </div>
 
                     <div class="teacherInfoProfile">
-                      <h3 class="attr">Courses :</h3>
-                      <h3 class="res">{{ this.numCourses }}</h3>
-                    </div>
-
-                    <div class="teacherInfoProfile">
-                      <h3 class="attr">Balance :</h3>
-                      <h3 class="res">170$</h3>
-                    </div>
-
-                    <div class="teacherInfoProfile">
                       <h3 class="attr">Email :</h3>
                       <h3 class="res">{{ this.email }}</h3>
                     </div>
@@ -54,27 +44,23 @@
                     </div>
 
                     <div class="teacherInfoProfile">
-                      <h3 class="attr">Description :</h3>
+                      <h3 class="attr">Education :</h3>
 
                       <h3 class="res">
-                        {{ this.profileDescription }}
+                        {{ this.education }}
                       </h3>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-md-2">
-                <!-- <input
-                  @click="goToEdit()"
-                  type="button"
+                <input
+                  type="submit"
                   id="goToEdit"
                   class="profile-edit-btn"
                   name="btnAddMore"
                   value="Edit Profile"
-                /> -->
-                <router-link to="/edit" class="profile-edit-btn"
-                  >Edit Profile</router-link
-                >
+                />
               </div>
             </div>
           </form>
@@ -83,46 +69,38 @@
     </div>
   </div>
 </template>
+
 <script>
-import axios from "axios";
-import editProfil from "./editProfil.vue";
-import TeacherNavbar from "./teacherNavbar.vue";
 import StudentNavbar from "./studentNavbar.vue";
 export default {
-  components: { editProfil, TeacherNavbar, StudentNavbar },
+  components: { StudentNavbar },
   name: "profil",
   data() {
     return {
-      teacherId: "",
       profilePicture: "",
       firstName: "",
       lastName: "",
       email: "",
       phoneNumber: "",
-      profileDescription: "",
-      courses: [],
-      numCourses: 0
+      education: ""
     };
   },
   methods: {
     goToEdit() {
-      this.$router.push("/edit");
+      this.$router.push("/Studentedit");
     }
   },
   beforeMount: function() {
-    var id = "61bd17be144a7ce6a9d909a8";
+    var id = "61bf58e748a7b38c7d9270ef";
     axios
-      .get(`http://localhost:5000/teachers/teacherData/${id}`)
+      .get(`http://localhost:5000/students/studentData/${id}`)
       .then(({ data }) => {
-        this.teacherId = data.teacherId;
         this.profilePicture = data.profilePicture;
         this.firstName = data.firstName;
         this.lastName = data.lastName;
         this.email = data.email;
-        this.phoneNumber = data.phoneNumber;
-        this.profileDescription = data.profileDescription;
-        this.courses = data.courses;
-        this.numCourses = data.courses.length;
+        this.phoneNumber = data.phone_number;
+        this.education = data.education;
       })
       .catch(err => {
         console.log(err);
@@ -131,6 +109,35 @@ export default {
 };
 </script>
 <style scoped>
+/* body {
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  background-color: rgb(0, 0, 0);
+} */
+/* #main {
+  background-color: rgb(0, 0, 0);
+} */
+/* .profContainer {
+  padding: 100px;
+  min-height: 110vh;
+}
+.profil {
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    rgb(111, 137, 255) 0%,
+    rgb(175, 184, 226) 50%,
+    rgb(219, 232, 255) 100%
+  );
+  margin-top: -40px;
+  border-radius: 20px;
+  padding: 5%;
+  height: 100%;
+} */
+
+/* *{
+  border: red solid 2px;
+} */
 .teacherInfoProfile {
   display: flex;
   justify-content: space-between;
@@ -146,11 +153,15 @@ export default {
 }
 .profil {
   width: 100%;
-  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(111, 137, 255) 0%,
+    rgb(175, 184, 226) 50%,
+    rgb(219, 232, 255) 100%
+  );
   border-radius: 20px;
   padding: 5%;
   height: 100%;
-  margin-top: -30px;
 }
 .emp-profile {
   padding: 3%;
@@ -206,10 +217,10 @@ export default {
   font-size: 100%;
   color: #ffffff;
   cursor: pointer;
-  background-color: rgb(0, 140, 255);
+  background-color: rgb(55, 76, 194);
 }
 .profile-edit-btn:hover {
-  background-color: rgb(31, 154, 255);
+  background-color: rgb(73, 94, 216);
 }
 
 .profile-head .nav-tabs {
