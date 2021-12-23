@@ -1,4 +1,6 @@
 <template>
+
+
 <div class="container mt-5 mb-5">
   <div class="row d-flex align-items-center justify-content-center">
     <div class="card">
@@ -10,13 +12,13 @@
             class="rounded-circle"
           />
           <div id="ownerHead" class="d-flex flex-column ml-2">
-            <span class="ownerSpan">{{owner}} </span>
-            <small class="text-muted">{{createdAt}} </small>
+            <span class="ownerSpan">{{this.owner}} </span>
+            <small class="text-muted">{{this.createdAt}} </small>
           </div>
         </div>
         <div class="d-flex justify-content-around mt-2 ellipsis">
-          <i class="fas fa-trash" v-on:click="toggleDelete()"></i>
-          <i class="fas fa-edit" v-on:click="toggleUpdate()"></i>
+          <button class="fas fa-edit"  id='b' v-on:click="toggleUpdate()">📝</button>
+          <button class="fas fa-trash" id='b' v-on:click="toggleDelete()">x</button>
         </div>
       </div>
 
@@ -46,7 +48,8 @@
             type="text"
             class="form-control"
             aria-describedby="Title"
-            
+            v-model="updatedTitle"
+
           />
         </div>
         <div id="descriptionUpdate" class="mb-3">
@@ -54,7 +57,7 @@
           <input
             type="text"
             class="form-control"
-           
+            v-model="updatedDescription"
           />
         </div>
         <div id="priceUpdate" class="mb-3">
@@ -62,7 +65,7 @@
           <input
             type="text"
             class="form-control"
-           
+            v-model="updatedPrice"
           />
         </div>
 
@@ -86,24 +89,24 @@
         </div>
       </div>
 
-      <video v-if="PDF" width="100%" height="600px" controls>
-        <source src="object | safe: 'resourceUrl'" type="video/mp4" />
+      <video v-if="!PDF" width="100%" height="600px" controls>
+        <source :src="object " type="video/mp4" />
       </video>
 
       <embed
-        v-if="!PDF"
-        src="object | safe: 'resourceUrl'"
+        v-if="PDF"
+        :src="object "
         width="100%"
         height="600px"
       />
       <div class="d-flex justify-content-between p-2 px-3">
         <h1>
-          {{title}}  <small>{{category}} </small>
+          {{this.title}}  <small>{{this.category}} </small>
         </h1>
-        <h2 id="redPrice">{{price }}$</h2>
+        <h2 id="redPrice">{{this.price }}$</h2>
       </div>
 
-      <p>{{description}} </p>
+      <p>{{this.description}} </p>
       <div class="p-2">
         <hr />
         <div class="d-flex justify-content-between align-items-center">
@@ -111,9 +114,9 @@
             <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i>
           </div>
           <div class="d-flex flex-row muted-color">
-            <span class="mx-2"> {{comments.length }} comments </span>
-            <span class="mx-2"> {{views}}  views </span>
-            <span class="mx-2"> {{likes}}  likes </span>
+            <span class="mx-2"> {{this.comments.length }} comments </span>
+            <span class="mx-2"> {{this.views}}  views </span>
+            <span class="mx-2"> {{this.likes}}  likes </span>
           </div>
         </div>
         <hr />
@@ -137,90 +140,89 @@
       </div>
     </div>
   </div>
+
 </div>
 
+
+
+ 
 
     
 </template>
 
 <script>
 
-import axios from 'axios'
-import moment from 'moment'
+import axios from 'axios';
+import moment from 'moment';
+
 export default {
     name :'detail',
+    props:['cours'],
   data(){
        return{  
-   courseId : '',
-  title : '',
-  owner : '',
-  object : '',
-  ownerPicture:'',
-  comments:[{
-    student:String,
-    profilePicture:String,
-    comment:String,
-    createdAt: String
-  }],
-  createdAt:'',
-  views:0,
-  likes:0,
-  category:'',
-  price:0,
-  description:'',
-  PDF:true,
-  delet:false,
-  update:false,
-  updatedTitle:'',
-  updatedDescription:'',
-  updatedPrice:'',
-  }},
-  components:{
-    
-  },
-  created:()=>{
-//  const routeParams = this.route.snapshot.paramMap;
-    // const courseIdFromRoute = String(routeParams.get('courseId'));
-    // this.courseId = courseIdFromRoute;
-    console.log('courseId :', this.courseId)
-    var url = `http://localhost:5000/courses/getcourse/${this.courseId}`;
-    console.log('url',url)
-    axios.get(url).then((res) => {
-      this.title = res.title;
-      this.owner = res.owner;
-      let url = res.object;
-      this.object = url;
-      this.ownerPicture=res.ownerPicture;
-      this.comments=res.comments;
-      this.createdAt=moment(res.createdAt).fromNow();
-      this.views=res.views;
-      this.likes=res.likes;
-      this.category=res.category;
-      this.price=res.price;
-      this.description=res.description
-      if(res.type==='PDF'){
-        this.PDF=true
-      }
-      else {this.PDF=false}
-    
-    });
+courseId : this.cours._id,
+title : this.cours.title,
+owner : this.cours.owner,
+object : this.cours.object,
+ownerPicture:this.cours.ownerPicture,
+comments:this.cours.comments,
+createdAt:moment(this.cours.createdAt).fromNow(),
+views:this.cours.views,
+likes:this.cours.likes,
+category:this.cours.category,
+price:this.cours.price,
+description:this.cours.description,
+PDF:true,
+delet:false,
+update:false,
+updatedTitle:'',
+updatedDescription:'',
+updatedPrice:'',
 
-  }
-  ,
+
+  }},
   methods:{
-     moment: function () {
-    return moment();
+  
+  now(time){
+    return(moment(time).fromNow())
   },
- toggleDelete(){},
- toggleUpdate(){},
- removeCourse(){},
- updateCourse(){}
+ toggleDelete(){
+   this.delet=!this.delet
+   
+ },
+ toggleUpdate(){
+   this.update=!this.update
+ },
+ removeCourse(){
+     this.$router.go()
+console.log(this.coursId);
+    var url = `http://localhost:5000/courses/deleteCourse/${this.courseId}`;
+    axios.delete(url).then((res) => {
+      console.log(res)
+  })
+ },
+ updateCourse(){
+   var id = this.courseId
+  var data={
+    title:this.updatedTitle,
+    description:this.updatedDescription,
+    price:this.updatedPrice
+  }
+  axios.put(`http://localhost:5000/courses/editCourse/${id}`, data)
+
+  .then(({data}) => {
+    this.title=data.title;
+    this.description=data.description;
+    this.price=data.price;
+    this.toggleUpdate()
+  });
+ }
   }
 }
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"); */
 /* *{
   border: red solid 2px;
 } */
@@ -306,7 +308,9 @@ hr {
   color: yellow;
   font-size: 29px;
 }
-
+#b{
+  background-color: #ffffff;
+}
 .rounded-image {
   border-radius: 50% !important;
   display: flex;
@@ -359,12 +363,12 @@ hr {
 /* Set a style for all buttons */
 .alldeleteButtons {
   color: white;
-  padding: 14px 20px;
+  padding: 0px 0px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 50%;
-  height: 100px;
+  width: 30%;
+  height: 50px;
   opacity: 0.9;
 }
 
@@ -383,18 +387,19 @@ button:hover {
   margin-top: 25px;
   width: 20%;
   height: 50px;
+ 
 }
 
 /* Add a color to the cancel button */
-.cancelbtn {
+#cancelbtn {
   background-color: #ccc;
   color: black;
 }
 
 /* Add a color to the delete button */
-.deletebtn {
-  background-color: #f43636;
-  color: rgb(255, 255, 255);
+#deletebtn {
+  background-color: #f43636 !important;
+  color: white
 }
 
 /* Add padding and center-align text to the container */

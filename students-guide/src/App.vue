@@ -3,9 +3,7 @@
    
   <div id="app">
     <!-- <detail/> -->
-    <!-- <profile /> -->
-    <!-- <router-view /> -->
-    <courses/>
+    <router-view />
   </div>
 </template>
 <script>

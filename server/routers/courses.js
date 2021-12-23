@@ -47,6 +47,7 @@ router.post("/post",  (req, res) => {
       })
       
       router.delete("/deleteCourse/:id", (req,res)=>{
+        console.log(req.params.id);
         Course.findOneAndDelete({_id:req.params.id},(err)=>{
           if(err){
             console.log(err)

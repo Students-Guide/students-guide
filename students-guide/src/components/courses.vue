@@ -1,11 +1,13 @@
 <template>
 <div>   
  <teacher-navbar />
+ <div v-if='toggle'>  
 <div class="listContainer">
   <section id="courses" class="courses">
     <div class="container" data-aos="fade-up">
       <div id="rowCourses" class="row" data-aos="zoom-in" data-aos-delay="100">
         <div
+          v-on:click='togle(cours)'
           id="courseDetails"
           class="col-lg-4 col-md-6 d-flex align-items-stretch"
           :key="cours._id"
@@ -88,35 +90,218 @@
   </section>
 </div>
 </div>
+<detail v-if='!toggle'  :cours='cours'/>
+</div>
 </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <script>
 import TeacherNavbar from "./teacherNavbar.vue";
-
+import detail from './coursedetail.vue'
 import axios from 'axios'
 export default {
         name: 'courses' , 
+        
         data(){
              return {
                   Courses : [],
-                  _id : ''
+                  _id : '',
+                  toggle:true,
+                  course:{}
              }
         },
    created:function(){
         let y = localStorage.getItem('session') 
     this._id = JSON.parse(y).username 
-    console.log(this._id);
+   
     var url = `http://localhost:5000/courses/get/${this._id}`;
     axios.get(url).then((res) => {
-      console.log(res.data);
+      
       this.Courses = res.data;
     });
    },
-   components:{TeacherNavbar}
+   components:{TeacherNavbar,detail},
+   methods:{
+     togle(cours){
+       this.toggle=!this.toggle
+       this.cours=cours
+   
+     }
+   }
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 /* *{
