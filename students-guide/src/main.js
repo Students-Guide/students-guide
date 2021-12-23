@@ -7,6 +7,7 @@ import profile from "./components/profile.vue";
 // import 'bootstrap/dist/css/bootstrap.css'
 import TeacherPost from './components/Teacher-Post.vue'
 import teacherChangePassword from "./components/changePass.vue";
+import Mypannel from "./components/Mypannel.vue"
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(Router);
 var router= new Router({
@@ -19,6 +20,13 @@ var router= new Router({
       name:'edit',
       
       component: editP
+    },
+    {
+
+      path: '/mypannel', 
+      name:'mypannel',
+      
+      component: Mypannel
     },
     {
       path: "/profil",
