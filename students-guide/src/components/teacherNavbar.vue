@@ -1,4 +1,5 @@
 <template>
+<div>
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
@@ -7,11 +8,21 @@
         >
       </li>
       <li class="menu__group">
-        <a class="menu__link r-link text-underlined">Post</a>
+        <routerLink to="/post">
+        <a
+                  
+          class="menu__link r-link text-underlined"
+          >Post</a
+        >
+        </routerLink>
       </li>
       <li class="menu__group">
-        <router-link to='/profile'>
-        <a class="menu__link r-link text-underlined">Profil</a></router-link>
+        <routerLink to="/profile">
+        <a
+          class="menu__link r-link text-underlined"
+          >Profil</a
+        >
+          </routerLink>
       </li>
       <li id="logout" class="menu__group">
         <a
@@ -23,10 +34,12 @@
       </li>
     </ul>
   </nav>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+};
 </script>
 
 <style scoped>

@@ -1,8 +1,133 @@
+
 <template>
-<div if="edit">
- <p>router work</p>
- <router-link to="/" class="profile-edit-btn">profil</router-link>
- </div>
+  <div>
+    <teacher-navbar />
+    <div id="edit">
+      <div class="editProfile">
+        <div class="container rounded bg-white mt-5 mb-5">
+          <div class="row" id="editProfile">
+            <div class="col-md-3 border-right">
+              <div
+                class="d-flex flex-column align-items-center text-center p-3 py-5"
+              >
+                <img
+                  class="rounded-circle mt-5"
+                  width="150px"
+                  z
+                  :src="user.profilePicture"
+                /><span class="font-weight-bold">{{ user.username }}</span
+                ><span class="text-black-50">{{ user.email }}</span
+                ><span><router-link to="/teacherChangePass"> 
+                  <input
+                   
+                    type="button"
+                    class="changePwdBtn"
+                    name="btnAddMore"
+                    value="Change Password"
+                  /></router-link>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                >
+                  <h2 class="text-right">Profile Settings</h2>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">First name</label
+                    ><input
+                      
+                      type="text"
+                      class="form-control"
+                      placeholder="first name"
+                      :value="user.firstName"
+                      @input="user.firstName = $event.target.value"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Last name</label
+                    ><input
+                     :value="user.lastName"
+                      @input="user.lastName = $event.target.value"
+                      type="text"
+                      class="form-control"
+                      
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label class="labels">Username</label
+                    ><input
+                    :value="user.username"
+                      @input="user.username = $event.target.value"
+                      
+                      type="text"
+                      class="form-control"
+                      placeholder="enter username"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Email</label
+                    ><input
+                    :value="user.email"
+                      @input="user.email = $event.target.value"
+                     
+                      type="text"
+                      class="form-control"
+                      placeholder="enter email"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Phone number</label
+                    ><input
+                    :value="user.phoneNumber"
+                      @input="user.phoneNumber = $event.target.value"
+                     
+                      type="text"
+                      class="form-control"
+                      placeholder="enter phone number"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">description</label>
+                    <textarea
+                    :value="user.profileDescription"
+                      @input="user.profileDescription = $event.target.value"
+                      
+                      type="text"
+                      class="form-control"
+                      placeholder="enter description"
+                      
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <input
+                  v-on:click="updateProfile()"
+                  type="submit"
+                  class="profile-edit-btn"
+                  name="btnAddMore"
+                  value="Save"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+  
 </template>
 
 <script>
@@ -12,10 +137,11 @@ import TeacherNavbar from "./teacherNavbar.vue";
 export default {
   components: { profile, TeacherNavbar },
   name: "edit",
-  props: ["teacher"],
   data() {
     return {
       user: {
+        teacherId:"",
+        profilePicture:"",
         firstName: "",
         lastName: "",
         username: "",
@@ -29,12 +155,13 @@ export default {
   methods: {
     updateProfile() {
       const data = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        username: this.username,
-        email: this.email,
-        phoneNumber: this.phoneNumber,
-        profileDescription: this.profileDescription
+        
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        username: this.user.username,
+        email: this.user.email,
+        phoneNumber: this.user.phoneNumber,
+        profileDescription: this.user.profileDescription
       };
       console.log(data);
       //     let y = localStorage.getItem('session');
@@ -47,7 +174,28 @@ export default {
         .catch(err => {
           console.error(err);
         });
+        this.$router.push("/profil")
     }
+  },
+  beforeMount: function() {
+    var id = "61bd17be144a7ce6a9d909a8";
+    Axios
+      .get(`http://localhost:5000/teachers/teacherData/${id}`)
+      .then(({ data }) => {
+        this.user.teacherId = data.teacherId;
+        this.user.profilePicture = data.profilePicture;
+        this.user.firstName = data.firstName;
+        this.user.lastName = data.lastName;
+        this.user.email = data.email;
+        this.user.username=data.username;
+        this.user.phoneNumber = data.phoneNumber;
+        this.user.profileDescription = data.profileDescription;
+       
+        
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
