@@ -17,7 +17,8 @@ export default {
     Profile,
     teacherChangePassword ,
     studentChangePassword ,
-    signin, TeacherPost
+    signin, 
+    TeacherPost
   }
 };
 </script>
