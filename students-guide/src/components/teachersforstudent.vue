@@ -1,71 +1,75 @@
 <template>
-<div>
-  <student-navbar />
-    
+  <div>
+    <student-navbar />
+
     <div class="container listContainer" v-if="view">
-  <div class="card"
-  :key="teacher._id"
-  v-for="teacher in teachers"
-  >
-    <img :src="teacher.profilePicture" alt="Person" class="card__image"/>
-    <p class="card__name">{{teacher.firstName+" "+teacher.lastName}}</p>
-    <div class="grid-container">
+      <div class="card" :key="teacher._id" v-for="teacher in teachers">
+        <img :src="teacher.profilePicture" alt="Person" class="card__image" />
+        <p class="card__name">
+          {{ teacher.firstName + " " + teacher.lastName }}
+        </p>
+        <div class="grid-container">
+          <div class="grid-child-posts">
+            {{ teacher.courses.length }} courses
+          </div>
 
-      <div class="grid-child-posts">
-        {{teacher.courses.length}} courses
+          <div class="grid-child-followers">
+            20 followers
+          </div>
+        </div>
+        <ul class="social-icons">
+          <li>
+            <a :href="teacher.facebook || '#'" target="_blank"
+              ><i class="fa fa-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a :href="teacher.github || '#'" target="_blank"
+              ><i class="fa fa-github"></i
+            ></a>
+          </li>
+          <li>
+            <a :href="teacher.linkedin || '#'" target="_blank"
+              ><i class="fa fa-linkedin"></i
+            ></a>
+          </li>
+        </ul>
+        <button class="btn draw-border">Follow</button>
+        <button class="btn draw-border" v-on:click="togle(teacher.username)">
+          courses
+        </button>
       </div>
-
-      <div class="grid-child-followers">
-       20 followers 
-      </div>
-
     </div>
-    <ul class="social-icons">
-      <li><a :href="teacher.facebook || '#'" target="_blank"><i class="fa fa-facebook"></i></a></li>
-      <li><a :href="teacher.github || '#'" target="_blank"><i class="fa fa-github"></i></a></li>
-      <li><a :href="teacher.linkedin || '#'" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border" v-on:click="togle(teacher.username)">courses</button>
-
+    <courses v-if="!view" :username="dd" />
   </div>
-
-  
-  
-  </div>
-<courses v-if="!view" :username="dd" />
-   
-    </div>
 </template>
 <script>
+import Footer from "./footer.vue";
 import axios from "axios";
 import courses from "./coursesOfteacherforstudent.vue";
 import StudentNavbar from "./studentNavbar.vue";
 export default {
-  components: { courses, StudentNavbar },
+  components: { courses, StudentNavbar, Footer },
   name: "teacherforstudent",
   data() {
     return {
-     teachers:[],
-     teacher:{},
-     view:true
+      teachers: [],
+      teacher: {},
+      view: true
     };
   },
   methods: {
     togle(cc) {
-     this.dd=cc
-      this.view=!this.view
+      this.dd = cc;
+      this.view = !this.view;
     }
   },
   beforeMount: function() {
-    
     axios
       .get(`http://localhost:5000/teachers/teacherData`)
       .then(({ data }) => {
-        
         this.teachers = data;
-        console.log(this.teachers)
+        console.log(this.teachers);
       })
       .catch(err => {
         console.log(err);
@@ -84,7 +88,7 @@ export default {
   align-items: center;
   height: 100vh;
   background-color: #f5f5f5;
-  font-family: 'Baloo Paaji 2', cursive;
+  font-family: "Baloo Paaji 2", cursive;
 }
 
 .card {
@@ -97,14 +101,14 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.7);
   color: white;
 }
-.grid-child-followers{
-     color: #272133;
+.grid-child-followers {
+  color: #272133;
 }
 .grid-child-posts {
-     color: #272133;
+  color: #272133;
 }
 .card__name {
-    color: #272133;
+  color: #272133;
   margin-top: 15px;
   font-size: 1.5em;
 }
@@ -118,7 +122,6 @@ export default {
   box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
 }
 
-
 .draw-border {
   box-shadow: inset 0 0 0 4px #58cdd1;
   color: #58afd1;
@@ -131,7 +134,7 @@ export default {
 .draw-border::after {
   border: 0 solid transparent;
   box-sizing: border-box;
-  content: '';
+  content: "";
   pointer-events: none;
   position: absolute;
   width: 0rem;
@@ -178,7 +181,7 @@ export default {
   border: none;
   cursor: pointer;
   line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  font: 700 1.2rem "Roboto Slab", sans-serif;
   padding: 0.75em 2em;
   letter-spacing: 0.05rem;
   margin: 1em;
@@ -188,7 +191,6 @@ export default {
 .btn:focus {
   outline: 2px dotted #55d7dc;
 }
-
 
 .social-icons {
   padding: 0;
@@ -250,5 +252,4 @@ export default {
   grid-gap: 20px;
   font-size: 1.2em;
 }
-
 </style>

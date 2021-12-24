@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-around mt-2 ellipsis">
-          <button class="fas fa-trash" id='b' v-on:click="toggleDelete()">x</button>
+          <button class="fas fa-trash" id='b' v-on:click="toggleDelete()"></button>
         </div>
       </div>
 

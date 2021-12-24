@@ -217,6 +217,7 @@ export default {
 }
 #up {
   margin-top: 70px;
+  padding: 20px;
 }
 .card-0 {
   /* min-height: 110vh; */
@@ -226,6 +227,7 @@ export default {
 
   color: white;
   margin-top: -40px;
+  padding-left: -50px;
 }
 
 p {

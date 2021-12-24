@@ -71,13 +71,22 @@
         >
       </li>
       <li id="logout" class="menu__group">
-        <a id="logout" class="menu__link r-link text-underlined">logout</a>
+       <router-link to="/signin">
+        <a id="logout" class="menu__link r-link text-underlined"
+        v-on:click="logout">logout</a>  </router-link>
       </li>
+        
     </ul>
   </nav>
 </template>
 <script>
-export default {};
+export default {
+    methods:{
+      logout(){
+    localStorage.clear();
+  } 
+}
+};
 </script>
 <style scoped>
 /*
