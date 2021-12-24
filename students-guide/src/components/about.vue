@@ -48,17 +48,23 @@
         </div>
 
        </div> 
+       <div class="footer" >
+      <Footer />
+       </div>
     </div>
 </template>
 <script>
 import studentNavbar from "./studentNavbar.vue";
+import Footer from "./footer.vue"
 export default {
-  components: { studentNavbar }
+  components: { studentNavbar , Footer }
 };
 </script>
 
 <style scoped>
-
+.footer{
+    margin-top: 200mm;
+}
 #container {
      width: 87%;
   

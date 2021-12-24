@@ -222,12 +222,14 @@ export default{
 }
 #up {
   margin-top: 70px;
+  padding: 20px;
 }
 .card-0 {
   /* min-height: 110vh; */
   background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
   color: white;
   margin-top: -40px;
+  padding-left: -50px;
 }
 
 p {

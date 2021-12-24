@@ -15,11 +15,7 @@
         >
           <div class="course-item">
             <div id="imgProduct">
-              <button
-                id="displayDelete"
-              v-on:click="toggleDelete()"
-              class="far fa-trash-alt"
-              ></button>
+
               <div v-if='remove' class="alldeleteButtonsDiv">
                 <button
                   type="button"
@@ -100,18 +96,25 @@
         </div>
       </div>
     </div>
-   
-  </section>
+    <div class="footer">
+
+  <Footer />
+    </div>
+</section>
+           <!-- <Footer /> -->
+
  <div v-if='!toggle'> <detailC   :cours='cours'/></div>
 </div>
+
  </div>
 </template>
 <script>
+import Footer from "./footer.vue"
 import axios from 'axios'
 import detailC from './detailCourse.vue'
 import studentNavbar from './studentNavbar.vue'
 export default{
-  components:{detailC , studentNavbar },
+  components:{detailC , studentNavbar , Footer},
     data(){
         return{
           toggle:true,
@@ -156,8 +159,9 @@ togle(cours){
 
 </script>
 <style scoped>
-footer {
-  margin-top: 900px;
+.footer {
+  margin-top: 0mm;
+  width: 100%;
 }
 /* *{
       border : red solid 2px
@@ -173,9 +177,10 @@ footer {
   padding-top: 5%;
   height: 100%;
   margin-left: -8%;
+  /* margin-bottom: -73%; */
 }
 .container {
-  width: 130%;
+  width: 100%;
   /* background: radial-gradient(
       circle,
       rgba(0, 78, 255, 1) 0%,
@@ -183,20 +188,24 @@ footer {
     ); */
   background: linear-gradient(
     90deg,
-    rgb(111, 137, 255) 0%,
-    rgb(175, 184, 226) 50%,
-    rgb(219, 232, 255) 100%
+    rgb(255, 212, 212) 0%,
+    rgb(206, 206, 206) 50%,
+    rgb(170, 19, 145) 100%
   );
 
   margin-top: -100px;
-  border-radius: 20px;
-  padding: 5%;
-  height: 80%;
+  border-radius: 10px;
+  padding: -50%;
+  height: 100%;
+
 }
 
 #courseDetails {
   cursor: pointer;
   transition: 0.3s all ease-in-out;
+  /* margin-left: %; */
+  margin-right: -0mm;
+  margin-left: -0.5mm;
 }
 #courseDetails:hover {
   transform: scale(1.04);
@@ -217,7 +226,7 @@ footer {
   border: 1px solid #eef0ef;
   /* background-color: rgb(231, 253, 255); */
   background: linear-gradient(-20deg, rgb(255, 255, 255) 20%, #c7ddff 100%);
-  margin: 10px;
+  margin: 20px;
 }
 .courses .course-content {
   padding: 15px;
