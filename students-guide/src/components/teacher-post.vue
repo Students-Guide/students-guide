@@ -69,7 +69,7 @@
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
                   <input type="file"  />
-                  <!-- @click="upload" -->
+                  @click="upload"
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>

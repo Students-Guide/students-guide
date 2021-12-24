@@ -7,7 +7,7 @@ import editP from "./components/editProfil.vue";
 import profile from "./components/profile.vue";
 import 'bootstrap/dist/css/bootstrap.css'
 import TeacherPost from './components/Teacher-Post.vue'
-
+import feed from './components/studentFeed.vue'
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
@@ -83,7 +83,12 @@ var router = new Router({
       path: "/about",
       name: "about",
       component: about
-    }
+    },
+    {
+      path: "/studentFeed",
+      name: "studentFeed",
+      component: feed
+    },
   ]
 });
 
