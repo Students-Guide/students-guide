@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <teacher-navbar />
@@ -20,7 +21,7 @@
                   <input
                    
                     type="button"
-                    class="changePwdBtn"
+                    class="changePwdBtn profile-edit-btn"
                     name="btnAddMore"
                     value="Change Password"
                   /></router-link>
@@ -96,6 +97,42 @@
                     />
                   </div>
                   <div class="col-md-12">
+                    <label class="labels">facebook link</label
+                    ><input
+                    :value="user.facebook"
+                      @input="user.facebook = $event.target.value"
+                     
+                      type="text"
+                      class="form-control"
+                      placeholder="enter facebooklink"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">github link</label
+                    ><input
+                    :value="user.github"
+                      @input="user.github = $event.target.value"
+                     
+                      type="text"
+                      class="form-control"
+                      placeholder="enter github link"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">linkedin link</label
+                    ><input
+                    :value="user.linkedin"
+                      @input="user.linkedin = $event.target.value"
+                     
+                      type="text"
+                      class="form-control"
+                      placeholder="enter linkedin link"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
                     <label class="labels">description</label>
                     <textarea
                     :value="user.profileDescription"
@@ -146,6 +183,9 @@ export default {
         username: "",
         password: "",
         email: "",
+        linkedin:"",
+        facebook:"",
+        github:"",
         profileDescription: "",
         phoneNumber: ""
       }
@@ -160,12 +200,15 @@ export default {
         username: this.user.username,
         email: this.user.email,
         phoneNumber: this.user.phoneNumber,
-        profileDescription: this.user.profileDescription
+        profileDescription: this.user.profileDescription,
+        github:this.user.github,
+        facebook:this.user.facebook,
+        linkedin:this.user.linkedin
       };
       console.log(data);
-      //     let y = localStorage.getItem('session');
-      // var id = JSON.parse(y)._id;
-      var id = "61bd17be144a7ce6a9d909a8";
+          let y = localStorage.getItem('session');
+      var id = JSON.parse(y)._id;
+      // var id = "61bd17be144a7ce6a9d909a8";
       Axios.put(`http://localhost:5000/teachers/editProfil/${id}`, data)
         .then(({ data }) => {
           console.log("yes");
@@ -189,6 +232,9 @@ export default {
         this.user.username=data.username;
         this.user.phoneNumber = data.phoneNumber;
         this.user.profileDescription = data.profileDescription;
+        this.user.github=data.github;
+        this.user.facebook=data.facebook;
+        this.user.linkedin=data.linkedin
        
         
       })
@@ -231,7 +277,7 @@ export default {
 .changePwdBtn {
   padding: 2%;
   border-radius: 5px;
-  background-color: #85c6ff;
+  
   margin: 10px;
 }
 </style>

@@ -31,6 +31,7 @@ router.post("/post",  (req, res) => {
       .get("/get/:id"  , async (req,res)=>{
     
         var id = req.params.id
+        // console.log(typeof(id));
         var result = await Course.find({owner : id})
         
         res.send(result)
@@ -46,6 +47,7 @@ router.post("/post",  (req, res) => {
       })
       
       router.delete("/deleteCourse/:id", (req,res)=>{
+        console.log(req.params.id);
         Course.findOneAndDelete({_id:req.params.id},(err)=>{
           if(err){
             console.log(err)
@@ -95,6 +97,7 @@ router.get("/liked/:id/:user", async (req,res)=>{
 router.get("/like/:id/:user", async (req,res)=>{
   var id = req.params.id;
   var user = req.params.user;
+
   var liked = await Likes.findOne({course:id,students:user})
   if(!liked)
   {
