@@ -45,7 +45,7 @@
                     <router-link to="/forgotPassword"> <a class="ml-auto mb-0 text-sm">Forgot Password?</a> </router-link>
                 </div>
                 <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center" v-on:click="login()">Login</button> </div>
-                <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <router-link to="/signup">  <a class="text-danger ">Sign Up</a> </router-link> </small> </div>
+                <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <router-link to="/">  <a class="text-danger ">Sign Up</a> </router-link> </small> </div>
               </div>
             </div>
         </div>

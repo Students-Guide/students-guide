@@ -5,8 +5,13 @@ import Router from "vue-router";
 import courses from "./components/courses.vue";
 import editP from "./components/editProfil.vue";
 import profile from "./components/profile.vue";
-//import 'bootstrap/dist/css/bootstrap.css'
-import TeacherPost from './components/Teacher-Post.vue'
+import editPS from "./components/editProfil-stu.vue"
+import techersFS from "./components/teachersforstudent.vue"
+import feed from './components/studentFeed.vue'
+
+// import 'bootstrap/dist/css/bootstrap.css'
+import TeacherPost from "./components/Teacher-Post.vue";
+
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
@@ -29,7 +34,7 @@ var router = new Router({
       component: editP
     },
     {
-      path: "/profile",
+      path: "/profil",
       name: "profil",
       component: profile
     },
@@ -75,6 +80,20 @@ var router = new Router({
       component: studentChangePassword
     },
     {
+      path: "/signin",
+      name: "signin",
+      component: signin
+    },
+
+    { path: "/teachersforstudent", name: "teachers", component: techersFS },
+
+    { path: "/post", name: "post", component: TeacherPost },
+    {
+      path: "/teacherChangePass",
+      name: "teacherChangePassword",
+      component: teacherChangePassword
+    },
+    {
       path: "/studentProfile",
       name: "studentProfile",
       component: studentProfile
@@ -84,7 +103,12 @@ var router = new Router({
       path: "/about",
       name: "about",
       component: about
-    }
+    },
+    {
+      path: "/studentFeed",
+      name: "studentFeed",
+      component: feed
+    },
   ]
 });
 

@@ -41,7 +41,8 @@
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
-        <a class="menu__link r-link text-underlined">home</a>
+        <routerLink to="/studentFeed">
+        <a class="menu__link r-link text-underlined">home</a></routerLink>
       </li>
       <li class="menu__group">
         <a class="menu__link r-link text-underlined">Premium</a>
@@ -49,6 +50,13 @@
       <li class="menu__group">
         <a class="menu__link r-link text-underlined">My Pannel</a>
       </li>
+      
+      <li class="menu__group">
+        <routerLink to="/teachersforstudent"
+          ><a class="menu__link r-link text-underlined">teachers</a></routerLink
+        >
+      </li>
+
       <li class="menu__group">
         <routerLink to="/studentProfile"
           ><a class="menu__link r-link text-underlined">Profil</a></routerLink
@@ -79,7 +87,7 @@ DEPENDENCES
   display: var(--rLinkDisplay, inline-flex) !important;
 }
 #logout {
-  margin-left: 31%;
+  margin-left: 20%;
 }
 
 .r-link[href] {
