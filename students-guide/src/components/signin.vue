@@ -1,7 +1,7 @@
 <template>
 <html>
 <body>
-  <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style="margin-top:6%;padding:0;height:100%">
+  <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style="margin-top:8%;padding:0;height:100%">
     <div style="margin-top:-5%;padding:0">
       <div class="card card0 border-0" style="margin-top:-9%;">
         <div class="row d-flex" style="display:inline-block ;">
@@ -12,21 +12,20 @@
           </div>
             <div class="col-lg-6">
               <div class="card2 card border-0 px-4 py-5">
-                <div class="row mb-4 px-3">
-                  <h6 class="mb-0 mr-4 mt-2">Sign in as</h6>      
-                  <table  style="width:115px; margin-left:25%; margin-top:2%;">
+                    <h6>Sign In As</h6>
+                  <table  style="width:115px; margin-left:25%; margin-top:-8%;">
                       <tr>
+                          <td></td>
                           <td class="radio"><input type="radio" value="true" name="fav_language" v-model="userRole" style="cursor: pointer;"/></td>
-                          <td class="radio"></td>
                           <td class="radio"><input type="radio" value="false" name="fav_language" v-model="userRole" style="cursor: pointer;"/></td>
                       </tr>
                       <tr>
-                        <td>student</td>
                         <td></td>
+                        <td>student</td>
                         <td>teacher</td>
                       </tr>
                   </table>         
-                </div>
+                
                 <div class="row px-3 mb-4">
                         <div class="line"></div>
                         <div class="line"></div>
@@ -43,10 +42,10 @@
                 </div>
                 <div class="row px-3 mb-4">
                   <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input" style="cursor:pointer;"> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> 
-                    <router-link to="/resetPassword"> <a class="ml-auto mb-0 text-sm">Forgot Password?</a> </router-link>
+                    <router-link to="/forgotPassword"> <a class="ml-auto mb-0 text-sm">Forgot Password?</a> </router-link>
                 </div>
                 <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center" v-on:click="login()">Login</button> </div>
-                <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <router-link to="/signup">  <a class="text-danger ">Sign Up</a> </router-link> </small> </div>
+                <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <router-link to="/">  <a class="text-danger ">Sign Up</a> </router-link> </small> </div>
               </div>
             </div>
         </div>
@@ -91,19 +90,19 @@ export default{
         {
           console.log(res);
             let myResponse = JSON.parse(JSON.stringify(res));
-            console.log(myResponse);
-
+            console.log(myResponse.data.data.username);
             let session = {
-              username: myResponse.data.username,
-              _id: myResponse.data._id,
+              username: myResponse.data.data.username,
+              _id: myResponse.data.data._id,
             };
             console.log('HTTP response', res, 'THIS A RES');
             localStorage.setItem('session', JSON.stringify(session));
-            this.setCookie(myResponse.jwt);
+            // this.setCookie(myResponse.jwt);
 
-            //let y = localStorage.getItem('session') as string;
+            let y = localStorage.getItem('session') 
+            console.log(y);
             if (!y.includes('error')) {
-              this.router.navigate(['/studentHome']);
+              this.$router.push('/studentProfile');
             }
             this.error = 'you are so stupid you missed a password';
         },
@@ -115,20 +114,20 @@ export default{
         axios.post(url, data).then((res) => 
         {
           console.log(res);
-            // let myResponse = JSON.parse(JSON.stringify(res));
-            // let session = {
-            //   username: myResponse.data.username,
-            //   _id: myResponse.data._id,
-            // };
-            // console.log('HTTP response', res, 'THIS A RES');
-            // localStorage.setItem('session', JSON.stringify(session));
+            let myResponse = JSON.parse(JSON.stringify(res));
+           let session = {
+              username: myResponse.data.data.username,
+              _id: myResponse.data.data._id,
+            };
+            console.log('HTTP response', res, 'THIS A RES');
+            localStorage.setItem('session', JSON.stringify(session));
             // this.setCookie(myResponse.jwt);
 
-            // //let y = localStorage.getItem('session') as string;
-            // if (!y.includes('error')) {
-            //   this.router.navigate(['/home']);
-            // }
-            // this.error = 'you are so stupid you missed a password';
+            let y = localStorage.getItem('session') 
+            if (!y.includes('error')) {
+              this.$router.push('/homeT');
+            }
+            this.error = 'you are so stupid you missed a password';
         },
           (err) => console.log('HTTP Error', err),
           () => console.log('HTTP request completed.')
@@ -144,12 +143,12 @@ export default{
 <style scoped>
 html {
     	height: 90vh;
-    	width: 201.6vh;
+    	width: 199vh;
      }
 body {
     color: #000;
     overflow-x: hidden;
-    background-color: #B0BEC5;
+    background-color: #d3d9e9;
     background-repeat: no-repeat;
 }
 

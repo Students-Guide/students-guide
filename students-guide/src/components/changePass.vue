@@ -45,7 +45,7 @@
                           class="btn btn-dark w-30"
                           style="margin-left:85%"
                         >
-                          save
+                           save
                         </button>
                       </div>
                     </div>
@@ -121,6 +121,8 @@ export default {
           if (this.valid) {
             this.submitted = true;
           }
+          this.$router.push('/profile');
+
         });
     }
   }
