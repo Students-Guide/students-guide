@@ -8,7 +8,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="profile-img">
-                  <img id="teacherPic" src="profilePicture" alt="" />
+                  <img id="teacherPic" :src="profilePicture" alt="" />
                   <div id="changepic" class="file btn btn-lg btn-primary">
                     Change Photo
                     <input type="file" />
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import StudentNavbar from "./studentNavbar.vue";
 export default {
   components: { StudentNavbar },
@@ -198,7 +199,7 @@ export default {
   top: 0;
 }
 #teacherPic {
-  margin-left: 50px;
+  margin-left: -10px;
 }
 #changepic {
   margin-left: -7px;

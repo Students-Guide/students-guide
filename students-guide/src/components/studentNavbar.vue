@@ -14,21 +14,19 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="/studentHome"
-            routerLinkActive="active"
+                        
             >Home</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mypannel" routerLinkActive="active"
+          <a class="nav-link" 
             >My Pannel</a
           >
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="/studentProfile"
-            routerLinkActive="active"
+                        
             >Profil</a
           >
         </li>
@@ -43,54 +41,26 @@
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
-        <a
-          routerLink="/studentHome"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >home</a
+        <a class="menu__link r-link text-underlined">home</a>
+      </li>
+      <li class="menu__group">
+        <a class="menu__link r-link text-underlined">Premium</a>
+      </li>
+      <li class="menu__group">
+        <a class="menu__link r-link text-underlined">My Pannel</a>
+      </li>
+      <li class="menu__group">
+        <routerLink to="/studentProfile"
+          ><a class="menu__link r-link text-underlined">Profil</a></routerLink
         >
       </li>
       <li class="menu__group">
-        <a
-          routerLink="/premium"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >Premium</a
-        >
-      </li>
-      <li class="menu__group">
-        <a
-          routerLink="/mypannel"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >My Pannel</a
-        >
-      </li>
-      <li class="menu__group">
-        <a
-          routerLink="/studentProfile"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >Profil</a
-        >
-      </li>
-      <li class="menu__group">
-        <a
-          id="logout"
-          routerLink="/about"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >about</a
+        <routerLink to="/about"
+          ><a class="menu__link r-link text-underlined">about</a></routerLink
         >
       </li>
       <li id="logout" class="menu__group">
-        <a
-          id="logout"
-          routerLink="/logout"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >logout</a
-        >
+        <a id="logout" class="menu__link r-link text-underlined">logout</a>
       </li>
     </ul>
   </nav>
