@@ -92,7 +92,11 @@ export default {
     }
   },
   beforeMount: function() {
-    var id = "61bf58e748a7b38c7d9270ef";
+    // var id = "61bf58e748a7b38c7d9270ef";
+    let y = localStorage.getItem('session') 
+    var studentData = JSON.parse(y);
+    this.studentId = studentData._id;
+    var id=this.studentId
     axios
       .get(`http://localhost:5000/students/studentData/${id}`)
       .then(({ data }) => {
