@@ -12,21 +12,20 @@
           </div>
             <div class="col-lg-6">
               <div class="card2 card border-0 px-4 py-5">
-                <div class="row mb-4 px-3">
-                  <h6 class="mb-0 mr-4 mt-2">Sign in as</h6>      
-                  <table  style="width:115px; margin-left:25%; margin-top:2%;">
+                    <h6>Sign In As</h6>
+                  <table  style="width:115px; margin-left:25%; margin-top:-8%;">
                       <tr>
+                          <td></td>
                           <td class="radio"><input type="radio" value="true" name="fav_language" v-model="userRole" style="cursor: pointer;"/></td>
-                          <td class="radio"></td>
                           <td class="radio"><input type="radio" value="false" name="fav_language" v-model="userRole" style="cursor: pointer;"/></td>
                       </tr>
                       <tr>
-                        <td>student</td>
                         <td></td>
+                        <td>student</td>
                         <td>teacher</td>
                       </tr>
                   </table>         
-                </div>
+                
                 <div class="row px-3 mb-4">
                         <div class="line"></div>
                         <div class="line"></div>
@@ -115,20 +114,20 @@ export default{
         axios.post(url, data).then((res) => 
         {
           console.log(res);
-            // let myResponse = JSON.parse(JSON.stringify(res));
-            // let session = {
-            //   username: myResponse.data.username,
-            //   _id: myResponse.data._id,
-            // };
-            // console.log('HTTP response', res, 'THIS A RES');
-            // localStorage.setItem('session', JSON.stringify(session));
-            // this.setCookie(myResponse.jwt);
+            let myResponse = JSON.parse(JSON.stringify(res));
+            let session = {
+              username: myResponse.data.username,
+              _id: myResponse.data._id,
+            };
+            console.log('HTTP response', res, 'THIS A RES');
+            localStorage.setItem('session', JSON.stringify(session));
+            this.setCookie(myResponse.jwt);
 
-            // //let y = localStorage.getItem('session') as string;
-            // if (!y.includes('error')) {
-            //   this.router.navigate(['/home']);
-            // }
-            // this.error = 'you are so stupid you missed a password';
+            //let y = localStorage.getItem('session') as string;
+            if (!y.includes('error')) {
+              this.router.navigate(['/home']);
+            }
+            this.error = 'you are so stupid you missed a password';
         },
           (err) => console.log('HTTP Error', err),
           () => console.log('HTTP request completed.')
@@ -149,7 +148,7 @@ html {
 body {
     color: #000;
     overflow-x: hidden;
-    background-color: #B0BEC5;
+    background-color: #d3d9e9;
     background-repeat: no-repeat;
 }
 

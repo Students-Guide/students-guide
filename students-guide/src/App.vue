@@ -9,7 +9,8 @@ import Profile from "./components/profile.vue";
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
-import TeacherPost from './components/teacher-post.vue'
+import TeacherPost from './components/teacher-post.vue';
+import signUp from './components/signUp.vue'
 export default {
   name: "app",
   components: {
@@ -18,7 +19,8 @@ export default {
     teacherChangePassword ,
     studentChangePassword ,
     signin, 
-    TeacherPost
+    TeacherPost,
+    signUp
   }
 };
 </script>
