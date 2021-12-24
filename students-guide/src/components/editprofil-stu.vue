@@ -137,9 +137,9 @@ export default {
   data() {
     return {
       user: {
-          profilePicture:"",
-          studentId:"",
-       firstName: "", 
+      profilePicture:"",
+      studentId:"",
+      firstName: "", 
       lastName: "", 
       username: "",
       email:"",
