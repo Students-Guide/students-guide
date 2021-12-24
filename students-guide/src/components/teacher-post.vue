@@ -69,7 +69,7 @@
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
                   <input type="file" @change="thumbnailimg" />
-                   <button v-on:click="upload" ></button>
+                   <button class="btn btn-primary" v-on:click="upload" >upload thumbnail</button>
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>
@@ -89,7 +89,7 @@
                     class="form-control"
                    @change="fileup"
                   />
-                  <button   v-on:click="uploadfile" > send</button>
+                  <button class="btn btn-primary"  v-on:click="uploadfile" > upload course</button>
                 </div>
               </div>
             </div>
@@ -124,9 +124,9 @@ export default{
   components: { teacherNavbar },
     data(){
      return{
-    file:null,
-    selectedFile:null,
-    title:'',
+  file:null,
+  selectedFile:null,
+  title:'',
    owner:'',
    ownerPicture:'',
    category:'',
@@ -147,10 +147,13 @@ export default{
     methods:{
  
         postCourse(){
+    let y = localStorage.getItem('session') ;
+    var owner = JSON.parse(y).username;
+    var ownerPicture = JSON.parse(y).profilePicture
         let daata={
       
       title: this.title,
-      owner: this.owner,
+      owner: owner,
       category : this.category,
       type:this.type,
       object:this.object,
@@ -163,7 +166,7 @@ export default{
       buyers : this.buyers,
       createdAt : this. createdAt,
       updatedAt : this.updatedAt,
-      ownerPicture : this.ownerPicture
+      ownerPicture : ownerPicture
         }
     // console.log(data)
         let url = "http://localhost:5000/courses/post"
@@ -202,6 +205,7 @@ export default{
        console.log(formData)
        axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
        console.log(response.data.url)
+       this.object=response.data.url
        }
        )
    } 
