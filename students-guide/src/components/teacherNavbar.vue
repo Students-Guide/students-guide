@@ -3,11 +3,8 @@
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
-        <a
-          routerLink="/home"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >home</a
+        <router-link to="/"
+          ><a class="menu__link r-link text-underlined" >home</a></router-link
         >
       </li>
       <li class="menu__group">
@@ -20,7 +17,7 @@
         </routerLink>
       </li>
       <li class="menu__group">
-        <routerLink to="/profil">
+        <routerLink to="/profile">
         <a
           class="menu__link r-link text-underlined"
           >Profil</a

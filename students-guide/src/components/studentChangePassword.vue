@@ -2,8 +2,8 @@
     <html>
 <body>
     <div class="editProfile">
- <router-link to="/edit" class="profile-edit-btn"></router-link>
-    <span><i class="fas fa-arrow-circle-left"></i></span>
+ <!-- <router-link to="/edit" class="profile-edit-btn">back</router-link> -->
+    
 <div class="container mt-5" style="margin-left:20%; ">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
@@ -42,8 +42,119 @@
 
 export default ({
    name:"studentChangePassword",
+    data: function () {
+return {
+newPassword:"",
+oldPassword:"",
+passwordBlured:false,
+valid : false,
+submitted : false,
+
+}
+},
+methods:{ 
+    validate : function(){
+
+this.passwordBlured = true;
+if( this.validPassword(this.newPassword)){
+this.valid = true;
+}
+},
+
+validPassword : function(password) {
+if (password.length > 7) {
+return true;
+}
+},
+changePassword : function () {
+    var data = { oldPassword: this.oldPassword, newPassword: this.newPassword };
+    console.log(data);
+    //let y = localStorage.getItem('session') as string;
+    //var id = JSON.parse(y)._id;
+    var id="61bda588380c32c27834ad12"
+    axios.put(`http://localhost:5000/students/changePassword/${id}`, data)
+       .then(({response})=> { 
+           console.log(response) 
+           this.validate();
+            if(this.valid){
+            this.submitted = true;
+       }
+       })
+     }
+}
 })
 </script>
 <style scoped>
+html {
+    	margin: 0;
+    	height: 100vh;
+    	width: 100vh;
+     }
+.editProfile {
+  width: 100%;
+  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  border-radius: 20px;
+  padding: 5%;
+  height: 100%;
+  margin-top: 5%;
+  margin-left: 60%;
+}
+body{
+    height: 100vh;
+    display: block;
+}
+.card {
+    border: none;
+    height: 320px
+}
+
+.forms-inputs {
+    position: relative
+}
+
+.forms-inputs span {
+    position: absolute;
+    top: -18px;
+    left: 10px;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-size: 15px
+}
+
+.forms-inputs input {
+    height: 50px;
+    border: 2px solid #eee
+}
+
+.forms-inputs input:focus {
+    box-shadow: none;
+    outline: none;
+    border: 2px solid #000
+}
+
+.btn {
+    height: 50px
+}
+
+.success-data {
+    display: flex;
+    flex-direction: column
+}
+
+.bxs-badge-check {
+    font-size: 90px
+}
+img{
+    width:40%;
+    height:40%;
+}
+.kouba{
+    margin-top:-50%;
+    margin-left:-20%;
+}
+.profile-edit-btn{
+    cursor: pointer;
+    margin:50%;
+}
 
 </style>
