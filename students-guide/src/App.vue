@@ -17,9 +17,12 @@ import signin from "./components/signin.vue";
 import feed from './components/studentFeed.vue'
 import TeacherPost from "./components/teacher-post.vue";
 import addcourse from './components/studentFeedDetail.vue'
+import Mypannel from "./components/Mypannel.vue"
 export default {
   name: "app",
   components: {
+    courses,  
+       detail,  
     edit,
     Profile,
     teacherChangePassword,
@@ -29,7 +32,8 @@ export default {
     courses,
     detail,
     feed,
-    addcourse
+    addcourse,
+    Mypannel
   }
 };
 </script>

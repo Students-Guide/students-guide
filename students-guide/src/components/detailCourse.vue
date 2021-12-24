@@ -1,8 +1,8 @@
 <template>
 
 
-<div class="container mt-5 mb-5">
-  <div class="row d-flex align-items-center justify-content-center">
+<div >
+  <div  class="row d-flex align-items-center justify-content-center">
     <div class="card">
       <div class="d-flex justify-content-between p-2 px-3">
         <div class="d-flex flex-row align-items-center">
@@ -17,8 +17,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-around mt-2 ellipsis">
-          <button   id='b' v-on:click="toggleUpdate()">📝</button>
-          <button  id='b' v-on:click="toggleDelete()">x</button>
+          <button class="fas fa-trash" id='b' v-on:click="toggleDelete()">x</button>
         </div>
       </div>
 
@@ -40,53 +39,6 @@
           Confirm
         </button>
       </div>
-
-      <div v-if="update">
-        <div id="titleUpdate" class="mb-3">
-          <label id="Title" for="Title" class="form-label">Title</label>
-          <input
-            type="text"
-            class="form-control"
-            aria-describedby="Title"
-            v-model="updatedTitle"
-
-          />
-        </div>
-        <div id="descriptionUpdate" class="mb-3">
-          <label id="Description" for="Description">Description</label>
-          <input
-            type="text"
-            class="form-control"
-            v-model="updatedDescription"
-          />
-        </div>
-        <div id="priceUpdate" class="mb-3">
-          <label id="Price" for="Description">Price</label>
-          <input
-            type="text"
-            class="form-control"
-            v-model="updatedPrice"
-          />
-        </div>
-
-        <div>
-          <button
-            id="btnCancelUpdate"
-            type="submit"
-            class="btn btn-primary"
-            v-on:click="toggleUpdate()"
-          >
-            Cancel
-          </button>
-          <button
-            id="btnUpdate"
-            type="submit"
-            class="btn btn-primary"
-            v-on:click="updateCourse()"
-          >
-            Update
-          </button>
-        </div>
       </div>
 
       <video v-if="!PDF" width="100%" height="600px" controls>
@@ -95,7 +47,7 @@
 
       <embed
         v-if="PDF"
-        :src="object"
+        :src="object "
         width="100%"
         height="600px"
       />
@@ -114,7 +66,7 @@
             <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i>
           </div>
           <div class="d-flex flex-row muted-color">
-            <span class="mx-2"> {{this.comments.length }} comments </span>
+            <span class="mx-2"> {{this.comments.length }} comments </span><br>
             <span class="mx-2"> {{this.views}}  views </span>
             <span class="mx-2"> {{this.likes}}  likes </span>
           </div>
@@ -131,7 +83,7 @@
               <span class="name"> {{comment.student}} </span>
               <small class="comment-text"> {{comment.comment}} </small>
               <div class="d-flex flex-row align-items-center status">
-                <small> {{now(comment.createdAt)}} </small>
+                <small> now({{comment.createdAt}}) </small>
               </div>
             </div>
           </div>
@@ -140,14 +92,6 @@
       </div>
     </div>
   </div>
-
-</div>
-
-
-
- 
-
-    
 </template>
 
 <script>
@@ -156,7 +100,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 export default {
-    name :'detail',
+    name :'detailC',
     props:['cours'],
   data(){
        return{  
@@ -190,9 +134,7 @@ updatedPrice:'',
    this.delet=!this.delet
    
  },
- toggleUpdate(){
-   this.update=!this.update
- },
+
  removeCourse(){
      this.$router.go()
 console.log(this.coursId);
@@ -201,22 +143,7 @@ console.log(this.coursId);
       console.log(res)
   })
  },
- updateCourse(){
-   var id = this.courseId
-  var data={
-    title:this.updatedTitle,
-    description:this.updatedDescription,
-    price:this.updatedPrice
-  }
-  axios.put(`http://localhost:5000/courses/editCourse/${id}`, data)
-
-  .then(({data}) => {
-    this.title=data.title;
-    this.description=data.description;
-    this.price=data.price;
-    this.toggleUpdate()
-  });
- }
+ 
   }
 }
 </script>
@@ -226,8 +153,12 @@ console.log(this.coursId);
 /* *{
   border: red solid 2px;
 } */
+
+#h{
+  background-color: #f1f1f1 ;
+}
 body {
-  background-color: #eee;
+  background-color: rgb(255, 255, 255);
   font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
@@ -274,6 +205,7 @@ body {
   width: 1000px;
   position: relative;
   left: 0px;
+  background-color: #f1f1f1;
 }
 
 .ellipsis {
@@ -310,7 +242,6 @@ hr {
 }
 #b{
   background-color: #ffffff;
-  margin: 5px;
 }
 .rounded-image {
   border-radius: 50% !important;
@@ -331,7 +262,7 @@ hr {
 
 .status small {
   margin-right: 10px;
-  color: blue;
+  color: rgb(235, 235, 235);
 }
 
 .form-control {
@@ -352,7 +283,7 @@ hr {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #8bbafe;
+  border-color: #000000;
   outline: 0;
   box-shadow: none;
 }
@@ -407,6 +338,7 @@ button:hover {
 .container {
   padding: 16px;
   text-align: center;
+  background-color: #c51313;
 }
 
 /* The Modal (background) */
