@@ -17,7 +17,7 @@
                   :src="user.profilePicture"
                 /><span class="font-weight-bold">{{ user.username }}</span
                 ><span class="text-black-50">{{ user.email }}</span
-                ><span><router-link to="/studentCangePass"> 
+                ><span><router-link to="/studentChangePass"> 
                   <input
                    
                     type="button"

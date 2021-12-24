@@ -1,629 +1,71 @@
 <template>
 <div>
-  <teacher-navbar />
-    <html>
-    <div class="container">
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
+  <student-navbar />
+    
+    <div class="container listContainer" v-if="view">
+  <div class="card"
+  :key="teacher._id"
+  v-for="teacher in teachers"
+  >
+    <img :src="teacher.profilePicture" alt="Person" class="card__image"/>
+    <p class="card__name">{{teacher.firstName+" "+teacher.lastName}}</p>
     <div class="grid-container">
 
       <div class="grid-child-posts">
-        10 courses
+        {{teacher.courses.length}} courses
       </div>
 
       <div class="grid-child-followers">
-        96.654 $ 
+       20 followers 
       </div>
 
     </div>
     <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+      <li><a :href="teacher.facebook || '#'" target="_blank"><i class="fa fa-facebook"></i></a></li>
+      <li><a :href="teacher.github || '#'" target="_blank"><i class="fa fa-github"></i></a></li>
+      <li><a :href="teacher.linkedin || '#'" target="_blank"><i class="fa fa-linkedin"></i></a></li>
       
     </ul>
     <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
+    <button class="btn draw-border" v-on:click="togle(teacher.username)">courses</button>
 
   </div>
 
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
-
-  <div class="card">
-    <img src="https://res.cloudinary.com/rezmed/image/upload/v1639089334/tenrveufwkqppzscaphe.jpg" alt="Person" class="card__image"/>
-    <p class="card__name">REZGUI Mohamed</p>
-    <div class="grid-container">
-
-      <div class="grid-child-posts">
-        10 courses
-      </div>
-
-      <div class="grid-child-followers">
-        96.654 $ 
-      </div>
-
-    </div>
-    <ul class="social-icons">
-      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fa fa-github"></i></a></li>
-      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      
-    </ul>
-    <button class="btn draw-border">Follow</button>
-    <button class="btn draw-border">courses</button>
-
-  </div>
+  
   
   </div>
-
-    </html>
+<courses v-if="!view" :username="dd" />
+   
     </div>
 </template>
 <script>
 import axios from "axios";
-import editProfil from "./editProfil.vue";
-import TeacherNavbar from "./teacherNavbar.vue";
+import courses from "./coursesOfteacherforstudent.vue";
+import StudentNavbar from "./studentNavbar.vue";
 export default {
-  components: { editProfil, TeacherNavbar },
-  name: "profil",
+  components: { courses, StudentNavbar },
+  name: "teacherforstudent",
   data() {
     return {
-      teacherId: "",
-      profilePicture: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      profileDescription: "",
-      courses: [],
-      numCourses: 0
+     teachers:[],
+     teacher:{},
+     view:true
     };
   },
   methods: {
-    goToEdit() {
-      console.log("gggg");
-      this.$router.push('/edit');
+    togle(cc) {
+     this.dd=cc
+      this.view=!this.view
     }
   },
   beforeMount: function() {
-    var id = "61bd17be144a7ce6a9d909a8";
+    
     axios
-      .get(`http://localhost:5000/teachers/teacherData/${id}`)
+      .get(`http://localhost:5000/teachers/teacherData`)
       .then(({ data }) => {
-        this.teacherId = data.teacherId;
-        this.profilePicture = data.profilePicture;
-        this.firstName = data.firstName;
-        this.lastName = data.lastName;
-        this.email = data.email;
-        this.phoneNumber = data.phoneNumber;
-        this.profileDescription = data.profileDescription;
-        this.courses = data.courses;
-        this.numCourses = data.courses.length;
+        
+        this.teachers = data;
+        console.log(this.teachers)
       })
       .catch(err => {
         console.log(err);
