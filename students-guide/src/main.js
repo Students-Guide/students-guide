@@ -22,6 +22,7 @@ import signUp from "./components/signUp.vue";
 import forgotPassword from "./components/forgotPassword.vue"
 
 
+import Mypannel from "./components/Mypannel.vue"
 Vue.use(Router);
 var router = new Router({
   mode: "history",
@@ -32,6 +33,13 @@ var router = new Router({
       name: "edit",
 
       component: editP
+    },
+    {
+
+      path: '/mypannel', 
+      name:'mypannel',
+      
+      component: Mypannel
     },
     {
       path: "/profil",

@@ -68,8 +68,8 @@
                   enctype="multipart/form-data"
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
-                  <input type="file"  />
-                  @click="upload"
+                  <input type="file" @change="thumbnailimg" />
+                   <button v-on:click="upload" ></button>
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>
@@ -87,8 +87,9 @@
                     id="file"
                     type="file"
                     class="form-control"
-                 
+                   @change="fileup"
                   />
+                  <button   v-on:click="uploadfile" > send</button>
                 </div>
               </div>
             </div>
@@ -123,7 +124,8 @@ export default{
   components: { teacherNavbar },
     data(){
      return{
-       selectedFile:null,
+    file:null,
+    selectedFile:null,
     title:'',
    owner:'',
    ownerPicture:'',
@@ -146,6 +148,7 @@ export default{
  
         postCourse(){
         let daata={
+      
       title: this.title,
       owner: this.owner,
       category : this.category,
@@ -169,19 +172,42 @@ export default{
         }).catch(err=>{
             console.log(err)
         })
-        }
+        },
+    thumbnailimg(event){
+    // console.log(event.target.files[0])
+    this.selectedFile=event.target.files[0]
+    console.log(this.selectedFile)
     },
-    // upload(){
-    //   const fd = new FormData();
-    //   fd.append('image' , this.selectedFile , this.selectedFile.name )
-    //   console.log(this.selectedFile)
-    //   console.log(fd)
-    // axios.post('AAAApIs70ug:APA91bHaNfaRNpZ80Pv98gf-JD1w50cBJBThnjxuIP45FaQJRx0b3G3Cg9WYjm2H4NUV81h5Pv5wmpp9R-qEuFbWrw__OU1wM7sJ2wkE4X1E71VYADOt2RADcfUOvK66GELkb97IIgGq',fd).then(res=>{
-    //   console.log(res);
-    // }).catch(err=>{
-    //   console.log(err);
-    // })
-    // },
+    upload(){
+      const formData= new FormData()
+       formData.append("file",this.selectedFile);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+       console.log(response)
+       this.thumbnail=response.data.url
+       console.log( this.thumbnail)
+       }
+       )
+   } ,
+   fileup(event){
+   console.log(event)
+   this.file=event.target.files[0]
+   console.log(this.file)
+   },
+     uploadfile(){
+      const formData= new FormData()
+       formData.append("file",this.file);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+       console.log(response.data.url)
+       }
+       )
+   } 
+    },
+
+    
     name : "TeacherPost"
 }
 </script>

@@ -49,7 +49,9 @@
         <a class="menu__link r-link text-underlined">Premium</a>
       </li>
       <li class="menu__group">
+         <routerLink to="/mypannel">
         <a class="menu__link r-link text-underlined">My Pannel</a>
+        </routerLink>
       </li>
       
       <li class="menu__group">
