@@ -3,6 +3,12 @@ const Teacher = require("../models/teacher");
 const Course = require("../models/Course");
 const bcrypt = require("bcrypt");
 
+router.get("/teacherData", async (req, res) => {
+  let foundTeacher = await Teacher.find();
+  console.log(foundTeacher);
+  res.send(foundTeacher);
+});
+
 router.get("/teacherData/:id", async (req, res) => {
   const _id = req.params.id;
 

@@ -63,17 +63,18 @@ router.post("/student/signin", async (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
 
   let { firstName, lastName, username, email, role, password , courses, subject, text, html} = req.body;
-  if (!subject) subject = "Welcome to E-Learning";
+  console.log(req.body)
+  if (!subject) subject = "Welcome to students guide";
   if (!text) text = "";
   const init_HTML_Message = (firstName, lastName) =>
-  `<p>Dear ${firstName} ${lastName}, Welcome to E-Learning Website!</p>
-  <p>You are now part of the E-Learning family! Get ready to depart on an exciting journey with us!</p>
+  `<p>Dear ${firstName} ${lastName}, Welcome to students guide Website!</p>
+  <p>You are now part of the students guide family! Get ready to depart on an exciting journey with us!</p>
   <p>To make things extra special for you, starting today, we will send you a series of exclusive emails with amazing tips and tricks to get the most out of your account.</p>
   <p>Get ready!</p>
   <p>Not sure where to start? Make sure to visit our free courses!</p>
   <p>If you prefer something more personal, you can always contact our support team through live chat or at.</p>
   <p>Best,</p>
-  <p>The E-learning team</p>`;
+  <p>The students guide team</p>`;
   if (!html) {
     html = init_HTML_Message(
       firstName,

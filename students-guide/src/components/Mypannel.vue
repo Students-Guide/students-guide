@@ -1,4 +1,6 @@
 <template>
+<div>
+  <student-navbar />
     <div  class="listContainer">
   <section v-if='toggle' id="courses" class="courses">
     <div class="container" data-aos="fade-up">
@@ -102,13 +104,14 @@
   </section>
  <div v-if='!toggle'> <detailC   :cours='cours'/></div>
 </div>
- 
+ </div>
 </template>
 <script>
 import axios from 'axios'
 import detailC from './detailCourse.vue'
+import studentNavbar from './studentNavbar.vue'
 export default{
-  components:{detailC},
+  components:{detailC , studentNavbar },
     data(){
         return{
           toggle:true,

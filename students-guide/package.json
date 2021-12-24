@@ -19,7 +19,7 @@
     "moment": "^2.29.1",
     "vue": "^2.5.11",
     "vue-router": "^3.5.3"
-  },
+  }, 
   "browserslist": [
     "> 1%",
     "last 2 versions",

@@ -1,6 +1,7 @@
 <template>
   <div>
     <teacher-navbar />
+    <!-- <student-navbar /> -->
     <div class="profContainer">
       <div class="profil">
         <div class="container emp-profile">
@@ -71,7 +72,9 @@
                   name="btnAddMore"
                   value="Edit Profile"
                 /> -->
-                <router-link to="/edit" class="profile-edit-btn">Edit Profile</router-link>
+                <router-link to="/edit" class="profile-edit-btn"
+                  >Edit Profile</router-link
+                >
               </div>
             </div>
           </form>
@@ -84,8 +87,9 @@
 import axios from "axios";
 import editProfil from "./editProfil.vue";
 import TeacherNavbar from "./teacherNavbar.vue";
+import StudentNavbar from "./studentNavbar.vue";
 export default {
-  components: { editProfil, TeacherNavbar },
+  components: { editProfil, TeacherNavbar, StudentNavbar },
   name: "profil",
   data() {
     return {
@@ -102,12 +106,15 @@ export default {
   },
   methods: {
     goToEdit() {
-      console.log("gggg");
-      this.$router.push('/edit');
+      this.$router.push("/edit");
     }
   },
   beforeMount: function() {
-    var id = "61bd17be144a7ce6a9d909a8";
+    // var id = "61bd17be144a7ce6a9d909a8";
+     let y = localStorage.getItem('session') 
+    var studentData = JSON.parse(y);
+    this.studentId = studentData._id;
+    var id=this.studentId
     axios
       .get(`http://localhost:5000/teachers/teacherData/${id}`)
       .then(({ data }) => {

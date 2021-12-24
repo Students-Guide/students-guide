@@ -1,161 +1,67 @@
 <template>
-    <div class="flex items-center min-h-screen bg-gray-50">
-  <div class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
-    <div class="flex flex-col md:flex-row">
-      <!-- <div class="h-32 md:h-auto md:w-1/2">
-        <img
-          class="object-cover w-full h-full"
-          src="https://bit.ly/3qe05Cx"
-          alt="img"
-        />
-      </div> -->
-      <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-        <div class="w-full">
-          <div class="flex justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-20 h-20 text-blue-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path
-                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-              />
-            </svg>
-          </div>
-          <h1 id="up" class="mb-4 text-2xl font-bold text-center text-gray-700">
-            Welcome <br /><br /><br /><br />
-            Login as :
-          </h1>
-           <div class="parent">
-            <div>
-              <input
-                v-model="userRole"
-                type="radio"
-                name="fav_language"
-                value="true"
-              />
-              <label class="radio">Student</label><br />
-            </div>
-            <div>
-              <input
-                v-model="userRole"
-                type="radio"
-                id="css"
-                name="fav_language"
-                value="false"
-              />
-              <label class="radio">Teacher</label><br />
+<html>
+<body>
+  <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style="margin-top:8%;padding:0;height:100%">
+    <div style="margin-top:-5%;padding:0">
+      <div class="card card0 border-0" style="margin-top:-9%;">
+        <div class="row d-flex" style="display:inline-block ;">
+          <div class="col-lg-6">
+            <div class="card1 pb-5">
+              <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://media.discordapp.net/attachments/891447383584567306/923568508833521674/online-tutorials-concept_52683-37480.jpg" class="image"> </div>
             </div>
           </div>
-          <div class="mt-4">
-            <label class="block text-sm"> Email </label>
-            <input
-              v-model="mail"
-              type="email"
-              class="
-                w-full
-                px-4
-                py-2
-                text-sm
-                border
-                rounded-md
-                focus:border-blue-400
-                focus:outline-none
-                focus:ring-1
-                focus:ring-blue-600
-              "
-              placeholder="Email Address"
-            />
-            <label class="block text-sm" style="color: red">
-              {{ error }}
-            </label>
-          </div>
-          <div>
-            <label class="block mt-4 text-sm"> Password </label>
-            <input
-              v-model="password"
-              class="
-                w-full
-                px-4
-                py-2
-                text-sm
-                border
-                rounded-md
-                focus:border-blue-400
-                focus:outline-none
-                focus:ring-1
-                focus:ring-blue-600
-              "
-              placeholder="Password"
-              type="password"
-            />
-            <label class="block text-sm" style="color: red">
-              {{ error }}
-            </label>
-          </div>
-          <button
-            v-on:click="login()"
-            class="
-              block
-              w-full
-              px-4
-              py-2
-              mt-4
-              text-sm
-              font-medium
-              leading-5
-              text-center text-white
-              transition-colors
-              duration-150
-              bg-blue-600
-              border border-transparent
-              rounded-lg
-              active:bg-blue-600
-              hover:bg-blue-700
-              focus:outline-none focus:shadow-outline-blue
-            "
-            href="#"
-          >
-            Login
-          </button>
-
-          <div class="mt-4 text-center">
-            <p class="text-sm">Don't have an account yet ?</p>
-
-            <p
-             
-              routerLink="/"
-              routerLinkActive="active"
-              class="text-blue-600 hover:underline"
-            ><a href="http://localhost:4200" class="">
-              Sign up.
-              </a>
-
-
-            <br>
-            <br>
-            <a href="http://localhost:4200/forgetpassword">reset password</a>
-            </p>
-          </div>
+            <div class="col-lg-6">
+              <div class="card2 card border-0 px-4 py-5">
+                    <h6>Sign In As</h6>
+                  <table  style="width:115px; margin-left:25%; margin-top:-8%;">
+                      <tr>
+                          <td></td>
+                          <td class="radio"><input type="radio" value="true" name="fav_language" v-model="userRole" style="cursor: pointer;"/></td>
+                          <td class="radio"><input type="radio" value="false" name="fav_language" v-model="userRole" style="cursor: pointer;"/></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td>student</td>
+                        <td>teacher</td>
+                      </tr>
+                  </table>         
+                
+                <div class="row px-3 mb-4">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                <div class="row px-3"> <label class="mb-1">
+                   <h6 class="mb-0 text-sm">Email Address</h6>
+                   </label> <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address" v-model="mail"> 
+                   <label class="block text-sm" style="color: red">{{ error }} </label>
+                </div>
+                <div class="row px-3"> <label class="mb-1">
+                  <h6 class="mb-0 text-sm">Password</h6>
+                  </label> <input type="password" name="password" placeholder="Enter password" v-model="password">
+                  <label class="block text-sm" style="color: red">{{ error }}</label>
+                </div>
+                <div class="row px-3 mb-4">
+                  <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input" style="cursor:pointer;"> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> 
+                    <router-link to="/forgotPassword"> <a class="ml-auto mb-0 text-sm">Forgot Password?</a> </router-link>
+                </div>
+                <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center" v-on:click="login()">Login</button> </div>
+                <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <router-link to="/">  <a class="text-danger ">Sign Up</a> </router-link> </small> </div>
+              </div>
+            </div>
         </div>
-      
+      </div>
+      <div class="bg-blue py-4">
+        <div class="row px-3"> 
+          <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. Students Guide.</small>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+</body> 
+</html>
 </template>
 <script>
-
+import axios from "axios" ;
 
 export default{
     name:"signin" ,
@@ -180,47 +86,49 @@ export default{
     if (data.username_or_email !== '' && data.password !== '') {
       if (this.userRole === 'true') {
         let url = 'http://localhost:5000/auth/student/signin';
-        this.http.post(url, data).subscribe(
-          (res) => {
+        axios.post(url, data).then((res) => 
+        {
+          console.log(res);
             let myResponse = JSON.parse(JSON.stringify(res));
-            console.log(myResponse);
-
+            console.log(myResponse.data.data.username);
             let session = {
-              username: myResponse.data.username,
-              _id: myResponse.data._id,
+              username: myResponse.data.data.username,
+              _id: myResponse.data.data._id,
             };
             console.log('HTTP response', res, 'THIS A RES');
             localStorage.setItem('session', JSON.stringify(session));
-            this.setCookie(myResponse.jwt);
+            // this.setCookie(myResponse.jwt);
 
-            //let y = localStorage.getItem('session') as string;
+            let y = localStorage.getItem('session') 
+            console.log(y);
             if (!y.includes('error')) {
-              this.router.navigate(['/studentHome']);
+              this.$router.push('/studentProfile');
             }
             this.error = 'you are so stupid you missed a password';
-          },
+        },
           (err) => console.log('HTTP Error', err),
           () => console.log('HTTP request completed.')
         );
       } else if (this.userRole === 'false') {
         let url = 'http://localhost:5000/auth/teacher/signin';
-        this.http.post(url, data).subscribe(
-          (res) => {
+        axios.post(url, data).then((res) => 
+        {
+          console.log(res);
             let myResponse = JSON.parse(JSON.stringify(res));
-            let session = {
-              username: myResponse.data.username,
-              _id: myResponse.data._id,
+           let session = {
+              username: myResponse.data.data.username,
+              _id: myResponse.data.data._id,
             };
             console.log('HTTP response', res, 'THIS A RES');
             localStorage.setItem('session', JSON.stringify(session));
-            this.setCookie(myResponse.jwt);
+            // this.setCookie(myResponse.jwt);
 
-            //let y = localStorage.getItem('session') as string;
+            let y = localStorage.getItem('session') 
             if (!y.includes('error')) {
-              this.router.navigate(['/home']);
+              this.$router.push('/homeT');
             }
             this.error = 'you are so stupid you missed a password';
-          },
+        },
           (err) => console.log('HTTP Error', err),
           () => console.log('HTTP request completed.')
         );
@@ -229,24 +137,165 @@ export default{
       // let loginDirection = this.userRole ? 'studentHome' : 'home';
     }
   }
-
     }
 }
 </script>
 <style scoped>
-.parent {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr)!important;
-  grid-template-rows: 1fr !important;
-  grid-column-gap: 0px !important;
-  grid-row-gap: 0px !important;
-}
-.radio {
-  color: rgb(38, 131, 218) !important;
-}
-#up {
-  margin-top: -90px !important;
+html {
+    	height: 90vh;
+    	width: 199vh;
+     }
+body {
+    color: #000;
+    overflow-x: hidden;
+    background-color: #d3d9e9;
+    background-repeat: no-repeat;
 }
 
+.card0 {
+    box-shadow: 0px 4px 8px 0px #757575;
+    border-radius: 0px
+}
+
+.card2 {
+    margin: 0px 40px
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    margin-top:10%;
+
+}
+
+.border-line {
+    border-right: 1px solid #EEEEEE
+}
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #E0E0E0;
+    margin-top: 10px
+}
+.text-sm {
+    font-size: 14px !important
+}
+
+::placeholder {
+    color: #BDBDBD;
+    opacity: 1;
+    font-weight: 300
+}
+
+:-ms-input-placeholder {
+    color: #BDBDBD;
+    font-weight: 300
+}
+
+::-ms-input-placeholder {
+    color: #BDBDBD;
+    font-weight: 300
+}
+
+input,
+textarea {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 14px;
+    letter-spacing: 1px
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #304FFE;
+    outline-width: 0
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+a {
+    color: inherit;
+    cursor: pointer
+}
+
+.btn-blue {
+    background-color: #1A237E;
+    width: 150px;
+    color: #fff;
+    border-radius: 2px
+}
+
+.btn-blue:hover {
+    background-color: #000;
+    cursor: pointer
+}
+
+.bg-blue {
+    color: #fff;
+    background-color: #1A237E
+}
+
+@media screen and (max-width: 991px) {
+
+    .image {
+        width: 300px;
+        height: 220px
+    }
+
+    .border-line {
+        border-right: none
+    }
+
+    .card2 {
+        border-top: 1px solid #EEEEEE !important;
+        margin: 0px 15px
+    }
+}
+.parent {
+  margin-top:4%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.radio {
+  color: rgb(38, 131, 218);
+  
+}
+h5{
+  color: rgb(3, 3, 83);
+  font-size: 23px;
+  margin-left:38%;
+}
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #E0E0E0;
+    margin-top: 10px
+}
+td{
+  color: rgb(38, 131, 218);
+  padding:10px;
+
+}
+table { 
+    border-spacing: 10px;
+    border-collapse: separate;
+}
 </style>
 

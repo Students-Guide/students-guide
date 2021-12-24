@@ -97,6 +97,7 @@ router.get("/liked/:id/:user", async (req,res)=>{
 router.get("/like/:id/:user", async (req,res)=>{
   var id = req.params.id;
   var user = req.params.user;
+
   var liked = await Likes.findOne({course:id,students:user})
   if(!liked)
   {
