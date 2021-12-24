@@ -1,7 +1,7 @@
 <template>
 <html>
 <body>
-  <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style="margin-top:8%;padding:0;height:100%">
+  <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto" style="margin-top:5%;padding:0;height:100%">
     <div style="margin-top:-5%;padding:0">
       <div class="card card0 border-0" style="margin-top:-9%;">
         <div class="row d-flex" style="display:inline-block ;">
@@ -142,8 +142,8 @@ export default{
 </script>
 <style scoped>
 html {
-    	height: 90vh;
-    	width: 199vh;
+    	height: 100%;
+    	width: 100%;
      }
 body {
     color: #000;
