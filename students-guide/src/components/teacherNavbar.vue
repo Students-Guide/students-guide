@@ -3,7 +3,7 @@
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
-        <router-link to="/"
+        <router-link to="/homeT"
           ><a class="menu__link r-link text-underlined" >home</a></router-link
         >
       </li>
