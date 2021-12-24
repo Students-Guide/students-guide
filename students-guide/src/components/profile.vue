@@ -12,7 +12,7 @@
                   <img id="teacherPic" :src="profilePicture" alt="" />
                   <div id="changepic" class="file btn btn-lg btn-primary">
                     Change Photo
-                    <input type="file" />
+                    <input type="file" @change="upload" />
                   </div>
 
                   <h5 id="teacherName">
@@ -81,6 +81,7 @@
         </div>
       </div>
     </div>
+  <Footer />
   </div>
 </template>
 <script>
@@ -88,11 +89,13 @@ import axios from "axios";
 import editProfil from "./editProfil.vue";
 import TeacherNavbar from "./teacherNavbar.vue";
 import StudentNavbar from "./studentNavbar.vue";
+import Footer from "./footer.vue"
 export default {
-  components: { editProfil, TeacherNavbar, StudentNavbar },
+  components: { editProfil, TeacherNavbar, StudentNavbar ,Footer },
   name: "profil",
   data() {
     return {
+      newimg:null,
       teacherId: "",
       profilePicture: "",
       firstName: "",
@@ -107,7 +110,32 @@ export default {
   methods: {
     goToEdit() {
       this.$router.push("/edit");
-    }
+      
+    },
+    change(event){
+    this.newimg=event.target.files[0]
+    console.log(this.newimg)
+    },
+  upload(event){
+     let y = localStorage.getItem('session') 
+    var id = JSON.parse(y)._id;
+       this.newimg=event.target.files[0]
+      const formData= new FormData()
+       formData.append("file",this.newimg);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+        //  console.log(response)
+         var profilePicture = this.profilePicture=response.data.url
+        console.log(profilePicture)
+        axios.put(`http://localhost:5000/teachers/editProfilPicture/${id}`,{profilePicture}).then(res=>{
+          this.profilePicture
+         console.log("hhh",res.data);
+       }).catch(err=>{
+         console.log(err)
+       })
+       }).catch(err=>{console.log(err)})
+   } ,
   },
   beforeMount: function() {
     // var id = "61bd17be144a7ce6a9d909a8";
@@ -131,7 +159,7 @@ export default {
       .catch(err => {
         console.log(err);
       });
-  }
+  },
 };
 </script>
 <style scoped>

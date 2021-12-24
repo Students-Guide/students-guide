@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <!-- <feed/> -->
     <router-view />
+    <!-- <Footer /> -->
   </div>
+
 </template>
 //
 <script>
@@ -18,6 +19,8 @@ import feed from './components/studentFeed.vue'
 import TeacherPost from "./components/teacher-post.vue";
 import addcourse from './components/studentFeedDetail.vue'
 import Mypannel from "./components/Mypannel.vue"
+import Footer from "./components/footer.vue"
+
 export default {
   name: "app",
   components: {
@@ -33,7 +36,8 @@ export default {
     detail,
     feed,
     addcourse,
-    Mypannel
+    Mypannel,
+    Footer
   }
 };
 </script>

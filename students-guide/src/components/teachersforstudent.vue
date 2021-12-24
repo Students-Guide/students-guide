@@ -33,17 +33,21 @@
 
   
   
+   <div footer="footer" >
+    <Footer />
+   </div>
+
   </div>
 <courses v-if="!view" :username="dd" />
-   
     </div>
 </template>
 <script>
+import Footer from "./footer.vue"
 import axios from "axios";
 import courses from "./coursesOfteacherforstudent.vue";
 import StudentNavbar from "./studentNavbar.vue";
 export default {
-  components: { courses, StudentNavbar },
+  components: { courses, StudentNavbar , Footer},
   name: "teacherforstudent",
   data() {
     return {

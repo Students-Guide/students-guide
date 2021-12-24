@@ -82,6 +82,9 @@
   </section>
 <div v-if='view'><addcourse  :course='course' /></div>
 </div>
+<div class="footer">
+<Footer />
+</div>
 </div>
 </template>
 
@@ -97,6 +100,7 @@
 
 
 <script>
+import Footer from "./footer.vue"
 import addcourse from './studentFeedDetail.vue'
 import StudentNavbar from "./studentNavbar.vue";
 import axios from 'axios'
@@ -104,7 +108,8 @@ export default ({
     name:'feed',
     components:{
       addcourse,
-      StudentNavbar
+      StudentNavbar,
+      Footer
     },
     data(){
       return{
@@ -142,8 +147,8 @@ export default ({
 
 
 <style scoped>
-footer {
-  margin-top: 900px;
+.footer {
+  margin-top: 0mm;
 }
 /* *{
     border : red solid 2px
