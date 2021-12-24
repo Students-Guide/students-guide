@@ -111,7 +111,7 @@
         <hr />
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex flex-row icons d-flex align-items-center">
-            <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i>
+             
           </div>
           <div class="d-flex flex-row muted-color">
             <span class="mx-2"> {{this.comments.length }} comments </span>
