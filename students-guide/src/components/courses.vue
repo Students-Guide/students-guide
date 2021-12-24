@@ -149,18 +149,16 @@ export default {
 
 #courses {
   width: 90%;
-  background: linear-gradient(
-    90deg,
-    rgb(126, 148, 221) 0%,
-    rgb(116, 202, 255) 62%,
-    rgb(126, 148, 221) 100%
-  );
-  /* background: #ebecf0; */
+  /* background: linear-gradient(90deg, #f8d6f9 0%, #561e79 50%, #f8d6f9 100%); */
+  /* background: linear-gradient(-20deg, #fb6e61 20%, #0a0030 100%); */
+
+  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
   border-radius: 20px;
   padding: 5%;
   height: 100%;
   margin-left: 70px;
   margin-top: 15px;
+  color: rgb(77, 112, 209);
 }
 #courseDetails {
   cursor: pointer;
@@ -173,7 +171,7 @@ export default {
 } */
 
 .courses .course-item {
-  border-radius: 15px;
+  border-radius: 9px;
   /* border: 1px solid #eef0ef; */
   /* background: linear-gradient(-20deg, rgb(255, 255, 255) 20%, #00245a 100%); */
   /* background: #ebecf0;
@@ -241,7 +239,7 @@ export default {
 .img-fluid {
   height: 100%;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 7px;
 }
 #imgProduct {
   height: 200px;

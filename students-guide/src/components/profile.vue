@@ -111,10 +111,10 @@ export default {
   },
   beforeMount: function() {
     // var id = "61bd17be144a7ce6a9d909a8";
-     let y = localStorage.getItem('session') 
+    let y = localStorage.getItem("session");
     var studentData = JSON.parse(y);
     this.studentId = studentData._id;
-    var id=this.studentId
+    var id = this.studentId;
     axios
       .get(`http://localhost:5000/teachers/teacherData/${id}`)
       .then(({ data }) => {
@@ -150,7 +150,7 @@ export default {
 }
 .profil {
   width: 100%;
-  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
   border-radius: 20px;
   padding: 5%;
   height: 100%;
@@ -190,9 +190,9 @@ export default {
   right: 0;
   top: 0;
 }
-#teacherPic {
+/* #teacherPic {
   margin-left: 50px;
-}
+} */
 #changepic {
   margin-left: -7px;
 }
@@ -206,14 +206,14 @@ export default {
   border-radius: 0.5rem;
   width: 90%;
   height: 5%;
-  padding: 2%;
+  padding: 6%;
   font-size: 100%;
   color: #ffffff;
   cursor: pointer;
-  background-color: rgb(0, 140, 255);
+  background-color: rgb(77, 112, 209);
 }
 .profile-edit-btn:hover {
-  background-color: rgb(31, 154, 255);
+  background-color: rgb(60, 96, 196);
 }
 
 .profile-head .nav-tabs {
@@ -225,7 +225,7 @@ export default {
 }
 .profile-head .nav-tabs .nav-link.active {
   border: none;
-  border-bottom: 2px solid #0062cc;
+  border-bottom: 2px solid rgb(77, 112, 209);
 }
 .profile-work {
   padding: 14%;
@@ -268,7 +268,7 @@ export default {
 }
 
 .attr {
-  color: #2b74e2;
+  color: rgb(77, 112, 209);
 }
 
 h3 {
