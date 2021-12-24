@@ -161,9 +161,9 @@ export default {
         education: this.user.education
       };
       console.log(data);
-      //     let y = localStorage.getItem('session');
-      // var id = JSON.parse(y)._id;
-      var id = "61bf420df768c4595c18e613";
+          let y = localStorage.getItem('session');
+      var id = JSON.parse(y)._id;
+      // var id = "61bf420df768c4595c18e613";
       Axios.put(`http://localhost:5000/students/editProfil/${id}`, data)
         .then(({ data }) => {
           console.log("yes");
