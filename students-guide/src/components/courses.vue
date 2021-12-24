@@ -149,8 +149,13 @@ export default {
 
 #courses {
   width: 90%;
-  /* background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%); */
-  background: #ebecf0;
+  background: linear-gradient(
+    90deg,
+    rgb(126, 148, 221) 0%,
+    rgb(116, 202, 255) 62%,
+    rgb(126, 148, 221) 100%
+  );
+  /* background: #ebecf0; */
   border-radius: 20px;
   padding: 5%;
   height: 100%;
@@ -169,15 +174,16 @@ export default {
 
 .courses .course-item {
   border-radius: 15px;
-  border: 1px solid #eef0ef;
+  /* border: 1px solid #eef0ef; */
   /* background: linear-gradient(-20deg, rgb(255, 255, 255) 20%, #00245a 100%); */
-  background: #ebecf0;
-  box-shadow: 21px 21px 42px #bebfc2, -21px -21px 42px #ffffff;
+  /* background: #ebecf0;
+  box-shadow: 21px 21px 42px #bebfc2, -21px -21px 42px #ffffff;*/
   margin: 10px;
+  background-color: rgb(255, 255, 255);
 }
 
 .courses .course-item:hover {
-  box-shadow: 10px 10px 20px #bebfc2, -10px -10px 20px #ffffff;
+  transform: scale(1.04);
 }
 
 .courses .course-content {

@@ -117,12 +117,6 @@ PRESENTATION STYLES
   text-transform: uppercase;
 }
 
-/* 
-=====
-TEXT UNDERLINED
-=====
-*/
-
 .text-underlined {
   position: relative;
   overflow: hidden;
@@ -161,24 +155,12 @@ TEXT UNDERLINED
   transition-duration: 0.2s;
 }
 
-/*
-=====
-SETTINGS
-=====
-*/
-
 .page__custom-settings {
   --menuBackgroundColor: #e4e4e4;
   --menuLinkColor: #fff;
   --menuLinkColorUnactive: #83b9ff;
   --menuLinkOutlineOffset: -0.5rem;
 }
-
-/*
-=====
-DEMO
-=====
-*/
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans,
