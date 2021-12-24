@@ -23,6 +23,7 @@ export default {
     Profile,
     teacherChangePassword ,
     studentChangePassword ,
+
     signin, TeacherPost, courses,  
        detail,
   }
