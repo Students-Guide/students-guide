@@ -68,7 +68,8 @@
                   enctype="multipart/form-data"
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
-                  <input type="file" @click="upload" />
+                  <input type="file"  />
+                  <!-- @click="upload" -->
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>
@@ -170,17 +171,17 @@ export default{
         })
         }
     },
-    upload(){
-      const fd = new FormData();
-      fd.append('image' , this.selectedFile , this.selectedFile.name )
-      console.log(this.selectedFile)
-      console.log(fd)
-    axios.post('AAAApIs70ug:APA91bHaNfaRNpZ80Pv98gf-JD1w50cBJBThnjxuIP45FaQJRx0b3G3Cg9WYjm2H4NUV81h5Pv5wmpp9R-qEuFbWrw__OU1wM7sJ2wkE4X1E71VYADOt2RADcfUOvK66GELkb97IIgGq',fd).then(res=>{
-      console.log(res);
-    }).catch(err=>{
-      console.log(err);
-    })
-    },
+    // upload(){
+    //   const fd = new FormData();
+    //   fd.append('image' , this.selectedFile , this.selectedFile.name )
+    //   console.log(this.selectedFile)
+    //   console.log(fd)
+    // axios.post('AAAApIs70ug:APA91bHaNfaRNpZ80Pv98gf-JD1w50cBJBThnjxuIP45FaQJRx0b3G3Cg9WYjm2H4NUV81h5Pv5wmpp9R-qEuFbWrw__OU1wM7sJ2wkE4X1E71VYADOt2RADcfUOvK66GELkb97IIgGq',fd).then(res=>{
+    //   console.log(res);
+    // }).catch(err=>{
+    //   console.log(err);
+    // })
+    // },
     name : "TeacherPost"
 }
 </script>
