@@ -4,6 +4,9 @@ import App from "./App.vue";
 import Router from "vue-router";
 import editP from "./components/editProfil.vue";
 import profile from "./components/profile.vue";
+import editPS from "./components/editProfil-stu.vue"
+import techersFS from "./components/teachersforstudent.vue"
+
 // import 'bootstrap/dist/css/bootstrap.css'
 import TeacherPost from "./components/Teacher-Post.vue";
 import teacherChangePassword from "./components/changePass.vue";
@@ -19,7 +22,7 @@ var router = new Router({
       path: "/edit",
       name: "edit",
 
-      component: editP
+      component: editPS
     },
     {
       path: "/",
