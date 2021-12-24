@@ -47,6 +47,15 @@ var TeacherSchema = mongoose.Schema(
     profilePicture: {
       type: String,
     },
+    github: {
+      type: String,
+    },
+    facebook: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
+    },
     courses: [],
     createdAt: {
       type: Date,
