@@ -1,50 +1,85 @@
 <template>
-<div>
+  <!-- <nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar10"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar10">
+      <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+                        
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" 
+            >My Pannel</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+                        
+            >Profil</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
-        <router-link to="/"
-          ><a class="menu__link r-link text-underlined" >home</a></router-link
+        <a class="menu__link r-link text-underlined">home</a>
+      </li>
+      <li class="menu__group">
+        <a class="menu__link r-link text-underlined">Premium</a>
+      </li>
+      <li class="menu__group">
+        <a class="menu__link r-link text-underlined">My Pannel</a>
+      </li>
+      <li class="menu__group">
+        <routerLink to="/studentProfile"
+          ><a class="menu__link r-link text-underlined">Profil</a></routerLink
         >
       </li>
       <li class="menu__group">
-        <routerLink to="/post">
-        <a
-                  
-          class="menu__link r-link text-underlined"
-          >Post</a
+        <routerLink to="/about"
+          ><a class="menu__link r-link text-underlined">about</a></routerLink
         >
-        </routerLink>
-      </li>
-      <li class="menu__group">
-        <routerLink to="/profile">
-        <a
-          class="menu__link r-link text-underlined"
-          >Profil</a
-        >
-          </routerLink>
       </li>
       <li id="logout" class="menu__group">
-        <a
-          routerLink="/logout"
-          routerLinkActive="active"
-          class="menu__link r-link text-underlined"
-          >logout</a
-        >
+        <a id="logout" class="menu__link r-link text-underlined">logout</a>
       </li>
     </ul>
   </nav>
-  </div>
 </template>
-
 <script>
-export default {
-};
+export default {};
 </script>
-
 <style scoped>
+/*
+=====
+DEPENDENCES
+=====
+*/
+
 .r-link {
   display: var(--rLinkDisplay, inline-flex) !important;
+}
+#logout {
+  margin-left: 31%;
 }
 
 .r-link[href] {
@@ -108,7 +143,6 @@ PRESENTATION STYLES
 
 .menu__list {
   display: flex;
-  cursor: pointer;
 }
 
 .menu__link {
@@ -168,10 +202,11 @@ SETTINGS
 */
 
 .page__custom-settings {
-  --menuBackgroundColor: #e4e4e4;
+  --menuBackgroundColor: rgb(224, 230, 255);
   --menuLinkColor: #fff;
-  --menuLinkColorUnactive: #83b9ff;
+  --menuLinkColorUnactive: rgb(161, 178, 255);
   --menuLinkOutlineOffset: -0.5rem;
+  cursor: pointer;
 }
 
 /*
@@ -226,9 +261,7 @@ body {
   border-radius: 2rem;
   padding: 0.5rem 1.25rem;
 }
-#logout {
-  margin-left: 60%;
-}
+
 .r-link {
   --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
   --uirLinkTextColor: var(--rLinkTextColor);

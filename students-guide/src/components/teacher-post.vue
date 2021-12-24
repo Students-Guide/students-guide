@@ -68,7 +68,8 @@
                   enctype="multipart/form-data"
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
-                  <input type="file" @click="upload" />
+                  <input type="file"  />
+                  <!-- @click="upload" -->
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>
