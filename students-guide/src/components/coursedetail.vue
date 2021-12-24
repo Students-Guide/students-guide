@@ -131,7 +131,7 @@
               <span class="name"> {{comment.student}} </span>
               <small class="comment-text"> {{comment.comment}} </small>
               <div class="d-flex flex-row align-items-center status">
-                <small> now({{comment.createdAt}}) </small>
+                <small> {{now(comment.createdAt)}} </small>
               </div>
             </div>
           </div>
