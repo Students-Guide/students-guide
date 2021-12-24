@@ -17,8 +17,8 @@
           </div>
         </div>
         <div class="d-flex justify-content-around mt-2 ellipsis">
-          <button class="fas fa-edit"  id='b' v-on:click="toggleUpdate()">📝</button>
-          <button class="fas fa-trash" id='b' v-on:click="toggleDelete()">x</button>
+          <button   id='b' v-on:click="toggleUpdate()">📝</button>
+          <button  id='b' v-on:click="toggleDelete()">x</button>
         </div>
       </div>
 
@@ -310,6 +310,7 @@ hr {
 }
 #b{
   background-color: #ffffff;
+  margin: 5px;
 }
 .rounded-image {
   border-radius: 50% !important;

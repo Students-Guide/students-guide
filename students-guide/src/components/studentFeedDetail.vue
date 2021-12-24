@@ -1,4 +1,6 @@
 <template>
+<div>
+ 
 <div class="container mt-5 mb-5">
   <div class="row d-flex align-items-center justify-content-center">
     <div class="card">
@@ -16,7 +18,7 @@
         </div>
         <!-- <button type="button" class='alldeleteButtons' class="cancelbtn"(click)="addtopannel()" >add to pannel</button> -->
         <button  v-on:click="addtopannel()" class="save">
-          <i class="fas fa-cart-plus"></i> Save
+          <i >Save</i> 
         </button>
       </div>
 
@@ -66,6 +68,7 @@
              @keyup.enter='addComment()'
               v-model="text"
               class="form-control"
+              onfocus=this.value
             />
           </div>
         </div>
@@ -74,6 +77,7 @@
   </div>
 </div>
 
+</div>
 
 </template>
 
@@ -88,7 +92,11 @@
 <script>
 import moment from 'moment'
 import axios from 'axios'
+import StudentNavbar from "./studentNavbar.vue";;
 export default ({
+  components:{
+    StudentNavbar
+  },
      name:'addcourse',
      props:['course'],
    data(){

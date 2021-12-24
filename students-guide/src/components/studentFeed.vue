@@ -1,4 +1,6 @@
 <template>
+<div>  
+<student-navbar/>
      <div class="listContainer">
   <section v-if='!view' id="courses" class="courses">
     <div class="container" data-aos="fade-up">
@@ -80,6 +82,7 @@
   </section>
 <div v-if='view'><addcourse  :course='course' /></div>
 </div>
+</div>
 </template>
 
 
@@ -95,11 +98,13 @@
 
 <script>
 import addcourse from './studentFeedDetail.vue'
+import StudentNavbar from "./studentNavbar.vue";
 import axios from 'axios'
 export default ({  
     name:'feed',
     components:{
       addcourse,
+      StudentNavbar
     },
     data(){
       return{
