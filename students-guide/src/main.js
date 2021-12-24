@@ -8,8 +8,10 @@ import profile from "./components/profile.vue";
 import editPS from "./components/editProfil-stu.vue"
 import techersFS from "./components/teachersforstudent.vue"
 import feed from './components/studentFeed.vue'
+
 // import 'bootstrap/dist/css/bootstrap.css'
 import TeacherPost from "./components/Teacher-Post.vue";
+
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
