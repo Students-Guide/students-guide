@@ -12,7 +12,7 @@
                   <img id="teacherPic" :src="profilePicture" alt="" />
                   <div id="changepic" class="file btn btn-lg btn-primary">
                     Change Photo
-                    <input type="file" />
+                    <input type="file" @change="upload" />
                   </div>
 
                   <h5 id="teacherName">
@@ -81,6 +81,7 @@
         </div>
       </div>
     </div>
+  <Footer />
   </div>
 </template>
 <script>
@@ -88,11 +89,13 @@ import axios from "axios";
 import editProfil from "./editProfil.vue";
 import TeacherNavbar from "./teacherNavbar.vue";
 import StudentNavbar from "./studentNavbar.vue";
+import Footer from "./footer.vue"
 export default {
-  components: { editProfil, TeacherNavbar, StudentNavbar },
+  components: { editProfil, TeacherNavbar, StudentNavbar ,Footer },
   name: "profil",
   data() {
     return {
+      newimg:null,
       teacherId: "",
       profilePicture: "",
       firstName: "",
@@ -107,10 +110,39 @@ export default {
   methods: {
     goToEdit() {
       this.$router.push("/edit");
-    }
+      
+    },
+    change(event){
+    this.newimg=event.target.files[0]
+    console.log(this.newimg)
+    },
+  upload(event){
+     let y = localStorage.getItem('session') 
+    var id = JSON.parse(y)._id;
+       this.newimg=event.target.files[0]
+      const formData= new FormData()
+       formData.append("file",this.newimg);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+        //  console.log(response)
+         var profilePicture = this.profilePicture=response.data.url
+        console.log(profilePicture)
+        axios.put(`http://localhost:5000/teachers/editProfilPicture/${id}`,{profilePicture}).then(res=>{
+          this.profilePicture
+         console.log("hhh",res.data);
+       }).catch(err=>{
+         console.log(err)
+       })
+       }).catch(err=>{console.log(err)})
+   } ,
   },
   beforeMount: function() {
-    var id = "61bd17be144a7ce6a9d909a8";
+    // var id = "61bd17be144a7ce6a9d909a8";
+    let y = localStorage.getItem("session");
+    var studentData = JSON.parse(y);
+    this.studentId = studentData._id;
+    var id = this.studentId;
     axios
       .get(`http://localhost:5000/teachers/teacherData/${id}`)
       .then(({ data }) => {
@@ -127,7 +159,7 @@ export default {
       .catch(err => {
         console.log(err);
       });
-  }
+  },
 };
 </script>
 <style scoped>
@@ -146,7 +178,7 @@ export default {
 }
 .profil {
   width: 100%;
-  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
   border-radius: 20px;
   padding: 5%;
   height: 100%;
@@ -186,9 +218,9 @@ export default {
   right: 0;
   top: 0;
 }
-#teacherPic {
+/* #teacherPic {
   margin-left: 50px;
-}
+} */
 #changepic {
   margin-left: -7px;
 }
@@ -202,14 +234,14 @@ export default {
   border-radius: 0.5rem;
   width: 90%;
   height: 5%;
-  padding: 2%;
+  padding: 6%;
   font-size: 100%;
   color: #ffffff;
   cursor: pointer;
-  background-color: rgb(0, 140, 255);
+  background-color: rgb(77, 112, 209);
 }
 .profile-edit-btn:hover {
-  background-color: rgb(31, 154, 255);
+  background-color: rgb(60, 96, 196);
 }
 
 .profile-head .nav-tabs {
@@ -221,7 +253,7 @@ export default {
 }
 .profile-head .nav-tabs .nav-link.active {
   border: none;
-  border-bottom: 2px solid #0062cc;
+  border-bottom: 2px solid rgb(77, 112, 209);
 }
 .profile-work {
   padding: 14%;
@@ -264,7 +296,7 @@ export default {
 }
 
 .attr {
-  color: #2b74e2;
+  color: rgb(77, 112, 209);
 }
 
 h3 {

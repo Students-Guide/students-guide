@@ -1,6 +1,6 @@
 <template>
   <div>
-    <teacher-navbar />
+    
     <div v-if="toggle">
       <div class="listContainer">
         <section id="courses" class="courses">
@@ -107,22 +107,24 @@ import detail from "./coursedetail.vue";
 import axios from "axios";
 export default {
   name: "courses",
-
+    props:['username'],
   data() {
     return {
+        teacherusername:this.username,
       Courses: [],
       _id: "",
       toggle: true,
       course: {}
     };
   },
-  created: function() {
+  beforeMount: function() {
     //     let y = localStorage.getItem('session')
     // this._id = JSON.parse(y).username
-    var aa = "saddem";
+    console.log(this.username)
 
-    var url = `http://localhost:5000/courses/get/${aa}`;
+    var url = `http://localhost:5000/courses/get/${this.username}`;
     axios.get(url).then(res => {
+        
       this.Courses = res.data;
       console.log(res.data);
     });
@@ -149,16 +151,13 @@ export default {
 
 #courses {
   width: 90%;
-  /* background: linear-gradient(90deg, #f8d6f9 0%, #561e79 50%, #f8d6f9 100%); */
-  /* background: linear-gradient(-20deg, #fb6e61 20%, #0a0030 100%); */
-
-  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
+  /* background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%); */
+  background: #ebecf0;
   border-radius: 20px;
   padding: 5%;
   height: 100%;
   margin-left: 70px;
   margin-top: 15px;
-  color: rgb(77, 112, 209);
 }
 #courseDetails {
   cursor: pointer;
@@ -171,17 +170,16 @@ export default {
 } */
 
 .courses .course-item {
-  border-radius: 9px;
-  /* border: 1px solid #eef0ef; */
+  border-radius: 15px;
+  border: 1px solid #eef0ef;
   /* background: linear-gradient(-20deg, rgb(255, 255, 255) 20%, #00245a 100%); */
-  /* background: #ebecf0;
-  box-shadow: 21px 21px 42px #bebfc2, -21px -21px 42px #ffffff;*/
+  background: #ebecf0;
+  box-shadow: 21px 21px 42px #bebfc2, -21px -21px 42px #ffffff;
   margin: 10px;
-  background-color: rgb(255, 255, 255);
 }
 
 .courses .course-item:hover {
-  transform: scale(1.04);
+  box-shadow: 10px 10px 20px #bebfc2, -10px -10px 20px #ffffff;
 }
 
 .courses .course-content {
@@ -239,7 +237,7 @@ export default {
 .img-fluid {
   height: 100%;
   width: 100%;
-  border-radius: 7px;
+  border-radius: 15px;
 }
 #imgProduct {
   height: 200px;

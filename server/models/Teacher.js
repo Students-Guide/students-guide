@@ -46,6 +46,17 @@ var TeacherSchema = mongoose.Schema(
     },
     profilePicture: {
       type: String,
+      default:
+        "https://imgr.search.brave.com/d0rn9AJvbrEXRhU88mftMrN6AVodBviFi12BzF40kjs/fit/1200/1200/ce/1/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDAwLzM4/MC8zMDIvb3JpZ2lu/YWwvdXNlci1tYW5h/Z2VtZW50LXZlY3Rv/ci1pY29uLmpwZw",
+    },
+    github: {
+      type: String,
+    },
+    facebook: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
     },
     courses: [],
     createdAt: {

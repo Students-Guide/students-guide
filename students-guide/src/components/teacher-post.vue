@@ -68,8 +68,8 @@
                   enctype="multipart/form-data"
                 >
                   <label for="thumbnail">Thumbnail Image :</label>
-                  <input type="file"  />
-                  @click="upload"
+                  <input type="file" @change="thumbnailimg" />
+                   <button class="btn btn-primary" v-on:click="upload" >upload thumbnail</button>
                 </div>
                 <div class="form-group">
                   <label for="type">Course Type :</label>
@@ -87,10 +87,12 @@
                     id="file"
                     type="file"
                     class="form-control"
-                 
+                   @change="fileup"
                   />
+                  <button class="btn btn-primary"  v-on:click="uploadfile" > upload course</button>
                 </div>
               </div>
+              <div></div>
             </div>
             <div class="row">
               <div id="descriptionCourse" class="col-md-12 col-lg-10 col-12">
@@ -117,14 +119,15 @@
 </div>
 </template>
 <script>
-import axios from 'axios'
-import teacherNavbar from './teacherNavbar.vue'
-export default{
+import axios from "axios";
+import teacherNavbar from "./teacherNavbar.vue";
+export default {
   components: { teacherNavbar },
     data(){
      return{
-       selectedFile:null,
-    title:'',
+  file:null,
+  selectedFile:null,
+  title:'',
    owner:'',
    ownerPicture:'',
    category:'',
@@ -145,9 +148,13 @@ export default{
     methods:{
  
         postCourse(){
+    let y = localStorage.getItem('session') ;
+    var owner = JSON.parse(y).username;
+    var ownerPicture = JSON.parse(y).profilePicture
         let daata={
+      
       title: this.title,
-      owner: this.owner,
+      owner: owner,
       category : this.category,
       type:this.type,
       object:this.object,
@@ -160,7 +167,7 @@ export default{
       buyers : this.buyers,
       createdAt : this. createdAt,
       updatedAt : this.updatedAt,
-      ownerPicture : this.ownerPicture
+      ownerPicture : ownerPicture
         }
     // console.log(data)
         let url = "http://localhost:5000/courses/post"
@@ -169,21 +176,70 @@ export default{
         }).catch(err=>{
             console.log(err)
         })
-        }
+        .catch(err => {
+          console.log(err);
+        });
     },
-    // upload(){
-    //   const fd = new FormData();
-    //   fd.append('image' , this.selectedFile , this.selectedFile.name )
-    //   console.log(this.selectedFile)
-    //   console.log(fd)
-    // axios.post('AAAApIs70ug:APA91bHaNfaRNpZ80Pv98gf-JD1w50cBJBThnjxuIP45FaQJRx0b3G3Cg9WYjm2H4NUV81h5Pv5wmpp9R-qEuFbWrw__OU1wM7sJ2wkE4X1E71VYADOt2RADcfUOvK66GELkb97IIgGq',fd).then(res=>{
-    //   console.log(res);
-    // }).catch(err=>{
-    //   console.log(err);
-    // })
-    // },
-    name : "TeacherPost"
-}
+    upload(){
+      const formData= new FormData()
+       formData.append("file",this.selectedFile);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+       console.log(response)
+       this.thumbnail=response.data.url
+       console.log( this.thumbnail)
+       }
+       )
+   } ,
+   fileup(event){
+   console.log(event)
+   this.file=event.target.files[0]
+   console.log(this.file)
+   },
+     uploadfile(){
+      const formData= new FormData()
+       formData.append("file",this.file);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+       console.log(response.data.url)
+       this.object=response.data.url
+       }
+       )
+   } 
+    },
+    upload() {
+      const formData = new FormData();
+      formData.append("file", this.selectedFile);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          console.log(response);
+          this.thumbnail = response.data.url;
+          console.log(this.thumbnail);
+        });
+    },
+    fileup(event) {
+      console.log(event);
+      this.file = event.target.files[0];
+      console.log(this.file);
+    },
+    uploadfile() {
+      const formData = new FormData();
+      formData.append("file", this.file);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          console.log(response.data.url);
+        });
+    },
+  name: "TeacherPost"
+  }
 </script>
 <style scoped>
 /* *{
@@ -196,12 +252,17 @@ export default{
 }
 #up {
   margin-top: 70px;
+  padding: 20px;
 }
 .card-0 {
   /* min-height: 110vh; */
-  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  /* background: linear-gradient(-20deg, #f8d6f9 20%, #561e79 100%); */
+  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
+  /* background: #c8e0ff; */
+
   color: white;
   margin-top: -40px;
+  padding-left: -50px;
 }
 
 p {
@@ -346,5 +407,4 @@ button:focus {
   position: relative;
   left: 40px;
 }
-
 </style>
