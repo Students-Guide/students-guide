@@ -1,39 +1,53 @@
 <template>
-<div>  
-<student-navbar/>
-    <div class="listContainer">
-  <section id="courses" class="courses">
+<div>
+  <student-navbar />
+    <div  class="listContainer">
+  <section v-if='toggle' id="courses" class="courses">
     <div class="container" data-aos="fade-up">
       <div class="row" data-aos="zoom-in" data-aos-delay="100">
         <div
+        v-on:click='togle(course)'
           id="courseDetails"
-          v-for="cour in cours"
-          :key='cour._id'
+            v-for="course in courses"
+          :key='course.courseId'
           class="col-lg-4 col-md-6 d-flex align-items-stretch"
+        
         >
-        <router-link :to="{ name: 'Purchase', params: { msg: JSON.stringify(cour) } }" >
-
-
           <div class="course-item">
             <div id="imgProduct">
-              <img :src="cour.thumbnail" class="img-fluid" alt="..." />
+
+              <div v-if='remove' class="alldeleteButtonsDiv">
+                <button
+                  type="button"
+                  class="alldeleteButtons"
+                  id="deletebtn"
+                 @click = "removeFromPannel"
+                >
+                  Confirm
+                </button>
+              </div>
+              <img
+               :src="course.thumbnail"
+                class="img-fluid"
+                
+                alt="..."
+              />
             </div>
 
             <div class="course-content">
               <div
                 class="d-flex justify-content-between align-items-center mb-3"
               >
-                <h4>{{ cour.category }}</h4>
+                <h4>{{course.category}}</h4>
                 <p class="price">
-                  {{ cour.price }}
+                  {{course.price}}
                   $
                 </p>
               </div>
 
-              <h3>{{ cour.title }}</h3>
-              <p>{{ cour.description }}</p>
+              <h3>{{course.title}}</h3>
+              <p>{{course.description}}</p>
               <div
-                id="footerItem"
                 class="
                   trainer
                   d-flex
@@ -42,10 +56,10 @@
                 "
               >
                 <div class="trainer-profile d-flex align-items-center">
-                  <span>by : {{ cour.owner }}</span>
+                  <span>by : {{course.owner}}</span>
                 </div>
                 <div class="trainer-rank d-flex align-items-center">
-                  <i class="bx bx-user"> {{ cour.likes }}</i
+                  <i class="bx bx-user"> {{course.likes}}</i
                   >&nbsp;
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +74,7 @@
                     />
                   </svg>
                   &nbsp;&nbsp;
-                  <i class="bx bx-heart">{{ cour.views }}</i
+                  <i class="bx bx-heart">{{course.views}} </i
                   >&nbsp;
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,52 +93,75 @@
               </div>
             </div>
           </div>
-        
-        </router-link>
         </div>
       </div>
     </div>
-  </section>
+    <div class="footer">
+
+  <Footer />
+    </div>
+</section>
+           <!-- <Footer /> -->
+
+ <div v-if='!toggle'> <detailC   :cours='cours'/></div>
 </div>
-<Footer/> 
-</div>
+
+ </div>
 </template>
-
 <script>
-import Footer from '../footer.vue'
-import studentNavbar from '../studentNavbar.vue'
+import Footer from "./footer.vue"
 import axios from 'axios'
-export default {
-      name:'template',
-      components:{
-           studentNavbar,Footer
-      },
-     data(){
-          return {
-     studentId:'',
-     msg:{},
-     cours: []
-          }
-     },
-     created:function(){
-//     let y = localStorage.getItem('session')
-//     var studentData = JSON.parse(y);
-//     this.studentId = studentData._id;
-    axios.get(`http://localhost:5000/courses/premium`).then(({data}) => {
-      console.log(data, 'it works');
-
-      this.cours = data; 
-
-          })
-}
-
+import detailC from './detailCourse.vue'
+import studentNavbar from './studentNavbar.vue'
+export default{
+  components:{detailC , studentNavbar , Footer},
+    data(){
+        return{
+          toggle:true,
+          cours:{},
+        courses:[],
+        courseId : '',
+        studentId:'',
+        remove:false
+        }
+    },
+created:function(){
+    var id = '61bf420df768c4595c18e613';
+axios.get(`http://localhost:5000/students/myPannel/${id}`).then(res=>{
+    console.log(res.data)
+    this.courses=res.data
+    console.log(this.courses)
+}).catch(err=>{
+    console.log(err)
+})
+},
+methods:{
+  toggleDelete(){
+    this.remove=!this.remove
+  },
+removeFromPannel(){
+    var idStudent = this.studentId
+    var idCours = this.courseId
+    axios.delete(`http://localhost:5000/students/deleteFromMyPannel/${idStudent}/${idCours}`).then(res=>{
+      console.log('done')
+    }).catch(err=>{
+      console.log(err)
+    })
+},
+togle(cours){
+       this.toggle=!this.toggle
+       this.cours=cours
+   
+     }
+},
+    name:"Mypannel"
 }
 
 </script>
-
 <style scoped>
-footer {
-  margin-top: 900px;
+.footer {
+  margin-top: 0mm;
+  width: 100%;
 }
 /* *{
       border : red solid 2px
@@ -140,24 +177,35 @@ footer {
   padding-top: 5%;
   height: 100%;
   margin-left: -8%;
+  /* margin-bottom: -73%; */
 }
 .container {
-  width: 130%;
+  width: 100%;
+  /* background: radial-gradient(
+      circle,
+      rgba(0, 78, 255, 1) 0%,
+      rgb(226, 90, 158) 96%
+    ); */
   background: linear-gradient(
     90deg,
-    rgb(111, 137, 255) 0%,
-    rgb(175, 184, 226) 50%,
-    rgb(219, 232, 255) 100%
+    rgb(255, 212, 212) 0%,
+    rgb(206, 206, 206) 50%,
+    rgb(170, 19, 145) 100%
   );
 
   margin-top: -100px;
-  border-radius: 20px;
-  padding: 5%;
-  height: 80%;
+  border-radius: 10px;
+  padding: -50%;
+  height: 100%;
+
 }
+
 #courseDetails {
   cursor: pointer;
   transition: 0.3s all ease-in-out;
+  /* margin-left: %; */
+  margin-right: -0mm;
+  margin-left: -0.5mm;
 }
 #courseDetails:hover {
   transform: scale(1.04);
@@ -178,7 +226,7 @@ footer {
   border: 1px solid #eef0ef;
   /* background-color: rgb(231, 253, 255); */
   background: linear-gradient(-20deg, rgb(255, 255, 255) 20%, #c7ddff 100%);
-  margin: 10px;
+  margin: 20px;
 }
 .courses .course-content {
   padding: 15px;
@@ -237,6 +285,24 @@ footer {
 }
 #imgProduct {
   height: 200px;
+}
+#displayDelete {
+  margin-left: 340px;
+}
+#deletebtn {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  height: 30px;
+  opacity: 0.9;
+  margin-left: 80px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  text-align: center;
 }
 
 </style>

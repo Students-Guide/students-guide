@@ -59,7 +59,8 @@
       </div>
     </div>
   </div>
-</div>   
+</div>
+<Footer/>   
 </div>
 </template>
 
@@ -68,14 +69,17 @@
 
 <script>
 import  StripeCheckout  from '@vue-stripe/vue-stripe';
+import Footer from '../footer.vue'
 import studentNavbar from '../studentNavbar.vue'
 import axios from 'axios';
+
 export default {
      name:'Purchase',
      props:[ 'msg' ],
      
      components:{
-       studentNavbar
+       studentNavbar,
+          Footer
      },
  data(){
       return {
