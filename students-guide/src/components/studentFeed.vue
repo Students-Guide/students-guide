@@ -21,7 +21,7 @@
                   <div
                     class="d-flex justify-content-between align-items-center mb-3"
                   >
-                    <h4>{{ cour.category }}</h4>
+                    <h4 id="orange">{{ cour.category }}</h4>
                     <p class="price">
                       {{ cour.price }}
                       $
@@ -152,11 +152,12 @@ export default {
     rgb(175, 184, 226) 50%,
     rgb(219, 232, 255) 100%
   ); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
-    rgb(71, 175, 194) 0%,
-    rgb(0, 75, 126) 100%
-  );
+    rgb(0, 183, 207) 0%,
+    rgb(121, 195, 255) 100%
+  ); */
+  background: linear-gradient(90deg, #58b8ff 0%, #96daff 100%);
   margin-top: -100px;
   border-radius: 20px;
   padding: 5%;
@@ -187,6 +188,7 @@ export default {
   /* background-color: rgb(231, 253, 255); */
   background: linear-gradient(-20deg, rgb(226, 226, 226) 20%, #ffffff 100%);
   margin: 10px;
+  color: rgb(0, 0, 0);
 }
 .courses .course-content {
   padding: 15px;
@@ -211,7 +213,7 @@ export default {
   cursor: pointer;
   padding: 7px 14px;
   font-size: large;
-  color: rgb(79, 179, 219);
+  color: rgb(0, 0, 0);
   margin: 0;
 }
 .courses .course-content .price {

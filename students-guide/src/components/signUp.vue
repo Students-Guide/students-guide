@@ -7,7 +7,10 @@
       >
         <div style="margin-top:-2%;padding:0">
           <div class="card card0 border-0" style="margin-top:-5%;">
-            <div class="row d-flex" style="display:inline-block ;height:80%;">
+            <div
+              class="row d-flex"
+              style="display:inline-block ;margin-bottom:-1.5%"
+            >
               <div class="col-lg-6">
                 <div class="card1 pb-5">
                   <div
@@ -20,7 +23,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6" style="height:90%;">
                 <div class="card2 card border-0 px-4 py-5">
                   <h6 class="mb-0 mr-4 mt-2">Sign Up as</h6>
                   <table
@@ -146,7 +149,7 @@
                     </tr>
                   </table>
 
-                  <table style="width:100%;margin-bottom:30px;">
+                  <table style="width:100%;margin-bottom:15px;">
                     <tr>
                       <td>
                         <button
@@ -180,12 +183,12 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="bg-blue py-4">
-            <div class="row px-3">
-              <small class="ml-4 ml-sm-5 mb-2"
-                >Copyright &copy; 2021. Students Guide.</small
-              >
+            <div class="bg-blue py-4">
+              <div id="copyrights" class="row px-3">
+                <small class="ml-4 ml-sm-5 mb-2"
+                  >Copyright &copy; 2021. Students Guide.</small
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -334,14 +337,14 @@ export default {
 <style scoped>
 html {
   height: 100%;
-  width: 100%;
+  max-width: 100%;
 }
 body {
   color: #000;
   overflow-x: hidden;
   background-color: #d3d9e9;
   background-repeat: no-repeat;
-
+  width: 100%;
 }
 
 .card0 {
@@ -360,6 +363,7 @@ body {
   width: 100%;
   height: 100%;
   margin-top: 15%;
+  margin-left: 1%;
 }
 
 .border-line {
@@ -390,7 +394,9 @@ body {
   color: #bdbdbd;
   font-weight: 300;
 }
-
+#copyrights {
+  margin-left: 40%;
+}
 input,
 textarea {
   padding: 10px 12px 10px 12px;
@@ -441,13 +447,14 @@ a {
 .bg-blue {
   color: #fff;
   background-color: #1a237e;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 991px) {
-  .image {
+  /* .image {
     width: 300px;
     height: 220px;
-  }
+  } */
 
   .border-line {
     border-right: none;
@@ -462,11 +469,7 @@ a {
 .radio {
   color: rgb(38, 131, 218);
 }
-h5 {
-  color: rgb(3, 3, 83);
-  font-size: 23px;
-  margin-left: 38%;
-}
+
 .line {
   height: 1px;
   width: 45%;

@@ -9,10 +9,9 @@
               <div class="col-md-4">
                 <div class="profile-img">
                   <img id="teacherPic" :src="profilePicture" alt="" />
-                  <div id="changepic" class="file btn btn-lg btn-primary" >
+                  <div id="changepic" class="file btn btn-lg btn-primary">
                     Change Photo
                     <input type="file" @change="upload" />
-                    
                   </div>
 
                   <h5 id="teacherName">
@@ -61,7 +60,7 @@
                   name="btnAddMore"
                   value="Edit Profile"
                 /> -->
-                 <router-link to="/editstudent" class="profile-edit-btn"
+                <router-link to="/editstudent" class="profile-edit-btn"
                   >Edit Profile</router-link
                 >
               </div>
@@ -77,14 +76,14 @@
 <script>
 import axios from "axios";
 import StudentNavbar from "./studentNavbar.vue";
-import Footer from "./footer.vue"
+import Footer from "./footer.vue";
 
 export default {
-  components: { StudentNavbar , Footer},
+  components: { StudentNavbar, Footer },
   name: "profil",
   data() {
     return {
-      newimg:null,
+      newimg: null,
       profilePicture: "",
       firstName: "",
       lastName: "",
@@ -94,30 +93,40 @@ export default {
     };
   },
   methods: {
-    change(event){
-    this.newimg=event.target.files[0]
-    console.log(this.newimg)
+    change(event) {
+      this.newimg = event.target.files[0];
+      console.log(this.newimg);
     },
-     upload(event){
-     let y = localStorage.getItem('session') 
-    var id = JSON.parse(y)._id;
-       this.newimg=event.target.files[0]
-      const formData= new FormData()
-       formData.append("file",this.newimg);
-       formData.append('upload_preset', 'lsom30en');
-       console.log(formData)
-       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
-        //  console.log(response)
-         var profilePicture = this.profilePicture=response.data.url
-        console.log(profilePicture)
-        axios.put(`http://localhost:5000/students/editProfilPicture/${id}`,{profilePicture}).then(res=>{
-          this.profilePicture
-         console.log("hhh",res.data);
-       }).catch(err=>{
-         console.log(err)
-       })
-       }).catch(err=>{console.log(err)})
-   } ,
+    upload(event) {
+      let y = localStorage.getItem("session");
+      var id = JSON.parse(y)._id;
+      this.newimg = event.target.files[0];
+      const formData = new FormData();
+      formData.append("file", this.newimg);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          //  console.log(response)
+          var profilePicture = (this.profilePicture = response.data.url);
+          console.log(profilePicture);
+          axios
+            .put(`http://localhost:5000/students/editProfilPicture/${id}`, {
+              profilePicture
+            })
+            .then(res => {
+              this.profilePicture;
+              console.log("hhh", res.data);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     goToEdit() {
       this.$router.push("/editStudent");
     }
@@ -189,11 +198,8 @@ export default {
 }
 .profil {
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgb(22, 5, 107) 0%,
-    rgb(86, 150, 250) 100%
-  );
+  background: linear-gradient(45deg, #58b8ff 0%, #96daff 100%);
+
   border-radius: 20px;
   padding: 5%;
   height: 100%;
@@ -248,7 +254,7 @@ export default {
   border-radius: 0.5rem;
   width: 90%;
   height: 5%;
-  padding: 2%;
+  padding: 5%;
   font-size: 100%;
   color: #ffffff;
   cursor: pointer;

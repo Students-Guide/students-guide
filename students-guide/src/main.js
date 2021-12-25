@@ -20,6 +20,8 @@ import forgotPassword from "./components/forgotPassword.vue"
 import premium from './components/premium/premium.vue'
 import Purchase from './components/premium/purchase.vue'
 import Footer from "./components/footer.vue"
+import resetPassword from "./components/resetPassword.vue"
+
 
 import Mypannel from "./components/Mypannel.vue"
 Vue.use(Router);
@@ -98,10 +100,16 @@ var router = new Router({
       component: signin
     },
     {
-      path: "/forgot password",
+      path: "/forgotpassword",
       name: "forgotPassword",
       component: forgotPassword
     },
+    {
+      path: "/resetpassword",
+      name: "reset Password",
+      component: resetPassword
+    },
+    
     {
       path: "/",
       name: "signup",
@@ -136,6 +144,11 @@ var router = new Router({
       path: "/studentProfile",
       name: "studentProfile",
       component: studentProfile
+    },
+    {
+      path: "/studentEditP",
+      name: "editPS",
+      component: editPS
     },
    
     {

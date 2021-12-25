@@ -87,8 +87,10 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  padding-left: 180px;
   font-family: "Baloo Paaji 2", cursive;
+  margin: 15px;
 }
 
 .card {
@@ -119,12 +121,12 @@ export default {
   border-radius: 50%;
   border: 5px solid #272133;
   margin-top: 20px;
-  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+  box-shadow: 0 10px 50px rgb(255, 255, 255);
 }
 
 .draw-border {
-  box-shadow: inset 0 0 0 4px #58cdd1;
-  color: #58afd1;
+  box-shadow: inset 0 0 0 4px #3b79ff;
+  color: #3970e7;
   -webkit-transition: color 0.25s 0.0833333333s;
   transition: color 0.25s 0.0833333333s;
   position: relative;
@@ -154,12 +156,12 @@ export default {
 }
 
 .draw-border:hover {
-  color: #ffe593;
+  color: #1938eb;
 }
 
 .draw-border:hover::before,
 .draw-border:hover::after {
-  border-color: #eb196e;
+  border-color: #1938eb;
   -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
   transition: border-color 0s, width 0.25s, height 0.25s;
   width: 100%;
@@ -226,7 +228,7 @@ export default {
   height: 45px;
   border-radius: 100%;
   display: block;
-  background: linear-gradient(45deg, #ff003c, #c648c8);
+  background: linear-gradient(45deg, #2e5efc, #3c8ffd);
   transition: all 265ms ease-out;
 }
 
@@ -239,8 +241,8 @@ export default {
   transform: scale(2.2);
   -ms-transform: scale(2.2);
   -webkit-transform: scale(2.2);
-  color: #ff003c;
-  background: -webkit-linear-gradient(45deg, #ff003c, #c648c8);
+  color: #0084ff;
+  background: -webkit-linear-gradient(45deg, #0051ff, #3d4aff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 265ms ease-in;
