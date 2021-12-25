@@ -1,109 +1,105 @@
 <template>
-<div>
-  <teacher-navbar />
-<div id="up" class="container card-0 justify-content-center">
-  <div class="card-body px-sm-4 px-0">
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-10 col">
-        <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">
-          Post Course
-        </h3>
-        <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">
-          `Teaching is the profession that teaches all the other professions`.
-        </p>
-      </div>
-    </div>
-    <div class="row justify-content-center round">
-      <div class="col-lg-10 col-md-12">
-        <div class="card shadow-lg card-1">
-          <div class="card-body inner-card">
-            <div class="row">
-              <div id="postCourseInfo" class="col-lg-5 col-md-6 col-sm-12">
-                <div class="form-group">
-                  <label for="title">Title :</label
-                  ><input
-                    type="text"   
-                    class="form-control"
-                    id="titlePost"
-                  placeholder="Type Course title"
-                  v-model="title"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="category">Category :</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="categoryPost"
-                    
-                    placeholder=""
-                    v-model="category"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="price">Price :</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="pricePost"
-        
-                    placeholder=""
-                    v-model="price"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="description">Description :</label>
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea2"
-                
-                    rows="3"
-                    v-model="description"
-                  ></textarea>
-                </div>
-                <div
-                  class="form-group"
-                  action=""
-                  method="post"
-                  enctype="multipart/form-data"
-                >
-                  <label for="thumbnail">Thumbnail Image :</label>
-                  <input type="file"  />
-                  <!-- @click="upload" -->
-                </div>
-                <div class="form-group">
-                  <label for="type">Course Type :</label>
-                  <select class="form-control" >
-                    <option>PDF</option>
-                    <option>Video</option>
-                  </select>
-                </div>
-              </div>
-              <div id="media">
-                <img id="thumbnailImg"  alt="" />
-                <div class="form-group files">
-                  <label class="my-auto">Upload File </label>
-                  <input
-                    id="file"
-                    type="file"
-                    class="form-control"
-                 
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div id="descriptionCourse" class="col-md-12 col-lg-10 col-12">
-                <div class="mb-2 mt-4">
-                  <div class="text-right">
-                    <button
-                      type="button"
-                      id="postButton"
-                      class="btn btn-primary"
-                      v-on:click="postCourse"
+  <div>
+    <teacher-navbar />
+    <div id="up" class="container card-0 justify-content-center">
+      <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-10 col"></div>
+        </div>
+        <div class="row justify-content-center round">
+          <div class="col-lg-10 col-md-12">
+            <div class="card shadow-lg card-1">
+              <div class="card-body inner-card">
+                <div class="row">
+                  <div id="postCourseInfo" class="col-lg-5 col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="title">Title :</label
+                      ><input
+                        type="text"
+                        class="form-control"
+                        id="titlePost"
+                        placeholder="Type Course title"
+                        v-model="title"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="category">Category :</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="categoryPost"
+                        placeholder=""
+                        v-model="category"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="price">Price :</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="pricePost"
+                        placeholder=""
+                        v-model="price"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Description :</label>
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea2"
+                        rows="3"
+                        v-model="description"
+                      ></textarea>
+                    </div>
+                    <div
+                      class="form-group"
+                      action=""
+                      method="post"
+                      enctype="multipart/form-data"
                     >
-                      <small class="font-weight-bold">Post Course</small>
-                    </button>
+                      <label for="thumbnail">Thumbnail Image :</label>
+                      <input type="file" @change="thumbnailimg" />
+                      <button v-on:click="upload"></button>
+                    </div>
+                    <div class="form-group">
+                      <label for="type">Course Type :</label>
+                      <select class="form-control">
+                        <option>PDF</option>
+                        <option>Video</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div id="media">
+                    <img id="thumbnailImg" alt="" />
+                    <div class="form-group files">
+                      <label class="my-auto">Upload File </label>
+                      <input
+                        id="file"
+                        type="file"
+                        class="form-control"
+                        @change="fileup"
+                      />
+                      <button v-on:click="uploadfile">send</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div
+                    id="descriptionCourse"
+                    class="col-md-12 col-lg-10 col-12"
+                  >
+                    <div class="mb-2 mt-4">
+                      <div class="text-right">
+                        <button
+                          type="button"
+                          id="postButton"
+                          class="btn btn-primary"
+                          v-on:click="postCourse"
+                        >
+                          <small class="font-weight-bold">Post Course</small>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -113,77 +109,102 @@
       </div>
     </div>
   </div>
-</div>
-</div>
 </template>
 <script>
-import axios from 'axios'
-import teacherNavbar from './teacherNavbar.vue'
-export default{
+import axios from "axios";
+import teacherNavbar from "./teacherNavbar.vue";
+export default {
   components: { teacherNavbar },
-    data(){
-     return{
-       selectedFile:null,
-    title:'',
-   owner:'',
-   ownerPicture:'',
-   category:'',
-   type:'',
-   object:'',
-   price:'',
-   views:0,
-   likes:0,
-   description:'',
-   comments:[],
-   thumbnail:'https://face-pro.net/wp-content/plugins/penci-pennews-portfolio/images/no-thumbnail.jpg',
-   buyers:[],
-   createdAt:Date.now(),
-   updatedAt:Date.now(),
-    }
-   
-    },
-    methods:{
- 
-        postCourse(){
-        let daata={
-      title: this.title,
-      owner: this.owner,
-      category : this.category,
-      type:this.type,
-      object:this.object,
-      price: this.price,
-      views: this.views,
-      likes : this.likes,
-      description : this.description,
-      comments : this.comments,
-      thumbnail : this.thumbnail,
-      buyers : this.buyers,
-      createdAt : this. createdAt,
-      updatedAt : this.updatedAt,
-      ownerPicture : this.ownerPicture
-        }
-    // console.log(data)
-        let url = "http://localhost:5000/courses/post"
-        axios.post(url,daata).then(res=>{
-            console.log(res.data)
-        }).catch(err=>{
-            console.log(err)
+  data() {
+    return {
+      file: null,
+      selectedFile: null,
+      title: "",
+      owner: "",
+      ownerPicture: "",
+      category: "",
+      type: "",
+      object: "",
+      price: "",
+      views: 0,
+      likes: 0,
+      description: "",
+      comments: [],
+      thumbnail:
+        "https://face-pro.net/wp-content/plugins/penci-pennews-portfolio/images/no-thumbnail.jpg",
+      buyers: [],
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+    };
+  },
+  methods: {
+    postCourse() {
+      let daata = {
+        title: this.title,
+        owner: this.owner,
+        category: this.category,
+        type: this.type,
+        object: this.object,
+        price: this.price,
+        views: this.views,
+        likes: this.likes,
+        description: this.description,
+        comments: this.comments,
+        thumbnail: this.thumbnail,
+        buyers: this.buyers,
+        createdAt: this.createdAt,
+        updatedAt: this.updatedAt,
+        ownerPicture: this.ownerPicture
+      };
+      // console.log(data)
+      let url = "http://localhost:5000/courses/post";
+      axios
+        .post(url, daata)
+        .then(res => {
+          console.log(res.data);
         })
-        }
+        .catch(err => {
+          console.log(err);
+        });
     },
-    // upload(){
-    //   const fd = new FormData();
-    //   fd.append('image' , this.selectedFile , this.selectedFile.name )
-    //   console.log(this.selectedFile)
-    //   console.log(fd)
-    // axios.post('AAAApIs70ug:APA91bHaNfaRNpZ80Pv98gf-JD1w50cBJBThnjxuIP45FaQJRx0b3G3Cg9WYjm2H4NUV81h5Pv5wmpp9R-qEuFbWrw__OU1wM7sJ2wkE4X1E71VYADOt2RADcfUOvK66GELkb97IIgGq',fd).then(res=>{
-    //   console.log(res);
-    // }).catch(err=>{
-    //   console.log(err);
-    // })
-    // },
-    name : "TeacherPost"
-}
+    thumbnailimg(event) {
+      // console.log(event.target.files[0])
+      this.selectedFile = event.target.files[0];
+      console.log(this.selectedFile);
+    },
+    upload() {
+      const formData = new FormData();
+      formData.append("file", this.selectedFile);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          console.log(response);
+          this.thumbnail = response.data.url;
+          console.log(this.thumbnail);
+        });
+    },
+    fileup(event) {
+      console.log(event);
+      this.file = event.target.files[0];
+      console.log(this.file);
+    },
+    uploadfile() {
+      const formData = new FormData();
+      formData.append("file", this.file);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          console.log(response.data.url);
+        });
+    }
+  },
+
+  name: "TeacherPost"
+};
 </script>
 <style scoped>
 /* *{
@@ -196,12 +217,17 @@ export default{
 }
 #up {
   margin-top: 70px;
+  padding: 20px;
 }
 .card-0 {
   /* min-height: 110vh; */
-  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  /* background: linear-gradient(-20deg, #f8d6f9 20%, #561e79 100%); */
+  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
+  /* background: #c8e0ff; */
+
   color: white;
   margin-top: -40px;
+  padding-left: -50px;
 }
 
 p {
@@ -346,5 +372,4 @@ button:focus {
   position: relative;
   left: 40px;
 }
-
 </style>

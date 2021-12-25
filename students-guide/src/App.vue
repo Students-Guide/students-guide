@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view />
+    <!-- <Footer /> -->
   </div>
+
 </template>
 //
 <script>
@@ -13,10 +15,17 @@ import Profile from "./components/profile.vue";
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
+import feed from './components/studentFeed.vue'
 import TeacherPost from "./components/teacher-post.vue";
+import addcourse from './components/studentFeedDetail.vue'
+import Mypannel from "./components/Mypannel.vue"
+import Footer from "./components/footer.vue"
+
 export default {
   name: "app",
   components: {
+    courses,  
+       detail,  
     edit,
     Profile,
     teacherChangePassword,
@@ -24,7 +33,11 @@ export default {
     signin,
     TeacherPost,
     courses,
-    detail
+    detail,
+    feed,
+    addcourse,
+    Mypannel,
+    Footer
   }
 };
 </script>

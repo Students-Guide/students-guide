@@ -5,20 +5,36 @@ import Router from "vue-router";
 import courses from "./components/courses.vue";
 import editP from "./components/editProfil.vue";
 import profile from "./components/profile.vue";
-import 'bootstrap/dist/css/bootstrap.css'
-import TeacherPost from './components/Teacher-Post.vue'
+import editPS from "./components/editProfil-stu.vue"
+import techersFS from "./components/teachersforstudent.vue"
+import feed from './components/studentFeed.vue'
+
+// import 'bootstrap/dist/css/bootstrap.css'
+import TeacherPost from "./components/Teacher-Post.vue";
 
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
 import studentProfile from "./components/studentProfil.vue";
 import about from "./components/about.vue";
+import detail from "./components/coursedetail.vue";
+import signUp from "./components/signUp.vue";
+import forgotPassword from "./components/forgotPassword.vue"
+import Footer from "./components/footer.vue"
 
+import Mypannel from "./components/Mypannel.vue"
 Vue.use(Router);
 var router = new Router({
   mode: "history",
 
   routes: [
+    {
+      path: "/footer",
+      name: "footer",
+
+      component: Footer
+    },
+
     {
       path: "/edit",
       name: "edit",
@@ -26,14 +42,23 @@ var router = new Router({
       component: editP
     },
     {
-      path: "/profile",
-      name: "profil",
-      component: profile
+      path: "/editStudent",
+      name: "editStudent",
+
+      component: editPS
+    },
+
+    {
+
+      path: '/mypannel', 
+      name:'mypannel',
+      
+      component: Mypannel
     },
     {
-      path: "/",
-      name: "courses",
-      component: courses
+      path: "/profil",
+      name: "profil",
+      component: profile
     },
     {
       path: "/teacherChangePass",
@@ -41,16 +66,30 @@ var router = new Router({
       component: teacherChangePassword
     },
     {
-      path: "/studentChangePass",
-      name: "studentChangePassword",
-      component: studentChangePassword
+      path: "/homeT",
+      name: "courses",
+      component: courses
+    },
+    {
+      path: "/details",
+      name: "detail",
+      component: detail
     },
     {
       path: "/signin",
       name: "signin",
       component: signin
     },
-
+    {
+      path: "/forgot password",
+      name: "forgotPassword",
+      component: forgotPassword
+    },
+    {
+      path: "/",
+      name: "signup",
+      component: signUp
+    },
     {
       path: "/post",
       name: "post",
@@ -68,6 +107,8 @@ var router = new Router({
       component: signin
     },
 
+    { path: "/teachersforstudent", name: "teachers", component: techersFS },
+
     { path: "/post", name: "post", component: TeacherPost },
     {
       path: "/teacherChangePass",
@@ -79,11 +120,17 @@ var router = new Router({
       name: "studentProfile",
       component: studentProfile
     },
+   
     {
       path: "/about",
       name: "about",
       component: about
-    }
+    },
+    {
+      path: "/studentFeed",
+      name: "studentFeed",
+      component: feed
+    },
   ]
 });
 
