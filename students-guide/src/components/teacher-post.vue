@@ -118,9 +118,9 @@
 </div>
 </template>
 <script>
-import axios from 'axios'
-import teacherNavbar from './teacherNavbar.vue'
-export default{
+import axios from "axios";
+import teacherNavbar from "./teacherNavbar.vue";
+export default {
   components: { teacherNavbar },
     data(){
      return{
@@ -175,11 +175,9 @@ export default{
         }).catch(err=>{
             console.log(err)
         })
-        },
-    thumbnailimg(event){
-    // console.log(event.target.files[0])
-    this.selectedFile=event.target.files[0]
-    console.log(this.selectedFile)
+        .catch(err => {
+          console.log(err);
+        });
     },
     upload(){
       const formData= new FormData()
@@ -210,10 +208,37 @@ export default{
        )
    } 
     },
-
-    
-    name : "TeacherPost"
-}
+    upload() {
+      const formData = new FormData();
+      formData.append("file", this.selectedFile);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          console.log(response);
+          this.thumbnail = response.data.url;
+          console.log(this.thumbnail);
+        });
+    },
+    fileup(event) {
+      console.log(event);
+      this.file = event.target.files[0];
+      console.log(this.file);
+    },
+    uploadfile() {
+      const formData = new FormData();
+      formData.append("file", this.file);
+      formData.append("upload_preset", "lsom30en");
+      console.log(formData);
+      axios
+        .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+        .then(response => {
+          console.log(response.data.url);
+        });
+    },
+  name: "TeacherPost"
+  }
 </script>
 <style scoped>
 /* *{
@@ -230,7 +255,10 @@ export default{
 }
 .card-0 {
   /* min-height: 110vh; */
-  background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #68738b 100%);
+  /* background: linear-gradient(-20deg, #f8d6f9 20%, #561e79 100%); */
+  background: linear-gradient(-20deg, #c8e0ff 20%, rgb(77, 112, 209) 100%);
+  /* background: #c8e0ff; */
+
   color: white;
   margin-top: -40px;
   padding-left: -50px;
@@ -378,5 +406,4 @@ button:focus {
   position: relative;
   left: 40px;
 }
-
 </style>

@@ -121,10 +121,10 @@ export default {
   },
   beforeMount: function() {
     // var id = "61bf58e748a7b38c7d9270ef";
-    let y = localStorage.getItem('session') 
+    let y = localStorage.getItem("session");
     var studentData = JSON.parse(y);
     this.studentId = studentData._id;
-    var id=this.studentId
+    var id = this.studentId;
     axios
       .get(`http://localhost:5000/students/studentData/${id}`)
       .then(({ data }) => {
@@ -188,9 +188,8 @@ export default {
   width: 100%;
   background: linear-gradient(
     90deg,
-    rgb(111, 137, 255) 0%,
-    rgb(175, 184, 226) 50%,
-    rgb(219, 232, 255) 100%
+    rgb(22, 5, 107) 0%,
+    rgb(86, 150, 250) 100%
   );
   border-radius: 20px;
   padding: 5%;
