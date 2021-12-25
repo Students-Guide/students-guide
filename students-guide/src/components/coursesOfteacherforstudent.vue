@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <div v-if="toggle">
       <div class="listContainer">
         <section id="courses" class="courses">
@@ -107,10 +106,10 @@ import detail from "./coursedetail.vue";
 import axios from "axios";
 export default {
   name: "courses",
-    props:['username'],
+  props: ["username"],
   data() {
     return {
-        teacherusername:this.username,
+      teacherusername: this.username,
       Courses: [],
       _id: "",
       toggle: true,
@@ -120,11 +119,10 @@ export default {
   beforeMount: function() {
     //     let y = localStorage.getItem('session')
     // this._id = JSON.parse(y).username
-    console.log(this.username)
+    console.log(this.username);
 
     var url = `http://localhost:5000/courses/get/${this.username}`;
     axios.get(url).then(res => {
-        
       this.Courses = res.data;
       console.log(res.data);
     });

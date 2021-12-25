@@ -7,7 +7,10 @@
       >
         <div style="margin-top:-2%;padding:0">
           <div class="card card0 border-0" style="margin-top:-5%;">
-            <div class="row d-flex" style="display:inline-block ;margin-bottom:-1.5%">
+            <div
+              class="row d-flex"
+              style="display:inline-block ;margin-bottom:-1.5%"
+            >
               <div class="col-lg-6">
                 <div class="card1 pb-5">
                   <div
@@ -181,12 +184,14 @@
               </div>
             </div>
             <div class="bg-blue py-4">
-             <div id="copyrights" class="row px-3"> 
-               <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. Students Guide.</small>
+              <div id="copyrights" class="row px-3">
+                <small class="ml-4 ml-sm-5 mb-2"
+                  >Copyright &copy; 2021. Students Guide.</small
+                >
               </div>
             </div>
-         </div>  
-        </div> 
+          </div>
+        </div>
       </div>
     </body>
   </html>
@@ -331,16 +336,15 @@ export default {
 </script>
 <style scoped>
 html {
-    	height: 100%;
-    	max-width: 100%;
-     }
+  height: 100%;
+  max-width: 100%;
+}
 body {
-    color: #000;
-    overflow-x: hidden;
-    background-color: #d3d9e9;
-    background-repeat: no-repeat;
-    	width: 100%;
-
+  color: #000;
+  overflow-x: hidden;
+  background-color: #d3d9e9;
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
 .card0 {
@@ -359,7 +363,7 @@ body {
   width: 100%;
   height: 100%;
   margin-top: 15%;
-  margin-left:1%;
+  margin-left: 1%;
 }
 
 .border-line {
@@ -390,8 +394,8 @@ body {
   color: #bdbdbd;
   font-weight: 300;
 }
-#copyrights{
-margin-left:40%;
+#copyrights {
+  margin-left: 40%;
 }
 input,
 textarea {
@@ -443,6 +447,7 @@ a {
 .bg-blue {
   color: #fff;
   background-color: #1a237e;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 991px) {

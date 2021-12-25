@@ -117,11 +117,11 @@ export default {
     };
   },
   created: function() {
-    //     let y = localStorage.getItem('session')
-    // this._id = JSON.parse(y).username
-    var aa = "saddem";
+    let y = localStorage.getItem("session");
+    this._id = JSON.parse(y).username;
+    var user = this._id;
 
-    var url = `http://localhost:5000/courses/get/${aa}`;
+    var url = `http://localhost:5000/courses/get/${user}`;
     axios.get(url).then(res => {
       this.Courses = res.data;
       console.log(res.data);
