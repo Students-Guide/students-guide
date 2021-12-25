@@ -141,6 +141,7 @@ router.post("/resetpassword/", async (req, res) => {
 });
 
 router.post("/forgotpassword", async (req, res) => {
+  console.log(req.body);
   // Retreive data from req.body with destructuring
   let { role, email, subject, text, html } = req.body; // if you rename one of these variable, the sever will brake
   //
@@ -157,7 +158,7 @@ router.post("/forgotpassword", async (req, res) => {
   const init_HTML_Message = (firstName, lastName, hash_link) =>
     `<p>Hello ${firstName} ${lastName}</p>
     <p>Someone has requested a link to change your password, and you can do this through the link below.</p>
-    <a href="http://localhost:4200/resetpassword/${hash_link}">Change my password</a>
+    <a href="http://localhost:8080/resetpassword">Change my password</a>
     <p>If you didn't request this, please ignore this email.</p>
     <p>Your password won't change until you access the link above and create a new one.</p>`;
 

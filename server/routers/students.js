@@ -100,6 +100,7 @@ router.put("/changePassword/:id", async (req, res) => {
   const auth = ({ oldPassword, newPassword } = req.body);
   var result = await Student.findById({ _id: req.params.id });
   const success = await bcrypt.compare(auth.oldPassword, result.password);
+  
   if (success) {
     var hash = await bcrypt.hash(auth.newPassword, 12);
     const user = await Student.findOneAndUpdate(
@@ -111,6 +112,10 @@ router.put("/changePassword/:id", async (req, res) => {
   } else {
     res.send("error");
   }
+  
+
+
+
 });
 
 router.post("/addToPannel/:course/:user", async (req, res) => {

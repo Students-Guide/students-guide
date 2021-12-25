@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-
 import Router from "vue-router";
 import courses from "./components/courses.vue";
 import editP from "./components/editProfil.vue";
@@ -8,10 +7,8 @@ import profile from "./components/profile.vue";
 import editPS from "./components/editProfil-stu.vue"
 import techersFS from "./components/teachersforstudent.vue"
 import feed from './components/studentFeed.vue'
-
 // import 'bootstrap/dist/css/bootstrap.css'
 import TeacherPost from "./components/Teacher-Post.vue";
-
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
@@ -20,7 +17,11 @@ import about from "./components/about.vue";
 import detail from "./components/coursedetail.vue";
 import signUp from "./components/signUp.vue";
 import forgotPassword from "./components/forgotPassword.vue"
+import premium from './components/premium/premium.vue'
+import Purchase from './components/premium/purchase.vue'
 import Footer from "./components/footer.vue"
+import resetPassword from "./components/resetPassword.vue"
+
 
 import Mypannel from "./components/Mypannel.vue"
 Vue.use(Router);
@@ -29,7 +30,25 @@ var router = new Router({
 
   routes: [
     {
-      path: "/footer",
+      path: "/purchase",
+      name: "Purchase",
+      props:true,
+      component: Purchase
+    },
+    {
+      path: "/premium",
+      name: "premium",
+
+      component: premium
+    },
+    {
+      path: "/editstudent",
+      name: "editstudent",
+
+      component: editPS
+    },
+    {  
+    path: "/footer",
       name: "footer",
 
       component: Footer
@@ -81,10 +100,16 @@ var router = new Router({
       component: signin
     },
     {
-      path: "/forgot password",
+      path: "/forgotpassword",
       name: "forgotPassword",
       component: forgotPassword
     },
+    {
+      path: "/resetpassword",
+      name: "reset Password",
+      component: resetPassword
+    },
+    
     {
       path: "/",
       name: "signup",
@@ -119,6 +144,11 @@ var router = new Router({
       path: "/studentProfile",
       name: "studentProfile",
       component: studentProfile
+    },
+    {
+      path: "/studentEditP",
+      name: "editPS",
+      component: editPS
     },
    
     {

@@ -180,6 +180,9 @@ export default {
           console.log(err);
         });
     },
+    thumbnailimg(event){
+    this.selectedFile=event.target.files[0]
+    },
     upload(){
       const formData= new FormData()
        formData.append("file",this.selectedFile);

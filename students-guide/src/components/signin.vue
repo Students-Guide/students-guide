@@ -3,11 +3,11 @@
     <body>
       <div
         class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto"
-        style="margin-top:5%;padding:0;height:100%"
-      >
-        <div style="margin-top:-5%;padding:0">
+        style="margin-top:6.5%;padding:0;height:100%"
+          >
+        <div>
           <div class="card card0 border-0" style="margin-top:-9%;">
-            <div class="row d-flex" style="display:inline-block ;">
+            <div class="row d-flex" style="display:inline-block ; margin-bottom:-3%">
               <div class="col-lg-6">
                 <div class="card1 pb-5">
                   <div
@@ -124,13 +124,13 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="bg-blue py-4">
-            <div class="row px-3">
+            <div class="bg-blue py-4">
+            <div id="copyrights" class="row px-3">
               <small class="ml-4 ml-sm-5 mb-2"
                 >Copyright &copy; 2021. Students Guide.</small
               >
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -368,5 +368,8 @@ td {
 table {
   border-spacing: 10px;
   border-collapse: separate;
+}
+#copyrights{
+margin-left:40%;
 }
 </style>
