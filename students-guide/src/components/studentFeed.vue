@@ -152,7 +152,11 @@ export default {
     rgb(175, 184, 226) 50%,
     rgb(219, 232, 255) 100%
   ); */
-  background: linear-gradient(90deg, rgb(71, 175, 194) 0%, rgb(0, 39, 65) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(71, 175, 194) 0%,
+    rgb(0, 75, 126) 100%
+  );
   margin-top: -100px;
   border-radius: 20px;
   padding: 5%;
