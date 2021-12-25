@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <!-- <feed/> -->
     <router-view />
+    <!-- <Footer /> -->
   </div>
+
 </template>
 //
 <script>
+
 // import Home from './components/coursedetail.vue'
 import courses from "./components/courses.vue";
 import detail from "./components/coursedetail.vue";
@@ -17,9 +19,14 @@ import signin from "./components/signin.vue";
 import feed from './components/studentFeed.vue'
 import TeacherPost from "./components/teacher-post.vue";
 import addcourse from './components/studentFeedDetail.vue'
+import Mypannel from "./components/Mypannel.vue"
+import Footer from "./components/footer.vue"
+
 export default {
   name: "app",
   components: {
+    courses,  
+       detail,  
     edit,
     Profile,
     teacherChangePassword,
@@ -29,7 +36,9 @@ export default {
     courses,
     detail,
     feed,
-    addcourse
+    addcourse,
+    Mypannel,
+    Footer
   }
 };
 </script>

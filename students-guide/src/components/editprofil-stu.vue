@@ -1,7 +1,7 @@
 
 <template>
 <div>
-    <teacher-navbar />
+   <student-navbar/>
     <div id="edit">
       <div class="editProfile">
         <div class="container rounded bg-white mt-5 mb-5">
@@ -130,21 +130,22 @@
 <script>
 import Axios from "axios";
 import profile from "./profile.vue";
-import TeacherNavbar from "./teacherNavbar.vue";
+import studentNavbar from "./studentNavbar.vue";
 export default {
-  components: { profile, TeacherNavbar },
+  components: { profile, studentNavbar },
   name: "edit",
   data() {
     return {
       user: {
-          profilePicture:"",
-          studentId:"",
-       firstName: "", 
+      profilePicture:"",
+      studentId:"",
+      firstName: "", 
       lastName: "", 
       username: "",
       email:"",
       phone_number: "",
       education: "",
+      
     }
       
     };
@@ -162,7 +163,7 @@ export default {
       };
       console.log(data);
           let y = localStorage.getItem('session');
-      var id = JSON.parse(y)._id;
+          var id = JSON.parse(y)._id;
       // var id = "61bf420df768c4595c18e613";
       Axios.put(`http://localhost:5000/students/editProfil/${id}`, data)
         .then(({ data }) => {
