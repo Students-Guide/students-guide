@@ -1,7 +1,7 @@
 
 <template>
 <div>
-    <teacher-navbar />
+   <student-navbar/>
     <div id="edit">
       <div class="editProfile">
         <div class="container rounded bg-white mt-5 mb-5">
@@ -130,9 +130,9 @@
 <script>
 import Axios from "axios";
 import profile from "./profile.vue";
-import TeacherNavbar from "./teacherNavbar.vue";
+import studentNavbar from "./studentNavbar.vue";
 export default {
-  components: { profile, TeacherNavbar },
+  components: { profile, studentNavbar },
   name: "edit",
   data() {
     return {
@@ -145,6 +145,7 @@ export default {
       email:"",
       phone_number: "",
       education: "",
+      
     }
       
     };

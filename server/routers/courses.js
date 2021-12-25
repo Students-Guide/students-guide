@@ -5,8 +5,8 @@ const Student = require("../models/student")
 const moment = require("moment")
 
 
-router.get("/premium/:id", (req, res) => {
-  Course.find({ price: { $gt: 0}, buyers: { "$ne": req.params.id }  }, (err, courses) => {
+router.get("/premium", (req, res) => {
+  Course.find({ price: { $gt: 0}}, (err, courses) => {
     if (err) {
       console.log(err);
     } else {
