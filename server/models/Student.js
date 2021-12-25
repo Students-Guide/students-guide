@@ -46,6 +46,8 @@ var StudentSchema = mongoose.Schema(
     },
     profilePicture: {
       type: String,
+      default:
+        "https://imgr.search.brave.com/DB3fdGIXuni2RG9nqNz2IRXGdEOaFtDcSfmFFwXxdug/fit/1200/1200/ce/1/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDAwLzM3/OC84OTYvb3JpZ2lu/YWwvYmxvY2stdXNl/ci12ZWN0b3ItaWNv/bi5qcGc",
     },
     pannel: [],
     createdAt: {
