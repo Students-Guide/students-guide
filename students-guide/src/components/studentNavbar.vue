@@ -39,54 +39,64 @@
 </nav> -->
 
   <nav class="page__menu page__custom-settings menu">
-    <ul class="menu__list r-list">
+    <ul id="hsak" class="menu__list r-list">
       <li class="menu__group">
         <routerLink to="/studentFeed">
-          <a class="menu__link r-link text-underlined">home</a></routerLink
+          <a id="login" class="menu__link text-underlined">home</a></routerLink
         >
       </li>
       <li class="menu__group">
-        <routerLink to='/premium'>
-        <a class="menu__link r-link text-underlined">Premium</a></routerLink>
+        <routerLink to="/premium">
+          <a id="login" class="menu__link text-underlined"
+            >Premium</a
+          ></routerLink
+        >
       </li>
       <li class="menu__group">
-         <routerLink to="/mypannel">
-        <a class="menu__link r-link text-underlined">My Pannel</a>
+        <routerLink to="/mypannel">
+          <a id="login" class="menu__link text-underlined">My Pannel</a>
         </routerLink>
       </li>
-      
+
       <li class="menu__group">
         <routerLink to="/teachersforstudent"
-          ><a class="menu__link r-link text-underlined">teachers</a></routerLink
+          ><a id="login" class="menu__link text-underlined"
+            >teachers</a
+          ></routerLink
         >
       </li>
 
       <li class="menu__group">
         <routerLink to="/studentProfile"
-          ><a class="menu__link r-link text-underlined">Profil</a></routerLink
+          ><a id="login" class="menu__link text-underlined"
+            >Profil</a
+          ></routerLink
         >
       </li>
       <li class="menu__group">
         <routerLink to="/about"
-          ><a class="menu__link r-link text-underlined">about</a></routerLink
+          ><a id="login" class="menu__link text-underlined"
+            >about</a
+          ></routerLink
         >
       </li>
       <li id="logout" class="menu__group">
-       <router-link to="/signin">
-        <a id="logout" class="menu__link r-link text-underlined"
-        v-on:click="logout">logout</a>  </router-link>
+        <router-link to="/signin">
+          <a id="logout" class="menu__link text-underlined" v-on:click="logout"
+            >logout</a
+          >
+        </router-link>
       </li>
-        
     </ul>
   </nav>
 </template>
 <script>
 export default {
-    methods:{
-      logout(){
-    localStorage.clear();
-  } 
-}
+  methods: {
+    logout() {
+      localStorage.clear();
+    }
+  }
 };
 </script>
 <style scoped>
@@ -101,6 +111,10 @@ DEPENDENCES
 }
 #logout {
   margin-left: 20%;
+  color: rgb(66, 52, 255);
+}
+#login {
+  color: rgb(66, 52, 255);
 }
 
 .r-link[href] {
@@ -154,7 +168,7 @@ PRESENTATION STYLES
 */
 
 .menu {
-  background-color: var(--menuBackgroundColor, #f0f0f0);
+  background-color: var(--menuBackgroundColor, #e9e6ff);
   box-shadow: var(
     --menuBoxShadow,
     0 1px 3px 0 rgba(0, 0, 0, 0.12),
@@ -223,9 +237,9 @@ SETTINGS
 */
 
 .page__custom-settings {
-  --menuBackgroundColor: rgb(224, 230, 255);
+  --menuBackgroundColor: rgb(255, 255, 255);
   --menuLinkColor: #fff;
-  --menuLinkColorUnactive: rgb(161, 178, 255);
+  --menuLinkColorUnactive: rgb(255, 255, 255);
   --menuLinkOutlineOffset: -0.5rem;
   cursor: pointer;
 }
@@ -237,6 +251,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+#hsak {
+  background: linear-gradient(45deg, #58b8ff 0%, #96daff 100%);
 }
 
 .page {

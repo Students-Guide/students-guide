@@ -155,6 +155,7 @@ export default {
   name: "edit",
   data() {
     return {
+      id:'',
       user: {
         teacherId: "",
         profilePicture: "",
@@ -187,6 +188,7 @@ export default {
       console.log(data);
       let y = localStorage.getItem("session");
       var id = JSON.parse(y)._id;
+      this.id=id
       // var id = "61bd17be144a7ce6a9d909a8";
       Axios.put(`http://localhost:5000/teachers/editProfil/${id}`, data)
         .then(({ data }) => {
@@ -199,7 +201,9 @@ export default {
     }
   },
   beforeMount: function() {
-    var id = "61bd17be144a7ce6a9d909a8";
+     let y = localStorage.getItem("session");
+      var id = JSON.parse(y)._id;
+      this.id=id
     Axios.get(`http://localhost:5000/teachers/teacherData/${id}`)
       .then(({ data }) => {
         this.user.teacherId = data.teacherId;

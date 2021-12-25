@@ -59,8 +59,13 @@
             >
           </li>
           <li class="menu__group">
-            <a id="logout" href="#0" class="menu__link r-link text-underlined"
-              >logout</a
+            <router-link to="/signin"
+              ><a
+                id="logout"
+                href="#0"
+                class="menu__link r-link text-underlined"
+                >logout</a
+              ></router-link
             >
           </li>
         </ul>
@@ -71,10 +76,10 @@
 
 <script>
 export default {
-  methods:{
-   logout(){
-    localStorage.clear();
-  } 
+  methods: {
+    logout() {
+      localStorage.clear();
+    }
   }
 };
 </script>
