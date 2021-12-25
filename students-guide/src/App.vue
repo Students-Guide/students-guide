@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <premium/>
-    <!-- <router-view /> -->
+    <!-- <Purchase/> -->
+    <router-view />
   </div>
 </template>
 //
 <script>
+
 // import Home from './components/coursedetail.vue'
 import courses from "./components/courses.vue";
 import detail from "./components/coursedetail.vue";
@@ -17,7 +18,8 @@ import signin from "./components/signin.vue";
 import feed from './components/studentFeed.vue'
 import TeacherPost from "./components/teacher-post.vue";
 import addcourse from './components/studentFeedDetail.vue';
-import premium from './components/premium/premium.vue'
+import premium from './components/premium/premium.vue';
+
 export default {
   name: "app",
   components: {
@@ -30,6 +32,7 @@ export default {
     courses,
     detail,
     feed,
+  
     addcourse,
     premium
   }

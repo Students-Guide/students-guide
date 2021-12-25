@@ -45,7 +45,8 @@
         <a class="menu__link r-link text-underlined">home</a></routerLink>
       </li>
       <li class="menu__group">
-        <a class="menu__link r-link text-underlined">Premium</a>
+        <routerLink to='/premium'>
+        <a class="menu__link r-link text-underlined">Premium</a></routerLink>
       </li>
       <li class="menu__group">
         <a class="menu__link r-link text-underlined">My Pannel</a>

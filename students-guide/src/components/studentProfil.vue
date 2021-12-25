@@ -54,13 +54,16 @@
                 </div>
               </div>
               <div class="col-md-2">
-                <input
+                <!-- <input
                   type="submit"
                   id="goToEdit"
                   class="profile-edit-btn"
                   name="btnAddMore"
                   value="Edit Profile"
-                />
+                /> -->
+                 <router-link to="/editstudent" class="profile-edit-btn"
+                  >Edit Profile</router-link
+                >
               </div>
             </div>
           </form>

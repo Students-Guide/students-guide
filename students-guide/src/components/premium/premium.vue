@@ -1,4 +1,6 @@
 <template>
+<div>  
+<student-navbar/>
     <div class="listContainer">
   <section id="courses" class="courses">
     <div class="container" data-aos="fade-up">
@@ -9,6 +11,9 @@
           :key='cour._id'
           class="col-lg-4 col-md-6 d-flex align-items-stretch"
         >
+        <router-link :to="{ name: 'Purchase', params: { msg: JSON.stringify(cour) } }" >
+
+
           <div class="course-item">
             <div id="imgProduct">
               <img :src="cour.thumbnail" class="img-fluid" alt="..." />
@@ -74,20 +79,28 @@
               </div>
             </div>
           </div>
+        
+        </router-link>
         </div>
       </div>
     </div>
   </section>
 </div> 
+</div>
 </template>
 
 <script>
+import studentNavbar from '../studentNavbar.vue'
 import axios from 'axios'
 export default {
       name:'template',
+      components:{
+           studentNavbar,
+      },
      data(){
           return {
      studentId:'',
+     msg:{},
      cours: []
           }
      },

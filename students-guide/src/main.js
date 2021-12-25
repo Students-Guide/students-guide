@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-
 import Router from "vue-router";
 import courses from "./components/courses.vue";
 import editP from "./components/editProfil.vue";
@@ -8,10 +7,8 @@ import profile from "./components/profile.vue";
 import editPS from "./components/editProfil-stu.vue"
 import techersFS from "./components/teachersforstudent.vue"
 import feed from './components/studentFeed.vue'
-
 // import 'bootstrap/dist/css/bootstrap.css'
 import TeacherPost from "./components/Teacher-Post.vue";
-
 import teacherChangePassword from "./components/changePass.vue";
 import studentChangePassword from "./components/studentChangePassword.vue";
 import signin from "./components/signin.vue";
@@ -20,13 +17,31 @@ import about from "./components/about.vue";
 import detail from "./components/coursedetail.vue";
 import signUp from "./components/signUp.vue";
 import forgotPassword from "./components/forgotPassword.vue"
-
-
+import premium from './components/premium/premium.vue'
+import Purchase from './components/premium/purchase.vue'
 Vue.use(Router);
 var router = new Router({
   mode: "history",
 
   routes: [
+    {
+      path: "/purchase",
+      name: "Purchase",
+      props:true,
+      component: Purchase
+    },
+    {
+      path: "/premium",
+      name: "premium",
+
+      component: premium
+    },
+    {
+      path: "/editstudent",
+      name: "editstudent",
+
+      component: editPS
+    },
     {
       path: "/edit",
       name: "edit",
