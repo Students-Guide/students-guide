@@ -7,6 +7,7 @@
 </template>
 //
 <script>
+
 // import Home from './components/coursedetail.vue'
 import courses from "./components/courses.vue";
 import detail from "./components/coursedetail.vue";
