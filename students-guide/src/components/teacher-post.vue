@@ -57,9 +57,9 @@
                     >
                       <label for="thumbnail">Thumbnail Image :</label>
                       <input type="file" @change="thumbnailimg" />
-                      <!-- <button class="btn btn-primary" v-on:click="upload">
+                      <button class="btn btn-primary" v-on:click="upload">
                         upload thumbnail
-                      </button> -->
+                      </button>
                     </div>
                     <div class="form-group">
                       <label for="type">Course Type :</label>
@@ -79,9 +79,9 @@
                         class="form-control"
                         @change="fileup"
                       />
-                      <!-- <button class="btn btn-primary" v-on:click="uploadfile">
+                      <button class="btn btn-primary" v-on:click="uploadfile">
                         upload course
-                      </button> -->
+                      </button>
                     </div>
                   </div>
                   <div></div>
@@ -176,7 +176,9 @@ export default {
           console.log(err);
         });
     },
-
+    thumbnailimg(event) {
+      this.selectedFile = event.target.files[0];
+    },
     upload() {
       const formData = new FormData();
       formData.append("file", this.selectedFile);
@@ -204,8 +206,38 @@ export default {
         .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
         .then(response => {
           console.log(response.data.url);
+          this.object = response.data.url;
         });
     }
+  },
+  upload() {
+    const formData = new FormData();
+    formData.append("file", this.selectedFile);
+    formData.append("upload_preset", "lsom30en");
+    console.log(formData);
+    axios
+      .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+      .then(response => {
+        console.log(response);
+        this.thumbnail = response.data.url;
+        console.log(this.thumbnail);
+      });
+  },
+  fileup(event) {
+    console.log(event);
+    this.file = event.target.files[0];
+    console.log(this.file);
+  },
+  uploadfile() {
+    const formData = new FormData();
+    formData.append("file", this.file);
+    formData.append("upload_preset", "lsom30en");
+    console.log(formData);
+    axios
+      .post("https://api.cloudinary.com/v1_1/ben-arous/upload", formData)
+      .then(response => {
+        console.log(response.data.url);
+      });
   },
   name: "TeacherPost"
 };

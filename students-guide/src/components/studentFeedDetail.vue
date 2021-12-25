@@ -119,7 +119,6 @@ export default ({
   edit : false,
   color : 'black',
   text : '',
-
         }
    } ,
    methods:{
@@ -128,9 +127,7 @@ export default ({
  axios.post(url,{}).then(data=>{
     console.log(data);
   })
-
 },
-
   addComment(){
     var comment={text : this.text}
     var url = `http://localhost:5000/courses/comment/${this.id}/${this.user}`;
@@ -139,11 +136,9 @@ export default ({
   
     })
   },
-
  time(now){
    return(moment(now).fromNow())
  },
-
   react() {
     if (this.color === 'black') {
       this.like();
@@ -153,7 +148,6 @@ export default ({
   },
   unlike() {
     var url = `http://localhost:5000/courses/unlike/${this.id}/${this.user}`;
-
    axios.get(url).then(({data}) => {
       this.liked();
       this.likes = data.likes;
@@ -167,7 +161,6 @@ export default ({
       this.liked();
     });
   },
-
   liked() {
     var url = `http://localhost:5000/courses/liked/${this.id}/${this.user}`;
    axios.get(url).then(({data}) => {
@@ -206,7 +199,6 @@ console.log(this.user);
 //       }
 //     });
 //     this.liked();
-
 //     console.log(this.comments);
  console.log(this.course)
    }
@@ -252,7 +244,6 @@ body {
 .save:hover {
   background-color: rgb(73, 94, 216);
 }
-
 #ownerHead {
   margin-left: 15px;
 }
@@ -262,40 +253,32 @@ body {
   position: relative;
   left: 0px;
 }
-
 .ellipsis {
   color: #a09c9c;
 }
-
 hr {
   color: #a09c9c;
   margin-top: 4px;
   margin-bottom: 8px;
 }
-
 .muted-color {
   color: #a09c9c;
   font-size: 13px;
 }
-
 .ellipsis i {
   margin-top: 3px;
   cursor: pointer;
 }
-
 .icons i {
   font-size: 25px;
 }
-
 .icons .fa-heart {
   color: red;
 }
-
 .icons .fa-smile-o {
   color: yellow;
   font-size: 29px;
 }
-
 .rounded-image {
   border-radius: 50% !important;
   display: flex;
@@ -304,35 +287,28 @@ hr {
   height: 50px;
   width: 50px;
 }
-
 .name {
   font-weight: 600;
 }
-
 .comment-text {
   font-size: 12px;
 }
-
 .status small {
   margin-right: 10px;
   color: blue;
 }
-
 .form-control {
   border-radius: 26px;
 }
-
 .comment-input {
   position: relative;
 }
-
 .fonts {
   position: absolute;
   right: 13px;
   top: 8px;
   color: #a09c9c;
 }
-
 .form-control:focus {
   color: #495057;
   background-color: #fff;
@@ -340,11 +316,9 @@ hr {
   outline: 0;
   box-shadow: none;
 }
-
 * {
   box-sizing: border-box;
 }
-
 /* Set a style for all buttons */
 .alldeleteButtons {
   background-color: #04aa6d;
@@ -356,35 +330,29 @@ hr {
   width: 100%;
   opacity: 0.9;
 }
-
 button:hover {
   opacity: 1;
 }
-
 /* Float cancel and delete buttons and add an equal width */
 .cancelbtn,
 .deletebtn {
   float: left;
   width: 50%;
 }
-
 /* Add a color to the cancel button */
 .cancelbtn {
   background-color: #ccc;
   color: black;
 }
-
 /* Add a color to the delete button */
 .deletebtn {
   background-color: #f44336;
 }
-
 /* Add padding and center-align text to the container */
 .container {
   padding: 16px;
   text-align: center;
 }
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -398,7 +366,6 @@ button:hover {
   background-color: #474e5d;
   padding-top: 50px;
 }
-
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
@@ -406,13 +373,11 @@ button:hover {
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
-
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
-
 /* The Modal Close Button (x) */
 .close {
   position: absolute;
@@ -422,20 +387,17 @@ hr {
   font-weight: bold;
   color: #f1f1f1;
 }
-
 .close:hover,
 .close:focus {
   color: #f44336;
   cursor: pointer;
 }
-
 /* Clear floats */
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
 }
-
 /* Change styles for cancel button and delete button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn,
@@ -443,5 +405,4 @@ hr {
     width: 100%;
   }
 }
-
 </style>
