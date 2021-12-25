@@ -9,7 +9,7 @@
               <div class="col-md-6">
                   <div v-if="!submitted" style="margin-left:4%;">
                     <label>Old password</label> 
-                      <div class="forms-inputs mb-5"><input placeholder="Current Password" type="password" v-model="oldPassword" v-bind:class="{'form-control':true && passwordBlured}" v-on:blur="passwordBlured = true"></div>
+                      <div class="forms-inputs mb-4"><input placeholder="Current Password" type="password" v-model="oldPassword" v-bind:class="{'form-control':true && passwordBlured}" v-on:blur="passwordBlured = true"></div>
                       <label>New password</label>
                       <div class="forms-inputs mb-4"> <input placeholder="New Password" type="password" v-model="newPassword" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(newPassword) && passwordBlured}" v-on:blur="passwordBlured = true"></div>
                       <div class="mb-3"> <button v-on:click="changePassword()" class="btn btn-dark w-30" style="margin-left:85%">save</button>
@@ -119,7 +119,8 @@ body{
 
 .forms-inputs input {
     height: 50px;
-    border: 2px solid #eee
+    width:200px;
+    border: 0px  #eee
 }
 
 .forms-inputs input:focus {

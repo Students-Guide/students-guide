@@ -20,18 +20,41 @@ import about from "./components/about.vue";
 import detail from "./components/coursedetail.vue";
 import signUp from "./components/signUp.vue";
 import forgotPassword from "./components/forgotPassword.vue"
+import Footer from "./components/footer.vue";
+import resetPassword from "./components/resetPassword.vue"
 
-
+import Mypannel from "./components/Mypannel.vue"
 Vue.use(Router);
 var router = new Router({
   mode: "history",
 
   routes: [
     {
+      path: "/footer",
+      name: "footer",
+
+      component: Footer
+    },
+
+    {
       path: "/edit",
       name: "edit",
 
       component: editP
+    },
+    {
+      path: "/editStudent",
+      name: "editStudent",
+
+      component: editPS
+    },
+
+    {
+
+      path: '/mypannel', 
+      name:'mypannel',
+      
+      component: Mypannel
     },
     {
       path: "/profil",
@@ -63,6 +86,12 @@ var router = new Router({
       name: "forgotPassword",
       component: forgotPassword
     },
+    {
+      path: "/resetpassword",
+      name: "reset Password",
+      component: resetPassword
+    },
+    
     {
       path: "/",
       name: "signup",

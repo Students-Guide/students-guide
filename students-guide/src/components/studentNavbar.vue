@@ -42,13 +42,16 @@
     <ul class="menu__list r-list">
       <li class="menu__group">
         <routerLink to="/studentFeed">
-        <a class="menu__link r-link text-underlined">home</a></routerLink>
+          <a class="menu__link r-link text-underlined">home</a></routerLink
+        >
       </li>
       <li class="menu__group">
         <a class="menu__link r-link text-underlined">Premium</a>
       </li>
       <li class="menu__group">
+         <routerLink to="/mypannel">
         <a class="menu__link r-link text-underlined">My Pannel</a>
+        </routerLink>
       </li>
       
       <li class="menu__group">
@@ -68,13 +71,22 @@
         >
       </li>
       <li id="logout" class="menu__group">
-        <a id="logout" class="menu__link r-link text-underlined">logout</a>
+       <router-link to="/signin">
+        <a id="logout" class="menu__link r-link text-underlined"
+        v-on:click="logout">logout</a>  </router-link>
       </li>
+        
     </ul>
   </nav>
 </template>
 <script>
-export default {};
+export default {
+    methods:{
+      logout(){
+    localStorage.clear();
+  } 
+}
+};
 </script>
 <style scoped>
 /*
@@ -217,12 +229,6 @@ SETTINGS
   cursor: pointer;
 }
 
-/*
-=====
-DEMO
-=====
-*/
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans,
     Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
@@ -264,7 +270,7 @@ body {
 .linktr__goal {
   border: 2px solid rgb(255, 255, 255);
   background-color: rgb(255, 255, 255);
-  color: rgb(8, 49, 112);
+  color: rgb(168, 203, 255);
   box-shadow: rgb(8 49 112 / 24%) 0px 2px 8px 0px;
   border-radius: 2rem;
   padding: 0.5rem 1.25rem;

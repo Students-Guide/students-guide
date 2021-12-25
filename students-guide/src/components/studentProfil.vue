@@ -9,10 +9,10 @@
               <div class="col-md-4">
                 <div class="profile-img">
                   <img id="teacherPic" :src="profilePicture" alt="" />
-                  <div id="changepic" class="file btn btn-lg btn-primary">
+                  <div id="changepic" class="file btn btn-lg btn-primary" >
                     Change Photo
-                    <input type="file" />
-                    <!-- (change)="uploadProfilePicture($event)" -->
+                    <input type="file" @change="upload" />
+                    
                   </div>
 
                   <h5 id="teacherName">
@@ -67,17 +67,21 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import StudentNavbar from "./studentNavbar.vue";
+import Footer from "./footer.vue"
+
 export default {
-  components: { StudentNavbar },
+  components: { StudentNavbar , Footer},
   name: "profil",
   data() {
     return {
+      newimg:null,
       profilePicture: "",
       firstName: "",
       lastName: "",
@@ -87,16 +91,40 @@ export default {
     };
   },
   methods: {
+    change(event){
+    this.newimg=event.target.files[0]
+    console.log(this.newimg)
+    },
+     upload(event){
+     let y = localStorage.getItem('session') 
+    var id = JSON.parse(y)._id;
+       this.newimg=event.target.files[0]
+      const formData= new FormData()
+       formData.append("file",this.newimg);
+       formData.append('upload_preset', 'lsom30en');
+       console.log(formData)
+       axios.post('https://api.cloudinary.com/v1_1/ben-arous/upload',formData).then((response)=>{
+        //  console.log(response)
+         var profilePicture = this.profilePicture=response.data.url
+        console.log(profilePicture)
+        axios.put(`http://localhost:5000/students/editProfilPicture/${id}`,{profilePicture}).then(res=>{
+          this.profilePicture
+         console.log("hhh",res.data);
+       }).catch(err=>{
+         console.log(err)
+       })
+       }).catch(err=>{console.log(err)})
+   } ,
     goToEdit() {
-      this.$router.push("/studentEditP");
+      this.$router.push("/editStudent");
     }
   },
   beforeMount: function() {
     // var id = "61bf58e748a7b38c7d9270ef";
-    let y = localStorage.getItem('session') 
+    let y = localStorage.getItem("session");
     var studentData = JSON.parse(y);
     this.studentId = studentData._id;
-    var id=this.studentId
+    var id = this.studentId;
     axios
       .get(`http://localhost:5000/students/studentData/${id}`)
       .then(({ data }) => {
@@ -160,9 +188,8 @@ export default {
   width: 100%;
   background: linear-gradient(
     90deg,
-    rgb(111, 137, 255) 0%,
-    rgb(175, 184, 226) 50%,
-    rgb(219, 232, 255) 100%
+    rgb(22, 5, 107) 0%,
+    rgb(86, 150, 250) 100%
   );
   border-radius: 20px;
   padding: 5%;
