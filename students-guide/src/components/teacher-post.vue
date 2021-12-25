@@ -92,6 +92,7 @@
                   <button class="btn btn-primary"  v-on:click="uploadfile" > upload course</button>
                 </div>
               </div>
+              <div></div>
             </div>
             <div class="row">
               <div id="descriptionCourse" class="col-md-12 col-lg-10 col-12">
