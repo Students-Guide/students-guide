@@ -82,7 +82,7 @@
           </div> 
         </div> 
          <div class="bg-blue py-4">
-        <div class="row px-3"> 
+        <div id="copyrights" class="row px-3"> 
           <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. Students Guide.</small>
         </div>
       </div>
@@ -240,14 +240,16 @@ export default {
 </script>
 <style scoped>
 html {
-    	height: 90vh;
-    	width: 199vh;
+    	height: 100%;
+    	max-width: 100%;
      }
 body {
     color: #000;
     overflow-x: hidden;
     background-color: #d3d9e9;
     background-repeat: no-repeat;
+    	width: 100%;
+
 }
 
 .card0 {
@@ -294,7 +296,9 @@ body {
     color: #BDBDBD;
     font-weight: 300
 }
-
+#copyrights{
+margin-left:40%;
+}
 input,
 textarea {
     padding: 10px 12px 10px 12px;

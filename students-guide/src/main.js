@@ -59,7 +59,7 @@ var router = new Router({
       component: signin
     },
     {
-      path: "/forgot password",
+      path: "/forgotpassword",
       name: "forgotPassword",
       component: forgotPassword
     },
@@ -97,6 +97,11 @@ var router = new Router({
       path: "/studentProfile",
       name: "studentProfile",
       component: studentProfile
+    },
+    {
+      path: "/studentEditP",
+      name: "editPS",
+      component: editPS
     },
    
     {

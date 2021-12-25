@@ -233,7 +233,7 @@ a {
 }
 
 .btn-blue {
-    background-color: #1A237E;
+    background-color: #182261;
     width: 150px;
     color: #fff;
     border-radius: 2px

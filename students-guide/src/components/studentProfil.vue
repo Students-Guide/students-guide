@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     goToEdit() {
-      this.$router.push("/Studentedit");
+      this.$router.push("/studentEditP");
     }
   },
   beforeMount: function() {
