@@ -1,5 +1,5 @@
 <template>
-<div>
+  <!-- <div>
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
       <li class="menu__group">
@@ -32,6 +32,40 @@
       </li>
     </ul>
   </nav>
+  </div> -->
+  <div>
+    <div class="page">
+      <nav class="page__menu page__custom-settings menu">
+        <ul class="menu__list r-list" id="hasaka">
+          <li class="menu__group">
+            <router-link to="/homeT"
+              ><a href="#0" class="menu__link r-link text-underlined"
+                >Home</a
+              ></router-link
+            >
+          </li>
+          <li class="menu__group">
+            <router-link to="/post"
+              ><a href="#0" class="menu__link r-link text-underlined"
+                >Post</a
+              ></router-link
+            >
+          </li>
+          <li class="menu__group">
+            <router-link to="/profil"
+              ><a href="#0" class="menu__link r-link text-underlined"
+                >Profile</a
+              ></router-link
+            >
+          </li>
+          <li class="menu__group">
+            <a id="logout" href="#0" class="menu__link r-link text-underlined"
+              >logout</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -46,6 +80,12 @@ export default {
 </script>
 
 <style scoped>
+/*
+=====
+DEPENDENCES
+=====
+*/
+
 .r-link {
   display: var(--rLinkDisplay, inline-flex) !important;
 }
@@ -91,7 +131,7 @@ fading siblings
 */
 
 .menu:hover .menu__link:not(:hover) {
-  --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, 0.35));
+  --rLinkColor: var(--menuLinkColorUnactive, rgba(255, 255, 255, 0.35));
 }
 
 /*
@@ -111,13 +151,15 @@ PRESENTATION STYLES
 
 .menu__list {
   display: flex;
-  cursor: pointer;
 }
 
 .menu__link {
   padding: var(--menuLinkPadding, 1.5rem 2.5rem);
   font-weight: 700;
   text-transform: uppercase;
+}
+#logout {
+  margin-left: 450%;
 }
 
 /* 
@@ -171,10 +213,14 @@ SETTINGS
 */
 
 .page__custom-settings {
-  --menuBackgroundColor: #e4e4e4;
-  --menuLinkColor: #fff;
-  --menuLinkColorUnactive: #83b9ff;
+  --menuBackgroundColor: rgb(77, 112, 209);
+  --menuLinkColor: #ffffff;
+  --menuLinkColorUnactive: #aacfff;
   --menuLinkOutlineOffset: -0.5rem;
+  margin-top: 15px;
+  border-radius: 12px;
+  width: 1200px;
+  margin-left: -290px;
 }
 
 /*
@@ -229,9 +275,7 @@ body {
   border-radius: 2rem;
   padding: 0.5rem 1.25rem;
 }
-#logout {
-  margin-left: 60%;
-}
+
 .r-link {
   --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
   --uirLinkTextColor: var(--rLinkTextColor);
