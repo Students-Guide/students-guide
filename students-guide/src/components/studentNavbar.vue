@@ -253,7 +253,8 @@ body {
   flex-direction: column;
 }
 #hsak {
-  background: linear-gradient(45deg, #58b8ff 0%, #96daff 100%);
+  /* background: linear-gradient(45deg, #58b8ff 0%, #96daff 100%); */
+  background-color: rgb(212, 214, 236);
 }
 
 .page {
